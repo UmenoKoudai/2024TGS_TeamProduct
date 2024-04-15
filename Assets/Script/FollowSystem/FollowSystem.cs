@@ -16,9 +16,7 @@ public class FollowSystem : MonoBehaviour
     [SerializeField]
     float _followSpeed = 80f;
 
-    [Tooltip("追従をするかどうか")]
-    [SerializeField]
-    bool _isFollow = false;
+
 
     [Space]
 
@@ -36,14 +34,13 @@ public class FollowSystem : MonoBehaviour
 
     [Header("確認用")]
 
-    [Header("現在動いている方向を示すもの(上下左右)")]
-
+    [Header("現在動いている方向(上下左右をXとY軸で表現)")]
     [Tooltip("-1, 0, 1の値で返す")]
-    [SerializeField]
+    [SerializeField, ReadOnly]
     int _moveX = 0;
 
     [Tooltip("-1, 0, 1の値で返す")]
-    [SerializeField]
+    [SerializeField, ReadOnly]
     int _moveY = 0;
 
     /// <summary>追従する自分のRigidbody2D</summary>
@@ -57,6 +54,8 @@ public class FollowSystem : MonoBehaviour
 
     SearchPathFind _followPathFind = new();
 
+    bool _isFollow = false;
+
     /// <summary>移動可能マップ</summary>
     public Tilemap Map => _map;
 
@@ -64,6 +63,8 @@ public class FollowSystem : MonoBehaviour
     public float MovingX => _moveX;
     /// <summary>現在動いている方向を示すもの(Y軸)</summary>
     public float MovingY => _moveY;
+    /// <summary>今追従を起動しているかどうか</summary>
+    public bool IsFollow => _isFollow;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +75,7 @@ public class FollowSystem : MonoBehaviour
         _followPathFind.Init(this);
 
         //探索開始
-        FollowStart();
+        //FollowStart();
     }
 
     // Update is called once per frame
