@@ -1,21 +1,15 @@
-ï»¿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
-
-/// <summary>ã‚¹ã‚¯ãƒªãƒ—ãƒˆå¤‰æ•°ã®ã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹</summary>
-public class ReadOnlyAttribute : PropertyAttribute
-{
-}
-
-/// <summary>PropertyDrawerã‚’ç¶™æ‰¿ã—ã¦ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§ã®è¡¨ç¤ºã‚’å¤‰æ›´</summary>
+/// <summary>PropertyDrawer‚ğŒp³‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚Å‚Ì•\¦‚ğ•ÏX</summary>
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
 public class ReadOnlyDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        //æ“ä½œä¸å¯ã«ã™ã‚‹
+        //‘€ì•s‰Â‚É‚·‚é
         EditorGUI.BeginDisabledGroup(true);
-        //ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®è¡¨ç¤º
+        //ƒtƒB[ƒ‹ƒh‚Ì•\¦
         EditorGUI.PropertyField(position, property, label, true);
         EditorGUI.EndDisabledGroup();
     }
