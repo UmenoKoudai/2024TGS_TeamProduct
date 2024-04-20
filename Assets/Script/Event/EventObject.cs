@@ -1,14 +1,22 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class EventObject : MonoBehaviour, IEventObject
+public class EventObject : MonoBehaviour, IEventObject, IAction
 {
     [SerializeField] FlagList _flagList = null;
-    [SerializeField] public EventData _eventData { get; }
-    public Image _resultImage { get; set; }
+    [SerializeField] EventData _eventData;
+    //↓追加分　ウメノ
+    [SerializeField] private ParticleSystem _effect;
+    //
+    public Sprite _resultImage { get; set; }
     public string _resultName { get; set; }
     public string _resultText { get; set; }
-
+    //↓追加分　ウメノ
+    public void Execute()
+    {
+        _effect.Stop();
+    }
+    //
     public void ResultFlagCheck()
     {
         if (_eventData != null)

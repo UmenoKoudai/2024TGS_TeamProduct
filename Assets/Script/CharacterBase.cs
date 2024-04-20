@@ -6,6 +6,9 @@ public class CharacterBase : MonoBehaviour
     [SerializeField, Tooltip("キャラのスピード")]
     private float _speed;
     public float Speed => _speed;
+    [SerializeField]
+    private EventManager _eventManager;
+    public EventManager EventManager => _eventManager;
 
     public Rigidbody2D Rb { get;  set; }
     public Vector2 Direction { get; set; } 

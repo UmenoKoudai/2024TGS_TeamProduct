@@ -16,10 +16,10 @@ public class TalkSystem : MonoBehaviour
     /// <param name="nextCharaName"></param>
     /// <param name="nextMessage"></param>
     /// <param name="nextCharaImage"></param>
-    public void ShowMessage(string nextCharaName, string nextMessage, Image nextCharaImage)
+    public void ShowMessage(string nextCharaName, string nextMessage, Sprite nextCharaImage)
     {
         _charaName.text = nextCharaName;
-        _charaImage = nextCharaImage;
+        _charaImage.sprite = nextCharaImage;
         _talkMessage.text = nextMessage; //あとでDotweenにする
     }
 

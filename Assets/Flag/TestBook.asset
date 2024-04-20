@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2088e36126d89b1439bbc16fa050b05c, type: 3}
-  m_Name: New FlagList
+  m_Script: {fileID: 11500000, guid: fe5066137c2d16a4bb9ded7a0259efd8, type: 3}
+  m_Name: TestBook
   m_EditorClassIdentifier: 
-  flags:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _isOn: 0

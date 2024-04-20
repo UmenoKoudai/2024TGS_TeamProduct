@@ -32,11 +32,10 @@ public class NormalMove : IStateMachine
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         _direction = new Vector2(h, v).normalized;
-        Debug.Log($"H:{h}");
-        Debug.Log($"V:{v}");
         _character.Animator.SetBool("Up", _isUpMove);
         _character.Animator.SetBool("Left", _isLeftMove);
         _character.Animator.SetBool("Right", _isRightMove);
+        if(h > 0 || h < 0 || v > 0 || v < 0) _character.Direction = _direction;
         if (h > 0)
         {
             _isUpMove = false;

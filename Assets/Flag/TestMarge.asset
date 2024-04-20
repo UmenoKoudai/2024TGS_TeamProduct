@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe5066137c2d16a4bb9ded7a0259efd8, type: 3}
-  m_Name: New FlagData
+  m_Name: TestMarge
   m_EditorClassIdentifier: 
-  _isOn: 1
+  _isOn: 0
