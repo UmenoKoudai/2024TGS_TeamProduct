@@ -25,7 +25,7 @@ public class FlagList : ScriptableObject
     }
 
     /// <summary> すべてのフラグをTrueにする。※デバッグ用 </summary>
-   public void SetTrueAllFlags()
+    public void SetTrueAllFlags()
     {
         foreach (FlagData f in flags)
         {

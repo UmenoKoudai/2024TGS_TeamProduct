@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
+  m_Name: Event_openChildRoomDoor
+  m_EditorClassIdentifier: 
+  _checkFlag: {fileID: 11400000, guid: b591896a171453b4ea75e7401f062efc, type: 2}
+  _changeFlag: {fileID: 11400000, guid: 20bb6962a0a1f294993f927386cd60d8, type: 2}
+  _trueImage: {fileID: 0}
+  _trueName: "\u5C11\u5973"
+  _trueText: "\u9375\u3092\u4F7F\u3063\u305F"
+  _falseImage: {fileID: 0}
+  _falseName: "\u30B7\u30B9\u30C6\u30E0"
+  _falseText: "\u6249\u3092\u958B\u3051\u308B\u306B\u306F\u9375\u304C\u5FC5\u8981\u306A\u3088\u3046\u3060"
