@@ -13,11 +13,13 @@ public class SavePoint : MonoBehaviour
             //Kでセーブ
             if (Input.GetKeyDown(KeyCode.K))
             {
+                //セーブするときはこれを呼べばできます
                 SaveLoadManager.Instance.SaveAction();
             }
             //Lでロード
             else if (Input.GetKeyDown(KeyCode.L))
             {
+                //ロードするときはこれを呼べばできます
                 SaveLoadManager.Instance.LoadAction();
             }
         }
@@ -28,10 +30,6 @@ public class SavePoint : MonoBehaviour
         {
             _isTrigger = true;
         }
-        //if (TryGetComponent<CharacterBase>(out var p))
-        //{
-        //    SaveLoadManager.Instance.SaveAction();
-        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
