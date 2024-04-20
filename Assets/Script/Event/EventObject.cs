@@ -4,11 +4,10 @@ using UnityEngine;
 public class EventObject : MonoBehaviour, IEventObject
 {
     [SerializeField] FlagList _flagList = null;
-    [SerializeField] EventData _eventData = null;
-    public EventData EventData { get => _eventData; }
-    public Image ResultImage { get; set; }
-    public string ResultName { get; set; }
-    public string ResultText { get; set; }
+    [SerializeField] public EventData _eventData { get; }
+    public Image _resultImage { get; set; }
+    public string _resultName { get; set; }
+    public string _resultText { get; set; }
 
     public void ResultFlagCheck()
     {
@@ -17,20 +16,19 @@ public class EventObject : MonoBehaviour, IEventObject
             //調べたフラグがtrueのとき
             if (_flagList.GetFlagStatus(_eventData.CheckFlag))
             {
-                ResultImage = _eventData.TrueImage;
-                ResultName = _eventData.TrueName;
-                ResultText = _eventData.TrueText;
-                //変更するフラグが設定されていれば変更する
-                if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
-
+                _resultImage = _eventData.TrueImage;
+                _resultName = _eventData.TrueName;
+                _resultText = _eventData.TrueText;
             }
             else //調べたフラグがfalseのとき
             {
-                ResultImage = _eventData.FalseImage;
-                ResultName = _eventData.FalseName;
-                ResultText = _eventData.FalseText;
+                _resultImage = _eventData.FalseImage;
+                _resultName = _eventData.FalseName;
+                _resultText = _eventData.FalseText;
             }
 
+            //変更するフラグが設定されていれば変更する
+            if (!_eventData.ChangeFlag) _flagList.SetFlag(_eventData.ChangeFlag);
         }
     }
 

@@ -6,12 +6,12 @@
 /// 参照サイト：https://kurokumasoft.com/2022/04/28/unity-flag-management/#toc1
 
 [CreateAssetMenu(fileName = "New FlagData", menuName = "ScriptableObject/Flags/FlagData")]
-public class FlagData : ScriptableObject
+public  class FlagData : ScriptableObject
 {
     [SerializeField]
     bool _isOn = false;
 
-    public bool IsOn => _isOn;
+    public bool IsOn =>_isOn;
 
     /// <summary> フラグの初期化 </summary>
     public void InitFlag()
