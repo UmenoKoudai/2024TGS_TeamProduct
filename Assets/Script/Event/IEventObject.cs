@@ -1,9 +1,10 @@
 ﻿using UnityEngine.UI;
+using UnityEngine;
 
 public interface IEventObject
 {
-    EventData _eventData { get; }
-    Image _resultImage {get; set; }
+    //EventData _eventData { get; }
+    Sprite _resultImage {get; set; }
     string _resultName { get; set; }
     string _resultText { get; set; }
 
