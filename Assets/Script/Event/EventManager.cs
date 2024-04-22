@@ -9,7 +9,7 @@ public class EventManager : MonoBehaviour
     public void EventCheck(IEventObject eventObject)
     {
         eventObject.ResultFlagCheck();
-        _talkSystem.ShowMessage(eventObject._resultName, eventObject._resultText, eventObject._resultImage);
+        _talkSystem.ShowMessage(eventObject.ResultName, eventObject.ResultText, eventObject.ResultImage);
     }
 
     /// <summary>↓人と物で仕様が別なら人のとき用</summary>

@@ -3,10 +3,10 @@ using UnityEngine;
 
 public interface IEventObject
 {
-    //EventData _eventData { get; }
-    Sprite _resultImage {get; set; }
-    string _resultName { get; set; }
-    string _resultText { get; set; }
+    EventData EventData { get; }
+    Sprite ResultImage {get; set; }
+    string ResultName { get; set; }
+    string ResultText { get; set; }
 
     /// <summary>
     /// フラグの状態によって取り出すEventDataを判定する
