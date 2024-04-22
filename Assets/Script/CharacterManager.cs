@@ -19,8 +19,7 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
-        _player.Init();
-        _girl.Init();
+   
     }
 
     void Update()

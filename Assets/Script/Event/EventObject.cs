@@ -5,6 +5,7 @@ public class EventObject : MonoBehaviour, IEventObject, IAction
 {
     [SerializeField] FlagList _flagList = null;
     [SerializeField] EventData _eventData = null;
+    [SerializeField] ItemManager _item;
     public EventData EventData { get => _eventData; }
     public Sprite ResultImage { get; set; }
     public string ResultName { get; set; }
@@ -19,6 +20,7 @@ public class EventObject : MonoBehaviour, IEventObject, IAction
     //↓追加分　ウメノ
     public void Execute()
     {
+        _item.PickUp();
         _effect.Stop();
     }
     //

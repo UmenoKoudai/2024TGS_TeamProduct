@@ -25,12 +25,13 @@ public class Player : CharacterBase
     private NormalMove _normalMove;
     private Action _action;
 
-    public void Init()
+    public void Init(EventManager eventManager)
     {
         Rb = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         _normalMove = new NormalMove(this);
         _action = new Action(this);
+        Event = eventManager;
     }
 
     public void ManualUpdate()
