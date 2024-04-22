@@ -98,4 +98,9 @@ public class ItemInventry : MonoBehaviour
             if(itemID == _itemDataBases[i]._itemID) { _itemDataBases.RemoveAt(i); }
         }
     }
+
+    public void ClosePanel()
+    {
+        GameManager.Instance.StateChange(GameManager.SystemState.Move);
+    }
 }
