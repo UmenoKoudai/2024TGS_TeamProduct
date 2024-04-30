@@ -21,9 +21,9 @@ public class Action : IStateMachine
             }
             if (h.collider.gameObject.TryGetComponent(out IAction action))
             {
-                action.Execute();
+                action.Execute(_character);
             }
-            if (h.collider.gameObject.TryGetComponent(out EventObject events))
+            if (h.collider.gameObject.TryGetComponent(out IEventObject events))
             {
                 _character.Event.EventCheck(events);
                 Debug.Log("イベント呼び出し");
