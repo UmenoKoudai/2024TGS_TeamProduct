@@ -51,10 +51,5 @@ public class MoveState : IStateMachine
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape)) _gameManager.StateChange(GameManager.SystemState.Option);
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Option");
-            _gameManager.StateChange(GameManager.SystemState.Option);
-        }
     }
 }

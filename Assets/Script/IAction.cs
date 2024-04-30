@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAction
 {
-    public abstract void Execute();
+    public abstract void Execute(CharacterBase chara);
 }

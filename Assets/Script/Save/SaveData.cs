@@ -9,7 +9,7 @@ public class SaveData : MonoBehaviour
     [Header("セーブする値の確認")]
     //[SerializeField]をつけて保存したい値を宣言
     //現在はセーブ地点、キャラクターのsan値、イベントのフラグ
-    [SerializeField] Vector2 _savePos;
+    [SerializeField] Transform _savePos;
     [SerializeField] int _sanNum;
     [SerializeField] List<bool> _flags;
 
