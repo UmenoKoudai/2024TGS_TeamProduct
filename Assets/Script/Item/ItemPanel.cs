@@ -17,13 +17,27 @@ public class ItemPanel : MonoBehaviour
     {
         if (count <= _images.Length)
         {
-            for(int i = 0; i < _images.Length; i++)
+            for (int i = 0; i < _images.Length; i++)
             {
                 _images[i].sprite = null;
             }
             for (int i = 0; i < count; i++)
             {
                 _images[i].sprite = _itemInventry._itemDataBases[i]._itemSprite;
+            }
+        }
+
+        //ƒ{ƒ^ƒ“‚Ì‘Î‰ž‚Ö‚Ì’Ç‹L•¶
+
+        if (count <= _itemInventry._itemButton.Length)
+        {
+            for (int i = 0; i < _images.Length; i++)
+            {
+                _itemInventry._itemButton[i].image.sprite = null;
+            }
+            for (int i = 0; i < count; i++)
+            {
+                _itemInventry._itemButton[i].image.sprite = _itemInventry._itemDataBases[i]._itemSprite;
             }
         }
     }
