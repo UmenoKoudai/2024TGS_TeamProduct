@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Player : CharacterBase
 {
+    [SerializeField]
+    private Tilemap _map;
+
+    public Tilemap Map => _map;
+
     private State _state;
     public State State
     {
