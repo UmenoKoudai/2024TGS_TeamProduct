@@ -6,6 +6,8 @@ public class CharacterManager : MonoBehaviour
     private Player _player;
     [SerializeField]
     private Girl _girl;
+    [SerializeField]
+    private EventManager _eventManager;
 
     private PlayCharacter _playChara = PlayCharacter.Player;
 
@@ -17,8 +19,7 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
-        _player.Init();
-        _girl.Init();
+   
     }
 
     void Update()
