@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Player : CharacterBase
 {
+
     private State _state;
     public State State
     {
