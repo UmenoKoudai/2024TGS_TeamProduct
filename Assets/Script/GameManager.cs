@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+            SceneManager.sceneLoaded += SceneLoaded;
             return;
         }
 
@@ -95,12 +97,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Transform BasePos { get; set; }
+
     private MoveState _moveState;
     private TalkState _talkState;
     private OptionState _optionState;
 
     void Start()
     {
+        Debug.Log("Start");
         _player.Init(_eventManager);
         _girl.Init(_eventManager);
         _moveState = new MoveState(this);
@@ -122,6 +127,14 @@ public class GameManager : MonoBehaviour
                 _optionState.Update();
                 break;
         }
+    }
+
+    void SceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var player = FindObjectOfType<Player>();
+        var girl = FindObjectOfType<Girl>();
+        player.transform.position = BasePos.transform.position;
+        girl.transform.position = BasePos.transform.position;
     }
 
     public void StateChange(SystemState change)

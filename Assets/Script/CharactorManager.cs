@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour, IAction
+public class CharactorManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -12,10 +14,5 @@ public class Goal : MonoBehaviour, IAction
     void Update()
     {
         
-    }
-
-    public void Execute(CharacterBase chara)
-    {
-        throw new System.NotImplementedException();
     }
 }

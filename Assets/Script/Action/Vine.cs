@@ -16,7 +16,7 @@ public class Vine : MonoBehaviour, IAction
         
     }
 
-    public void Execute()
+    public void Execute(CharacterBase chara)
     {
         throw new System.NotImplementedException();
     }

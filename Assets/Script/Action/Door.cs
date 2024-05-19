@@ -11,7 +11,7 @@ public class Door : MonoBehaviour, IAction
         _anim = GetComponent<Animator>();
     }
 
-    public void Execute()
+    public void Execute(CharacterBase chara)
     {
         _anim.Play("Open");
     }
