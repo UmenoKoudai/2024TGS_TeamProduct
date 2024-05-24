@@ -75,7 +75,7 @@ public class FollowSystem : MonoBehaviour
         _followPathFind.Init(this);
 
         //探索開始
-        //FollowStart();
+        FollowStart();
     }
 
     // Update is called once per frame

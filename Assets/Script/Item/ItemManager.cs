@@ -5,14 +5,16 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] ItemDataBase _itemDataBase;
+    [SerializeField] string _itemName;
     ItemInventry _ItemInventry;
 
     public void PickUp()
     {
+        Debug.Log("アイテムゲット");
         _ItemInventry = FindObjectOfType<ItemInventry>();
         for(int i = 0; i < _itemDataBase._ItemLists.Count; i++)
         {
-            if(this.gameObject.name == _itemDataBase._ItemLists[i]._item.name)
+            if(_itemName == _itemDataBase._ItemLists[i]._itemName)
             {
                 int itemID = _itemDataBase._ItemLists[i]._itemID;
                 if(itemID == _itemDataBase._ItemLists[i]._itemID)

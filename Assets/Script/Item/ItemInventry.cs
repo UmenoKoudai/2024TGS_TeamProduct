@@ -11,6 +11,9 @@ public class ItemInventry : MonoBehaviour
     ItemPanel _itemPanel;
     [SerializeField, Header("二つのアイテムIDを格納")] private int[] _unionItemIDs = new int[2];
     private int _pushKeyNum;
+
+    [SerializeField] public Button[] _itemButton;//ボタン対応への追記文
+
     private KeyCode[] _key = new KeyCode[]
 {
     KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2,
@@ -25,7 +28,7 @@ public class ItemInventry : MonoBehaviour
     }
     private void Update()
     {
-        IsNumberKeyDown();
+        //IsNumberKeyDown();
     }
     public void PanelChange(int itemCount)
     {
@@ -78,6 +81,21 @@ public class ItemInventry : MonoBehaviour
         }
     }
 
+    public void ButtonReturnTest(Button clickedButton) //ボタンのクリックへの対応　追記文
+    {
+        int index = Array.IndexOf(_itemButton, clickedButton);
+
+        Debug.Log("Button " + index + " clicked!");
+
+        _pushKeyNum = index;
+
+        if (ItemCheck(_pushKeyNum, _itemDataBases.Count))
+        {
+            Debug.Log(_itemDataBases[_pushKeyNum]._itemID);
+            ItemIDCheck(_unionItemIDs, _itemDataBases[_pushKeyNum]._itemID);
+        }
+    }
+
     public bool ItemCheck(int keyCount, int itemCount)
     {
         if (keyCount < itemCount) { return true; }
@@ -97,5 +115,10 @@ public class ItemInventry : MonoBehaviour
         {
             if(itemID == _itemDataBases[i]._itemID) { _itemDataBases.RemoveAt(i); }
         }
+    }
+
+    public void ClosePanel()
+    {
+        GameManager.Instance.StateChange(GameManager.SystemState.Move);
     }
 }

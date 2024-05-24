@@ -21,13 +21,13 @@ MonoBehaviour:
     _item: {fileID: 2408063919052175325, guid: 83c9426ab2782b74abcbcefe8c746862, type: 3}
   - _itemID: 2
     _itemID2: 0
-    _itemName: Book
+    _itemName: "\u672C"
     _itemSprite: {fileID: 21300000, guid: aa210027900e3fd429af19c8e7ba380f, type: 3}
     _itemEffect: "\u3069\u3053\u304B\u306E\u8AAC\u660E\u3089\u3057\u3044"
     _item: {fileID: 6921308666849131645, guid: 16dee248909b4374faf4a46fb15aeb2c, type: 3}
   - _itemID: 100
     _itemID2: 2
-    _itemName: Doraemon
+    _itemName: "\u30C9\u30E9\u3048\u3082\u3093"
     _itemSprite: {fileID: 21300000, guid: d1f43257a4d149e43b0ead21e9b4d526, type: 3}
     _itemEffect: "\u732B\u578B\u30ED\u30DC\u30C3\u30C8"
     _item: {fileID: 5193589001238665729, guid: e1ba9e70eb027af4db0a96e0e90f7840, type: 3}
