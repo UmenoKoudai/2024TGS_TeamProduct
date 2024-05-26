@@ -12,7 +12,7 @@ public class OptionState : IStateMachine
     public void Enter()
     {
         Debug.Log("Option");
-        _gameManager.OptionPanel.SetActive(true);
+        _gameManager.PanelManager.OptionPanel.SetActive(true);
     }
 
     public void Exit()
