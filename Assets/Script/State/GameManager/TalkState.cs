@@ -12,12 +12,12 @@ public class TalkState : IStateMachine
 
     public void Enter()
     {
-        _gameManager.TalkPanel.SetActive(true);
+        _gameManager.PanelManager.TalkPanel.SetActive(true);
     }
 
     public void Exit()
     {
-        _gameManager.TalkPanel.SetActive(false);
+        _gameManager.PanelManager.TalkPanel.SetActive(false);
         _gameManager.StateChange(GameManager.SystemState.Move);
     }
 

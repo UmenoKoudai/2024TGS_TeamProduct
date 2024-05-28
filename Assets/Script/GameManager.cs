@@ -7,20 +7,7 @@ public class GameManager : MonoBehaviour
     //フラグデータ
     [SerializeField] FlagList _flagList;
     public FlagList FlagList => _flagList;
-    [SerializeField] 
-    private Player _player;
-    public Player Player => _player;
-    [SerializeField]
-    private Girl _girl;
-    public Girl Girl => _girl;
-    [SerializeField]
-    private EventManager _eventManager;
-    [SerializeField]
-    private GameObject _talkPanel;
-    public GameObject TalkPanel => _talkPanel;
-    [SerializeField]
-    private GameObject _optionPanel;
-    public GameObject OptionPanel => _optionPanel;
+
     #region　シングルトン
 
     public static GameManager instance;
@@ -42,15 +29,13 @@ public class GameManager : MonoBehaviour
         if (!instance)
         {
             instance = this;
+            SceneManager.sceneLoaded += SceneLoaded;
+            DontDestroyOnLoad(gameObject);
         }
-        else if (instance != this)
+        else
         {
             Destroy(gameObject);
-            SceneManager.sceneLoaded += SceneLoaded;
-            return;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     static void SetupInstance()
@@ -72,6 +57,7 @@ public class GameManager : MonoBehaviour
         Move,
         Talk,
         Option,
+        SceneMove,
     }
 
     private SystemState _state;
@@ -97,7 +83,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Transform BasePos { get; set; }
+    private string _posName = "";
+    public string PosName { get => _posName; set => _posName = value; }
+    private Vector3 _direction;
+    public Vector3 Direction { get => _direction; set => _direction = value; }
+    private Player _player;
+    public Player Player => _player;
+    private Girl _girl;
+    public Girl Girl => _girl;
+    private EventManager _eventManager;
+    public EventManager EventManager => _eventManager;
+    private PanelManager _panelManager;
+    public PanelManager PanelManager => _panelManager;
 
     private MoveState _moveState;
     private TalkState _talkState;
@@ -131,10 +128,24 @@ public class GameManager : MonoBehaviour
 
     void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        var player = FindObjectOfType<Player>();
-        var girl = FindObjectOfType<Girl>();
-        player.transform.position = BasePos.transform.position;
-        girl.transform.position = BasePos.transform.position;
+        _player = FindObjectOfType<Player>();
+        _girl = FindObjectOfType<Girl>();
+        _eventManager = FindObjectOfType<EventManager>();
+        _panelManager = FindObjectOfType<PanelManager>();
+        if (PosName != "")
+        {
+            var pos = GameObject.Find(PosName).transform.position;
+            if (_player && _girl)
+            {
+                _player.Init(_eventManager);
+                _girl.Init(_eventManager);
+                _player.transform.position = pos;
+                _girl.transform.position = pos;
+                _player.transform.up = Direction;
+                _girl.transform.up = Direction;
+            }
+        }
+        StateChange(SystemState.Move);
     }
 
     public void StateChange(SystemState change)
