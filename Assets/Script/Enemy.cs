@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Microsoft.Unity.VisualStudio.Editor;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -6,31 +8,39 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("PlayerのTransform")]
-    [SerializeField]
-    Transform _player;
-
-    [Header("追跡を開始するPlayerとの距離")]
-    [SerializeField]
-    float _startFollowDis = 5;
-
     FollowSystem _followSystem;
-    // Start is called before the first frame update
-    void Start()
+
+    SpriteRenderer _spriteRenderer;
+
+    [SerializeField]
+    EnemyImageController _enemyImageController;
+
+    public void Start()
     {
-        _followSystem = GetComponent<FollowSystem>();
+        //追跡開始
+        if (_followSystem == null) _followSystem = GetComponent<FollowSystem>();
+        if(_spriteRenderer == null) _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_enemyImageController == null) _enemyImageController = new EnemyImageController(_spriteRenderer);
+        _followSystem.FollowStart();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //追従してなくPlayerが近づいたら
-        if(!_followSystem.IsFollow && Vector3.Distance(transform.position, _player.position) < _startFollowDis)
+        if(_followSystem.MovingX > 0)
         {
-            //追従開始
-            _followSystem.FollowStart();
+            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Left, true);
+        }
+        else if (_followSystem.MovingX < 0)
+        {
+            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Left);
+        }
+
+        if(_followSystem.MovingY < 0 || _followSystem.MovingY > 0)
+        {
+            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Forward);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -41,10 +51,42 @@ public class Enemy : MonoBehaviour
             Debug.Log("Player died");
         }
     }
+}
 
-    private void OnDrawGizmos()
+/// <summary>EnemyのSpriteを変えるクラス</summary>
+[Serializable]
+public class EnemyImageController
+{
+    /// <summary>EnemyのSpriteRenderer</summary>
+    [SerializeField]
+    SpriteRenderer _spriteRenderer;
+
+    [SerializeField]
+    Sprite[] _enemySprites;
+
+    public EnemyImageController(SpriteRenderer spriteRenderer)
     {
-        //追跡開始時のPlayerとの距離
-        Gizmos.DrawWireSphere(transform.position, _startFollowDis);
+        _spriteRenderer = spriteRenderer;
     }
+
+    public enum EnemyImagePattern
+    {
+        Forward,
+        Left,
+    }
+
+    public void SpriteChange(EnemyImagePattern imagePattern, bool IsFlip = false)
+    {
+        int index = (int)imagePattern;
+        _spriteRenderer.sprite = _enemySprites[index];
+        _spriteRenderer.flipX = IsFlip;
+    }
+}
+
+public enum EnemyType
+{
+    /// <summary>チョコタ</summary>
+    Chocota,
+    /// <summary>チョコタ</summary>
+    Ghoul,
 }
