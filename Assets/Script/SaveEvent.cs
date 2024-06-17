@@ -8,10 +8,7 @@ public class SaveEvent : MonoBehaviour, IEventObject, IAction
     [SerializeField] EventData _eventData = null;
     [SerializeField] SavePoint _save;
     public EventData EventData => _eventData;
-
-    public Sprite ResultImage { get; set; }
-    public string ResultName { get; set; }
-    public string ResultText { get; set; }
+    public EventTalkData ResultEventTalkData { get; set; }
 
     public void Execute(CharacterBase chara)
     {
@@ -23,9 +20,7 @@ public class SaveEvent : MonoBehaviour, IEventObject, IAction
     {
         Debug.Log("Save");
         GameManager.Instance.StateChange(GameManager.SystemState.Talk);
-        ResultImage = _eventData.TrueImage;
-        ResultName = _eventData.TrueName;
-        ResultText = _eventData.TrueText;
+        ResultEventTalkData = _eventData.TrueTalkData;
     }
 
     // Start is called before the first frame update
