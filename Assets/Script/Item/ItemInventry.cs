@@ -104,9 +104,9 @@ public class ItemInventry : MonoBehaviour
 
     public void ItemIDCheck(int[] items, int itemID)
     {
-        if (0 <= Array.IndexOf(items, itemID)) { items[Array.IndexOf(items, itemID)] = 0; }
-        else if (items[0] == 0) { items[0] = _itemDataBases[_pushKeyNum]._itemID; }
-        else if (items[1] == 0 && items[0] != 0) { items[1] = _itemDataBases[_pushKeyNum]._itemID; }
+        if (0 <= Array.IndexOf(items, itemID)) { items[Array.IndexOf(items, itemID)] = 0; _itemPanel._itemEffectText.text = ""; _itemButton[_pushKeyNum].image.color = Color.white; }
+        else if (items[0] == 0) { items[0] = _itemDataBases[_pushKeyNum]._itemID; _itemPanel._itemEffectText.text = _itemDataBases[_pushKeyNum]._itemEffect;_itemButton[_pushKeyNum].image.color = Color.red; }
+        else if (items[1] == 0 && items[0] != 0) { items[1] = _itemDataBases[_pushKeyNum]._itemID; _itemPanel._itemEffectText.text = _itemDataBases[_pushKeyNum]._itemEffect; _itemButton[_pushKeyNum].image.color = Color.red; }
     }
 
     public void ItemSearch(int itemID)
