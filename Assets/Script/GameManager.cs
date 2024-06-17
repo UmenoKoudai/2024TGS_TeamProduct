@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         Talk,
         Option,
         SceneMove,
+        Select,
     }
 
     private SystemState _state;
@@ -79,6 +81,9 @@ public class GameManager : MonoBehaviour
                 case SystemState.Option:
                     _optionState.Enter();
                     break;
+                case SystemState.Select:
+                    _selectState.Enter();
+                    break;
             }
         }
     }
@@ -96,9 +101,13 @@ public class GameManager : MonoBehaviour
     private PanelManager _panelManager;
     public PanelManager PanelManager => _panelManager;
 
+    private EventSystem _eventSystem;
+    public EventSystem EventSystem => _eventSystem;
+
     private MoveState _moveState;
     private TalkState _talkState;
     private OptionState _optionState;
+    private SelectState _selectState;
 
     void Start()
     {
@@ -108,6 +117,7 @@ public class GameManager : MonoBehaviour
         _moveState = new MoveState(this);
         _talkState = new TalkState(this);
         _optionState = new OptionState(this);
+        _selectState = new SelectState(this);
     }
 
     private void Update()
@@ -123,6 +133,9 @@ public class GameManager : MonoBehaviour
             case SystemState.Option:
                 _optionState.Update();
                 break;
+            case SystemState.Select:
+                _selectState.Update();
+                break;
         }
     }
 
@@ -132,6 +145,7 @@ public class GameManager : MonoBehaviour
         _girl = FindObjectOfType<Girl>();
         _eventManager = FindObjectOfType<EventManager>();
         _panelManager = FindObjectOfType<PanelManager>();
+        _eventSystem = FindObjectOfType<EventSystem>();
         if (PosName != "")
         {
             var pos = GameObject.Find(PosName).transform.position;
