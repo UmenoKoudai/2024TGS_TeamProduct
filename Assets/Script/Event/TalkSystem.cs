@@ -14,11 +14,13 @@ public class TalkSystem : MonoBehaviour
 
     EventTalkData _eventTalkData;
 
+    TalkData[] _talkData;
+
     /// <summary>1つの会話で使う文章の配列</summary>
     string[] _talkMessageArray = null;
 
     /// <summary>何個目の会話か保管する変数</summary>
-    int _talkMessagesCount = 0;
+    int _talkCount = 0;
 
     /// <summary>話し中かどうか</summary>
     bool _isTalking = false;
@@ -54,27 +56,38 @@ public class TalkSystem : MonoBehaviour
         _manager.State = GameManager.SystemState.Talk;
         _eventTalkData = eventTalkData;
         _isSelectEventTalk = eventTalkData.IsSelectTalk;
-        TalkData talkData = _isSelectEventTalk ? _eventTalkData.EventStartTalk : _eventTalkData.NormalTalk;
-
-        //会話更新
-        _talkMessageArray = talkData.Sentences;
-        TalkPanelViewSet(talkData.Image, talkData.Name);
+        _talkData = _eventTalkData.EventStartTalk;
+        _talkCount = 0;
         OnUpdateMessage();
     }
 
     /// <summary>Textの文章の更新</summary>
     public void OnUpdateMessage()
     {
-        if (_talkMessagesCount == _talkMessageArray.Length)
+        if (_talkCount == _talkData.Length)
         {
             _talkMessageArray = null;
-            _talkMessagesCount = 0;
+            _talkCount = 0;
             _isTalking = false;
             return;
         }
 
-        _talkMessage.text = _talkMessageArray[_talkMessagesCount];
-        _talkMessagesCount++;
+        TalkData talkData = _talkData[_talkCount];
+
+        if(talkData.Image == null)
+        {
+            talkData.Image = _talkData[_talkCount - 1].Image;
+        }
+
+
+        if (talkData.Name == null || talkData.Name == "")
+        {
+            talkData.Name = _talkData[_talkCount - 1].Name;
+        }
+
+        TalkPanelViewSet(talkData.Image, talkData.Name, talkData.Sentences);
+
+        _talkCount++;
         _isTalking = true;
     }
 
@@ -82,13 +95,9 @@ public class TalkSystem : MonoBehaviour
     /// <param name="isYes">実行するかどうか</param>
     public void IsEventSelectTalk(bool isYes)
     {
-        TalkData talkData = isYes ? _eventTalkData.YesTalk : _eventTalkData.NoTalk;
-
-        _talkMessageArray = talkData.Sentences;
+        _talkData = isYes ? _eventTalkData.YesTalk : _eventTalkData.NoTalk;
 
         _isSelectEventTalk = false;
-
-        TalkPanelViewSet(talkData.Image, talkData.Name);
 
         OnUpdateMessage();
     }
@@ -96,10 +105,11 @@ public class TalkSystem : MonoBehaviour
     /// <summary>Talkパネルの画像と名前の反映</summary>
     /// <param name="image">話すもの画像</param>
     /// <param name="name">話すものの名前</param>
-    public void TalkPanelViewSet(Sprite image, string name)
+    public void TalkPanelViewSet(Sprite image, string name, string sentences)
     {
         _charaName.text = name;
         _charaImage.sprite = image;
+        _talkMessage.text = sentences;
     }
 
 }
