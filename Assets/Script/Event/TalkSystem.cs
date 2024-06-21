@@ -53,10 +53,22 @@ public class TalkSystem : MonoBehaviour
     /// <summary>選択肢込みの会話かどうか判断しUIに反映</summary>
     public void ShowMessage(EventTalkData eventTalkData)
     {
-        _manager.State = GameManager.SystemState.Talk;
+        if(eventTalkData == null) return;
+
         _eventTalkData = eventTalkData;
         _isSelectEventTalk = eventTalkData.IsSelectTalk;
         _talkData = _eventTalkData.EventStartTalk;
+        
+        //会話があるかどうかチェック
+        if (_talkData == null || _talkData[0].image == null)
+        {
+            _isTalking = false;
+            _isSelectEventTalk = false;
+            return;
+        }
+
+        //会話データがあったら会話状態に入る
+        _manager.State = GameManager.SystemState.Talk;
         _talkCount = 0;
         OnUpdateMessage();
     }
