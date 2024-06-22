@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Develop/MoveTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/WorkSpace/TestRight.unity
+    path: Assets/WorkSpace/Scene/TestRight.unity
     guid: 340acc40f93698d4089449be8607cce9
   - enabled: 1
-    path: Assets/WorkSpace/TestUp.unity
+    path: Assets/WorkSpace/Scene/TestUp.unity
     guid: 343e81bf154f85741ade88f94e99f0c7
   - enabled: 1
-    path: Assets/WorkSpace/TestMain.unity
+    path: Assets/WorkSpace/Scene/TestMain.unity
     guid: 79b9d46213084744ab39d43cfca18796
   - enabled: 1
-    path: Assets/WorkSpace/TestLeft.unity
+    path: Assets/WorkSpace/Scene/TestLeft.unity
     guid: 02095e042b3dc17459412a0620baa81d
   - enabled: 1
-    path: Assets/WorkSpace/TestDown.unity
+    path: Assets/WorkSpace/Scene/TestDown.unity
     guid: fbaeaaef2f0f1884bb55bdb51a60336b
   m_configObjects: {}

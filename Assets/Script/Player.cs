@@ -4,6 +4,9 @@ using UnityEngine.Tilemaps;
 public class Player : CharacterBase
 {
 
+    [SerializeField]
+    GameObject _obj;
+
     private State _state;
     public State State
     {
@@ -65,5 +68,10 @@ public class Player : CharacterBase
     public override void StateChange(State changeState)
     {
         State = changeState;
+    }
+
+    public override void CreatePos(Vector3 pos)
+    {
+        Instantiate(_obj,pos, Quaternion.identity);
     }
 }

@@ -29,4 +29,9 @@ public class CharacterBase : MonoBehaviour
     {
         Debug.LogError("オーバーライドしていません");
     }
+
+    public virtual void CreatePos(Vector3 pos)
+    {
+
+    }
 }

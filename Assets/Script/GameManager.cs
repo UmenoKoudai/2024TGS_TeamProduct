@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         Option,
         SceneMove,
         Select,
+        Save,
     }
 
     private SystemState _state;
