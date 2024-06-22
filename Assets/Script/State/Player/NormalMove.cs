@@ -1,3 +1,4 @@
+using System.Data;
 using UnityEngine;
 
 public class NormalMove : IStateMachine
@@ -10,12 +11,15 @@ public class NormalMove : IStateMachine
     private bool _isMove = false;
     private Vector3 _direction;
     private Vector3Int _nextPos;
+    private Vector3 _nextTile;
+    private Vector3 _movePos;
 
     public NormalMove(CharacterBase character)
     {
         _character = character;
         _start = _character.Map.WorldToCell(_character.transform.position);
-        _character.transform.position = _start;
+        _character.transform.position = _character.Map.GetCellCenterLocal(_start);
+        _nextTile = _character.transform.position;
     }
 
     public void Enter()
@@ -30,12 +34,11 @@ public class NormalMove : IStateMachine
     public void FixedUpdate()
     {
         if (!_isMove) return;
-        float distance = Vector3.Distance(_nextPos, _character.transform.position);
+        float distance = Vector3.Distance(_nextTile, _character.transform.position);
         _character.Rb.velocity = _direction * _character.Speed;
-        if (distance < 0.5f) 
+        if (distance < 0.1f) 
         {
             _isMove = false;
-            _start = _nextPos;
             _character.Rb.velocity = Vector3.zero;
         }
     }
@@ -55,11 +58,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = true;
                 _isLeftMove = false;
-                var nextTile = _character.Map.GetCellCenterWorld(new Vector3Int(_start.x + 1, _start.y, _start.y));
-                _nextPos = _character.Map.WorldToCell(nextTile);
+                _nextTile = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(_nextTile);
+                _character.CreatePos(_nextTile);
                 if (_character.Map.HasTile(_nextPos))
                 {
-                    _direction = _nextPos - _start;
+                    _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
             }
@@ -69,11 +73,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = false;
                 _isLeftMove = true;
-                var nextTile = _character.Map.GetCellCenterWorld(new Vector3Int(_start.x - 1, _start.y, _start.y));
-                _nextPos = _character.Map.WorldToCell(nextTile);
-                if (_character.Map.HasTile(_start))
+                _nextTile = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(_nextTile);
+                _character.CreatePos(_nextTile);
+                if (_character.Map.HasTile(_nextPos))
                 {
-                    _direction = _nextPos - _start;
+                    _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
             }
@@ -85,11 +90,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = true;
                 _isRightMove = false;
                 _isLeftMove = false;
-                var nextTile = _character.Map.GetCellCenterWorld(new Vector3Int(_start.x, _start.y + 1, _start.y));
-                _nextPos = _character.Map.WorldToCell(nextTile);
-                if (_character.Map.HasTile(_start))
+                _nextTile = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(_nextTile);
+                _character.CreatePos(_nextTile);
+                if (_character.Map.HasTile(_nextPos))
                 {
-                    _direction = _nextPos - _start;
+                    _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
             }
@@ -98,11 +104,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = false;
                 _isLeftMove = false;
-                var nextTile = _character.Map.GetCellCenterWorld(new Vector3Int(_start.x, _start.y - 1, _start.y));
-                _nextPos = _character.Map.WorldToCell(nextTile);
-                if (_character.Map.HasTile(_start))
+                _nextTile = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(_nextTile);
+                _character.CreatePos(_nextTile);
+                if (_character.Map.HasTile(_nextPos))
                 {
-                    _direction = _nextPos - _start;
+                    _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
             }
