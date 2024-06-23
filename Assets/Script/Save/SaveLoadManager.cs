@@ -59,8 +59,8 @@ public class SaveLoadManager : MonoBehaviour
         //現在こっちに保存してます
         //Debug.Log(Application.persistentDataPath);
 
-        _filePath = $"{Application.persistentDataPath}/{_fileName}.json";
         _data = GetComponent<SaveData>();
+        _filePath = $"{Application.persistentDataPath}/{_fileName}.json";
 
         if (!File.Exists(_filePath))
         {
@@ -121,5 +121,18 @@ public class SaveLoadManager : MonoBehaviour
         {
             Debug.LogError("ロード中にエラーが発生しました: " + e.Message);
         }
+    }
+
+    public void FileNameChenge(string name)
+    {
+        _fileName = name;
+        _filePath = $"{Application.persistentDataPath}/{_fileName}.json";
+
+        if (!File.Exists(_filePath))
+        {
+            Save();
+        }
+
+        Debug.Log(_filePath);
     }
 }
