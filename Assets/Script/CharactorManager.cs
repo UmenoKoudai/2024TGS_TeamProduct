@@ -1,18 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharactorManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Player _player;
+    [SerializeField]
+    private Girl _girl;
+    [SerializeField]
+    private EventManager _eventManager;
+
+    private PlayCharacter _playChara = PlayCharacter.Player;
+
+    enum PlayCharacter
     {
-        
+        Player,
+        Girl,
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+   
+    }
+
     void Update()
     {
-        
+        if (_playChara == PlayCharacter.Player)
+        {
+            _player.ManualUpdate();
+            _player.ManualFixedUpdate();
+        }
+        else
+        {
+            _girl.ManualUpdate();
+            _girl.ManualFixedUpdate();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(_playChara == PlayCharacter.Player)
+            {
+                _playChara = PlayCharacter.Girl;
+            }
+            else
+            {
+                _playChara = PlayCharacter.Player;
+            }
+        }
     }
 }

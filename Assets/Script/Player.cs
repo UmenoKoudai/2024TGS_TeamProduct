@@ -3,7 +3,9 @@ using UnityEngine.Tilemaps;
 
 public class Player : CharacterBase
 {
-
+    [Header("デバック用")]
+    [SerializeField]
+    private bool _isDebug = false;
     [SerializeField]
     GameObject _obj;
 
@@ -72,6 +74,6 @@ public class Player : CharacterBase
 
     public override void CreatePos(Vector3 pos)
     {
-        Instantiate(_obj,pos, Quaternion.identity);
+        if(_isDebug )Instantiate(_obj,pos, Quaternion.identity);
     }
 }

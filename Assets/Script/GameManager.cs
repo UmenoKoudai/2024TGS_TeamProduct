@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] FlagList _flagList;
     public FlagList FlagList => _flagList;
 
+    //[SerializeField, Tooltip("プレイヤーをアタッチ")]
+    private Player _player;
+    public Player Player => _player;
+    //[SerializeField, Tooltip("少女をアタッチ")]
+    private Girl _girl;
+    public Girl Girl => _girl;
+
+
     #region　シングルトン
 
     public static GameManager instance;
@@ -93,10 +101,6 @@ public class GameManager : MonoBehaviour
     public string PosName { get => _posName; set => _posName = value; }
     private Vector3 _direction;
     public Vector3 Direction { get => _direction; set => _direction = value; }
-    private Player _player;
-    public Player Player => _player;
-    private Girl _girl;
-    public Girl Girl => _girl;
     private EventManager _eventManager;
     public EventManager EventManager => _eventManager;
     private PanelManager _panelManager;
