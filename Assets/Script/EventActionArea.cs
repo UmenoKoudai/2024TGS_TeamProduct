@@ -7,7 +7,7 @@ public class EventActionArea : MonoBehaviour, IEventObject
     [SerializeField] EventManager _eventManager = null;
     [SerializeField, SerializeReference]
     [SubclassSelector]
-    IAction _action;
+    IAction[] _action;
 
     private CharacterBase _character;
 
@@ -30,7 +30,10 @@ public class EventActionArea : MonoBehaviour, IEventObject
             else //’²‚×‚½ƒtƒ‰ƒO‚ªfalse‚Ì‚Æ‚«
             {
                 ResultEventTalkData = _eventData.FalseTalkData;
-                _action.Execute(_character);
+                foreach(var action in _action)
+                {
+                    action.Execute(_character);
+                }
                 if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
             }
 

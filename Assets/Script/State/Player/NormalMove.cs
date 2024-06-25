@@ -28,7 +28,8 @@ public class NormalMove : IStateMachine
 
     public void Exit()
     {
-
+        _isMove = false;
+        _character.Rb.velocity = Vector3.zero;
     }
 
     public void FixedUpdate()

@@ -68,7 +68,7 @@ public class TalkSystem : MonoBehaviour
         }
 
         //会話データがあったら会話状態に入る
-        _manager.State = GameManager.SystemState.Talk;
+        _manager.StateChange(GameManager.SystemState.Talk);
         _talkCount = 0;
         OnUpdateMessage();
     }

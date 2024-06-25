@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class EventManager  : MonoBehaviour
 {
     [SerializeField] TalkSystem _talkSystem;
     [SerializeField] SelectSystem _selectSystem;
@@ -31,6 +31,4 @@ public class EventManager : MonoBehaviour
         //フラグを確認
         //フラグによって取り出す情報を確認・反映
     }
-
-
 }
