@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +10,16 @@ public class TalkSystem : MonoBehaviour
     [SerializeField, Tooltip("キャラクター名")] Text _charaName = default;
     [SerializeField, Tooltip("表示する文章")] Text _talkMessage = default;
     [SerializeField, Tooltip("キャラクター画像")] Image _charaImage = default;
+    [SerializeField, Tooltip("会話Text表示速度")] float _talkTextDisplaySpeed = 0.1f;
+    [SerializeField, Tooltip("次の会話にいける時のアイコン")] Image _nextTalkIcon = default;
     [SerializeField] GameManager _manager;
 
     EventTalkData _eventTalkData;
 
     TalkData[] _talkData;
+
+    /// <summary>現在のTalk内容</summary>
+    TalkData _currentTalkData;
 
     /// <summary>1つの会話で使う文章の配列</summary>
     string[] _talkMessageArray = null;
@@ -28,9 +33,17 @@ public class TalkSystem : MonoBehaviour
     /// <summary>選択肢込みの会話イベントかどうか</summary>
     bool _isSelectEventTalk = false;
 
+    /// <summary>会話のテキストを表示かどうか</summary>
+    bool _isTalkTextDisplaying = false;  
+
+    /// <summary>会話中</summary>
     public bool IsTalking => _isTalking;
 
+    /// <summary>選択肢込みの会話イベントかどうか</summary>
     public bool IsSelectEventTalk => _isSelectEventTalk;
+
+    /// <summary>会話のテキストを表示かどうか</summary>
+    public bool IsTalkTextDisplaying => _isTalkTextDisplaying;
 
     /// <summary>
     /// ダイアログUIに反映する
@@ -76,28 +89,34 @@ public class TalkSystem : MonoBehaviour
     /// <summary>Textの文章の更新</summary>
     public void OnUpdateMessage()
     {
+        _nextTalkIcon.enabled = false;
+
         if (_talkCount == _talkData.Length)
         {
             _talkMessageArray = null;
             _talkCount = 0;
             _isTalking = false;
+            _isTalkTextDisplaying = false;
             return;
         }
 
-        TalkData talkData = _talkData[_talkCount];
+        AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.NextTalkTextDisplay);
 
-        if(talkData.Image == null)
+        _currentTalkData = _talkData[_talkCount];
+
+        if(_currentTalkData.Image == null)
         {
-            talkData.Image = _talkData[_talkCount - 1].Image;
+            _currentTalkData.Image = _talkData[_talkCount - 1].Image;
         }
 
-
-        if (talkData.Name == null || talkData.Name == "")
+        if (_currentTalkData.Name == null || _currentTalkData.Name == "")
         {
-            talkData.Name = _talkData[_talkCount - 1].Name;
+            _currentTalkData.Name = _talkData[_talkCount - 1].Name;
         }
 
-        TalkPanelViewSet(talkData.Image, talkData.Name, talkData.Sentences);
+        _isTalkTextDisplaying = true;
+
+        TalkPanelViewSet(_currentTalkData.Image, _currentTalkData.Name, _currentTalkData.Sentences);
 
         _talkCount++;
         _isTalking = true;
@@ -114,14 +133,32 @@ public class TalkSystem : MonoBehaviour
         OnUpdateMessage();
     }
 
-    /// <summary>Talkパネルの画像と名前の反映</summary>
+    /// <summary>Talkパネルの画像と名前、会話の反映</summary>
     /// <param name="image">話すもの画像</param>
     /// <param name="name">話すものの名前</param>
     public void TalkPanelViewSet(Sprite image, string name, string sentences)
     {
         _charaName.text = name;
         _charaImage.sprite = image;
-        _talkMessage.text = sentences;
+        _talkMessage.text = "";
+        _talkMessage.DOText(_currentTalkData.Sentences, _currentTalkData.Sentences.Length * _talkTextDisplaySpeed)
+                    .OnComplete(() =>
+                    {
+                        _isTalkTextDisplaying = false;
+                        _nextTalkIcon.enabled = true;     //Talk終了アイコン表示
+                    });
     }
 
+    /// <summary>会話Textを一気に表示する</summary>
+    public void TalkTextAllDisplay()
+    {
+        //Tween中なら
+        if (DOTween.IsTweening(_talkMessage))
+        {
+            _talkMessage.DOKill();      //Tween終了
+            _talkMessage.text = _currentTalkData.Sentences;　//文字を一気に表示
+            _isTalkTextDisplaying = false;      
+            _nextTalkIcon.enabled = true;   　//Talk終了アイコン表示
+        }
+    }
 }

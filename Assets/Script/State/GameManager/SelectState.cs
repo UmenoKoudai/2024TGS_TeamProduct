@@ -54,6 +54,7 @@ public class SelectState : IStateMachine
 
         if (!_eventManager.SelectSystem.IsSelecting)
         {
+            AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.ButtonClick);
             _eventManager.TalkSystem.IsEventSelectTalk(_eventManager.SelectSystem.IsYes);
             Exit();
         }
