@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1727330334120390485
+--- !u!1 &2663585240513386647
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4023926513991749875}
-  - component: {fileID: 1604886066794716357}
+  - component: {fileID: 6568831067750043908}
+  - component: {fileID: 2128636680083725902}
   m_Layer: 0
-  m_Name: TalkSystem
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4023926513991749875
+--- !u!4 &6568831067750043908
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727330334120390485}
+  m_GameObject: {fileID: 2663585240513386647}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.74790406, y: 1.5622975, z: 0.008229028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1604886066794716357
+--- !u!114 &2128636680083725902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727330334120390485}
+  m_GameObject: {fileID: 2663585240513386647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7647bae2aecbc941a426af6ad80905e, type: 3}
+  m_Script: {fileID: 11500000, guid: b097fc3c12af4ad48831194fdc3d8859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charaName: {fileID: 0}
-  _talkMessage: {fileID: 0}
-  _charaImage: {fileID: 0}
-  _talkTextDisplaySpeed: 0.1
-  _nextTalkIcon: {fileID: 0}
-  _manager: {fileID: 0}
+  _bgmEnum: 0
+  _bgmClass:
+    _bgmSound: {fileID: 0}
+    _bgmClip: []
+  _seClass:
+    _seSound: {fileID: 0}
+    _seClip: []

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TalkState : IStateMachine
@@ -33,10 +33,17 @@ public class TalkState : IStateMachine
 
     public void Update()
     {
-        //�N�h�E�ǋL
+        //クドウ追記
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _eventManager.TalkSystem.OnUpdateMessage();
+            if (_eventManager.TalkSystem.IsTalkTextDisplaying)  //会話Text表示中なら
+            {
+                _eventManager.TalkSystem.TalkTextAllDisplay();     //全て表示
+            }
+            else
+            {
+                _eventManager.TalkSystem.OnUpdateMessage();　　//Talkの更新
+            }
         }
 
         if (!_eventManager.TalkSystem.IsTalking)
