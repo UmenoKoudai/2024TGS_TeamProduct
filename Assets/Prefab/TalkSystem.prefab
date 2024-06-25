@@ -47,3 +47,6 @@ MonoBehaviour:
   _charaName: {fileID: 0}
   _talkMessage: {fileID: 0}
   _charaImage: {fileID: 0}
+  _talkTextDisplaySpeed: 0.1
+  _nextTalkIcon: {fileID: 0}
+  _manager: {fileID: 0}
