@@ -100,6 +100,8 @@ public class TalkSystem : MonoBehaviour
             return;
         }
 
+        AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.NextTalkTextDisplay);
+
         _currentTalkData = _talkData[_talkCount];
 
         if(_currentTalkData.Image == null)
