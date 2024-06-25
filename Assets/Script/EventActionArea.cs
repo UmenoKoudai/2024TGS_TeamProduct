@@ -6,7 +6,7 @@ public class EventActionArea : MonoBehaviour, IEventObject
     [SerializeField] EventData _eventData = null;
     [SerializeField] EventManager _eventManager = null;
     [SerializeField, SerializeReference]
-    [SubclassSelector]
+   // [SubclassSelector]
     IAction _action;
 
     private CharacterBase _character;
