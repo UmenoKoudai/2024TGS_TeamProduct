@@ -166,5 +166,10 @@ public class GameManager : MonoBehaviour
     public void StateChange(SystemState change)
     {
         State = change;
+        if(change != SystemState.Move)
+        {
+            _player.Rb.velocity = Vector2.zero;
+            _girl.Rb.velocity = Vector2.zero;
+        }
     }
 }
