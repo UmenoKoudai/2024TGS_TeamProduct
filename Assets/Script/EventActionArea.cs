@@ -8,7 +8,6 @@ public class EventActionArea : MonoBehaviour, IEventObject
     [SerializeField, SerializeReference]
     [SubclassSelector]
     IAction[] _action;
-
     private CharacterBase _character;
 
     public EventData EventData => _eventData;
@@ -19,15 +18,15 @@ public class EventActionArea : MonoBehaviour, IEventObject
     {
         if (_eventData != null)
         {
-            //’²‚×‚½ƒtƒ‰ƒO‚ªtrue‚Ì‚Æ‚«
+            //èª¿ã¹ãŸãƒ•ãƒ©ã‚°ãŒtrueã®ã¨ã
             if (_flagList.GetFlagStatus(_eventData.CheckFlag))
             {
                 ResultEventTalkData = _eventData.TrueTalkData;
-                //•ÏX‚·‚éƒtƒ‰ƒO‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚Î•ÏX‚·‚é
+                //å¤‰æ›´ã™ã‚‹ãƒ•ãƒ©ã‚°ãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°å¤‰æ›´ã™ã‚‹
                 if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
 
             }
-            else //’²‚×‚½ƒtƒ‰ƒO‚ªfalse‚Ì‚Æ‚«
+            else //èª¿ã¹ãŸãƒ•ãƒ©ã‚°ãŒfalseã®ã¨ã
             {
                 ResultEventTalkData = _eventData.FalseTalkData;
                 foreach(var action in _action)

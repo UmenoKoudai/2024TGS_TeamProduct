@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
+  m_Name: SavePoint
+  m_EditorClassIdentifier: 
+  _checkFlag: {fileID: 0}
+  _changeFlag: {fileID: 0}
+  _trueImage: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+  _trueName: "\u30D7\u30EC\u30A4\u30E4\u30FC"
+  _trueText: "\u30BB\u30FC\u30D6\u3057\u305F"
+  _falseImage: {fileID: 0}
+  _falseName: 
+  _falseText: 
