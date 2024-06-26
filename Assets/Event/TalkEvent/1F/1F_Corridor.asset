@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
-  m_Name: New EventData 5
+  m_Name: 1F_Corridor
   m_EditorClassIdentifier: 
   _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
   _changeFlag: {fileID: 0}
   _trueTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 0}
+      name: ????
+      sentence: "\u3050\u304E\u3083\u3041\u3041\u3041\u3041\u3041\u304A\uFF01\uFF01"
     yesSelectText: 
     noSelectText: 
     yesTalk: []
