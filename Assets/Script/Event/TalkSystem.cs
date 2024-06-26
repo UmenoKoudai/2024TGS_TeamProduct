@@ -73,7 +73,7 @@ public class TalkSystem : MonoBehaviour
         _talkData = _eventTalkData.EventStartTalk;
         
         //会話があるかどうかチェック
-        if (_talkData == null || _talkData[0].image == null)
+        if (_talkData == null)
         {
             _isTalking = false;
             _isSelectEventTalk = false;
@@ -104,19 +104,19 @@ public class TalkSystem : MonoBehaviour
 
         _currentTalkData = _talkData[_talkCount];
 
-        if(_currentTalkData.Image == null)
+        if(_currentTalkData.Image != null)
         {
-            _currentTalkData.Image = _talkData[_talkCount - 1].Image;
+            _charaImage.sprite = _currentTalkData.Image;
         }
 
-        if (_currentTalkData.Name == null || _currentTalkData.Name == "")
+        if (_currentTalkData.Name != null || _currentTalkData.Name != "")
         {
-            _currentTalkData.Name = _talkData[_talkCount - 1].Name;
+            _charaName.text = _currentTalkData.Name;
         }
 
         _isTalkTextDisplaying = true;
 
-        TalkPanelViewSet(_currentTalkData.Image, _currentTalkData.Name, _currentTalkData.Sentences);
+        TalkTextViewSet(_currentTalkData.Sentences);
 
         _talkCount++;
         _isTalking = true;
@@ -133,13 +133,9 @@ public class TalkSystem : MonoBehaviour
         OnUpdateMessage();
     }
 
-    /// <summary>Talkパネルの画像と名前、会話の反映</summary>
-    /// <param name="image">話すもの画像</param>
-    /// <param name="name">話すものの名前</param>
-    public void TalkPanelViewSet(Sprite image, string name, string sentences)
+    /// <summary>会話Textのセット</summary>
+    public void TalkTextViewSet(string sentences)
     {
-        _charaName.text = name;
-        _charaImage.sprite = image;
         _talkMessage.text = "";
         _talkMessage.DOText(_currentTalkData.Sentences, _currentTalkData.Sentences.Length * _talkTextDisplaySpeed)
                     .OnComplete(() =>
