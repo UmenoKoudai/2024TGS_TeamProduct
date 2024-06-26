@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
-  m_Name: TeaTable
+  m_Name: Storage
   m_EditorClassIdentifier: 
   _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
   _changeFlag: {fileID: 0}
@@ -26,10 +26,13 @@ MonoBehaviour:
     eventStartTalk:
     - image: {fileID: 0}
       name: 
-      sentence: "\u30C6\u30FC\u30D6\u30EB\u306B\u306F\u30B9\u30B3\u30FC\u30F3\u3084\u30B1\u30FC\u30AD\u3002\u7D05\u8336\u306A\u3069\u304C\u7F6E\u3044\u3066\u3042\u308B\n\u7D05\u8336\u306F\u307E\u3060\u6E29\u304B\u3044"
+      sentence: "\u5EAD\u5712\u306E\u624B\u5165\u308C\u306B\u4F7F\u3046\u3067\u3042\u308D\u3046\u30E2\u30CE\u304C\u63C3\u3063\u3066\u3044\u308B"
     - image: {fileID: 0}
       name: 
-      sentence: "\u7802\u7CD6\u304C\u5165\u3063\u305F\u74F6\u3092\u624B\u306B\u5165\u308C\u305F"
+      sentence: "\u3057\u304B\u3057\u3001\u679D\u5207\u308A\u30D0\u30B5\u30DF\u4EE5\u5916\u3092\u7372\u308D\u3046\u3068\u3059\u308B\u3068\u30C8\u30EA\u30C3\u30AF\u30A2\u30FC\u30C8\u306E\u3088\u3046\u306B\n\u58C1\u306B\u5438\u3044\u8FBC\u307E\u308C\u308B"
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u679D\u5207\u30D0\u30B5\u30DF\u3092\u624B\u306B\u5165\u308C\u305F"
     yesSelectText: 
     noSelectText: 
     yesTalk: []

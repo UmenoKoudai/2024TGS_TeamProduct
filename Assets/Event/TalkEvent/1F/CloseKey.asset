@@ -10,26 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
-  m_Name: TeaTable
+  m_Name: CloseKey
   m_EditorClassIdentifier: 
   _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
   _changeFlag: {fileID: 0}
   _trueTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u9375\u304C\u304B\u304B\u3063\u3066\u3044\u308B\u3088\u3046\u3060"
     yesSelectText: 
     noSelectText: 
     yesTalk: []
     noTalk: []
   _falseTalkData:
     isSelectTalk: 0
-    eventStartTalk:
-    - image: {fileID: 0}
-      name: 
-      sentence: "\u30C6\u30FC\u30D6\u30EB\u306B\u306F\u30B9\u30B3\u30FC\u30F3\u3084\u30B1\u30FC\u30AD\u3002\u7D05\u8336\u306A\u3069\u304C\u7F6E\u3044\u3066\u3042\u308B\n\u7D05\u8336\u306F\u307E\u3060\u6E29\u304B\u3044"
-    - image: {fileID: 0}
-      name: 
-      sentence: "\u7802\u7CD6\u304C\u5165\u3063\u305F\u74F6\u3092\u624B\u306B\u5165\u308C\u305F"
+    eventStartTalk: []
     yesSelectText: 
     noSelectText: 
     yesTalk: []

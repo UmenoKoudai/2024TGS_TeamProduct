@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
-  m_Name: New EventData 6
+  m_Name: Desk
   m_EditorClassIdentifier: 
   _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
   _changeFlag: {fileID: 0}
@@ -23,7 +23,13 @@ MonoBehaviour:
     noTalk: []
   _falseTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u51E0\u5E33\u9762\u306A\u306E\u304B\u673A\u306E\u4E0A\u306F\u7DBA\u9E97\u306B\u6574\u9813\u3055\u308C\u3066\u3044\u308B"
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u30E9\u30A4\u30BF\u30FC\u3092\u624B\u306B\u5165\u308C\u305F"
     yesSelectText: 
     noSelectText: 
     yesTalk: []
