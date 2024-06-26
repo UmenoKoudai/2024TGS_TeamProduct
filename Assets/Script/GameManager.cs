@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         SceneMove,
         Select,
         Save,
+        GameOver,
     }
 
     private SystemState _state;
@@ -93,6 +94,9 @@ public class GameManager : MonoBehaviour
                 case SystemState.Select:
                     _selectState.Enter();
                     break;
+                case SystemState.GameOver:
+                    _gameOverState.Enter();
+                    break;
             }
         }
     }
@@ -113,6 +117,7 @@ public class GameManager : MonoBehaviour
     private TalkState _talkState;
     private OptionState _optionState;
     private SelectState _selectState;
+    private GameOverState _gameOverState;
 
     void Start()
     {
@@ -123,6 +128,7 @@ public class GameManager : MonoBehaviour
         _talkState = new TalkState(this);
         _optionState = new OptionState(this);
         _selectState = new SelectState(this);
+        _gameOverState = new GameOverState(this);
     }
 
     private void Update()
