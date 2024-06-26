@@ -20,6 +20,7 @@ public class NormalMove : IStateMachine
         _start = _character.Map.WorldToCell(_character.transform.position);
         _character.transform.position = _character.Map.GetCellCenterLocal(_start);
         _nextTile = _character.transform.position;
+        Debug.Log($"{_character.Map.GetCellCenterLocal(_start)}");
     }
 
     public void Enter()
@@ -59,11 +60,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = true;
                 _isLeftMove = false;
-                _nextTile = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(_nextTile);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
@@ -74,11 +76,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = false;
                 _isLeftMove = true;
-                _nextTile = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(next);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
@@ -91,11 +94,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = true;
                 _isRightMove = false;
                 _isLeftMove = false;
-                _nextTile = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(next);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
@@ -105,11 +109,12 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = false;
                 _isLeftMove = false;
-                _nextTile = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(next);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
