@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     EnemyImageController _enemyImageController;
 
+    [Header("ゲームオーバーシーン名")]
+    [SerializeField]
+    string _gameOverSceneName;
+
     public void Start()
     {
         //追跡開始
@@ -46,9 +50,22 @@ public class Enemy : MonoBehaviour
         {
             //追従停止
             _followSystem.FollowStop();
-            //ここにゲームオーバー判定を書く
-            Debug.Log("Player died");
+            //GameOver演出
+            StartCoroutine(GameOverStart());
         }
+    }
+
+    /// <summary>Enemyの食べる音の再生とGameOverシーンに遷移</summary>
+    IEnumerator GameOverStart()
+    {
+        //GameManager.Instance.StateChange(GameManager.SystemState.GameOver);
+        AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.MonsterEating);
+        yield return new WaitForSeconds(0.8f);
+        AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.MonsterEating);
+        yield return new WaitForSeconds(0.8f);
+        AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.MonsterEating);
+        yield return new WaitForSeconds(0.8f);
+        FindObjectOfType<SceneChange>().ChangeScene(_gameOverSceneName);
     }
 }
 
