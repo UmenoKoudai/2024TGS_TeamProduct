@@ -1,4 +1,3 @@
-using System.Data;
 using UnityEngine;
 
 public class NormalMove : IStateMachine
@@ -12,7 +11,6 @@ public class NormalMove : IStateMachine
     private Vector3 _direction;
     private Vector3Int _nextPos;
     private Vector3 _nextTile;
-    private Vector3 _movePos;
 
     public NormalMove(CharacterBase character)
     {
@@ -53,7 +51,7 @@ public class NormalMove : IStateMachine
         _character.Animator.SetBool("Left", _isLeftMove);
         _character.Animator.SetBool("Right", _isRightMove);
         if(h > 0 || h < 0 || v > 0 || v < 0) _character.Direction = _direction;
-        if (Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical"))
+        if (Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && !_isMove)
         {
             if (h > 0)
             {
@@ -87,7 +85,7 @@ public class NormalMove : IStateMachine
                 }
             }
         }
-        if(Input.GetButtonDown("Vertical") && !Input.GetButtonDown("Horizontal"))
+        if (Input.GetButton("Vertical") && !Input.GetButton("Horizontal") && !_isMove)
         {
             if (v > 0)
             {
@@ -120,7 +118,6 @@ public class NormalMove : IStateMachine
                 }
             }
         }
-
 
         if (Input.GetButtonDown("Fire1"))
         {

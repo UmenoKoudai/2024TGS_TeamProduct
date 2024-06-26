@@ -35,7 +35,6 @@ public class Player : CharacterBase
     public void Init(EventManager eventManager)
     {
         Rb = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
         _normalMove = new NormalMove(this);
         _action = new Action(this);
         Event = eventManager;
