@@ -1,13 +1,11 @@
 using UnityEngine;
 
-public class GhostEvent : MonoBehaviour, IEventObject, IAction
+public class GhostEvent : MonoBehaviour, IEventObject
 {
     [SerializeField]
     private EventData _event;
     [SerializeField]
     private FlagList _flagList;
-    [SerializeField]
-    private FlagData _foodFlag;
     [SerializeField]
     private Animator _animator;
 
@@ -15,18 +13,22 @@ public class GhostEvent : MonoBehaviour, IEventObject, IAction
 
     public EventTalkData ResultEventTalkData { get; set; }
 
-    public void Execute(CharacterBase chara)
+    private void Update()
     {
+        if(_animator)
+        {
+            _animator.SetBool("IsMove", _event.ChangeFlag.IsOn);
+        }
     }
 
     public void ResultFlagCheck()
     {
         if(_event != null)
         {
-            if(_flagList.GetFlagStatus(_foodFlag))
+            if(_flagList.GetFlagStatus(_event.CheckFlag))
             {
                 ResultEventTalkData = _event.TrueTalkData;
-                if (_event.CheckFlag) _flagList.SetFlag(_event.CheckFlag);
+                if (_event.ChangeFlag) _flagList.SetFlag(_event.ChangeFlag);
             }
             else
             {

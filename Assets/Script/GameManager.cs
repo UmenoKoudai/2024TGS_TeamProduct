@@ -8,14 +8,29 @@ public class GameManager : MonoBehaviour
     //フラグデータ
     [SerializeField] FlagList _flagList;
     public FlagList FlagList => _flagList;
-
-    //[SerializeField, Tooltip("プレイヤーをアタッチ")]
+    [SerializeField, Tooltip("このシーンがアウトゲームかインゲームか選択")]
+    private GameState _nowState;
+    [SerializeField, Tooltip("プレイヤーをアタッチ")]
     private Player _player;
     public Player Player => _player;
-    //[SerializeField, Tooltip("少女をアタッチ")]
+    [SerializeField, Tooltip("少女をアタッチ")]
     private Girl _girl;
     public Girl Girl => _girl;
+    [SerializeField, Tooltip("イベントマネージャーをアタッチ")]
+    private EventManager _eventManager;
+    public EventManager EventManager => _eventManager;
+    [SerializeField, Tooltip("パネルマネージャーをアタッチ")]
+    private PanelManager _panelManager;
+    public PanelManager PanelManager => _panelManager;
+    [SerializeField, Tooltip("イベントシステムをアタッチ")]
+    private EventSystem _eventSystem;
+    public EventSystem EventSystem => _eventSystem;
 
+    enum GameState
+    {
+        OutGame,
+        InGame,
+    }
 
     #region　シングルトン
 
@@ -26,41 +41,46 @@ public class GameManager : MonoBehaviour
         {
             if (!instance)
             {
-                SetupInstance();
+                instance = FindObjectOfType<GameManager>();
+                if(!instance)
+                {
+                    Debug.LogError("ゲームマネージャーが存在しません");
+                }
             }
 
             return instance;
         }
     }
 
-    void Awake()
-    {
-        if (!instance)
-        {
-            instance = this;
-           //SceneManager.sceneLoaded += SceneLoaded;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //void Awake()
+    //{
+    //    if (!instance)
+    //    {
+    //        instance = this;
+    //       //SceneManager.sceneLoaded += SceneLoaded;
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
-    static void SetupInstance()
-    {
-        instance = FindObjectOfType<GameManager>();
+    //static void SetupInstance()
+    //{
+    //    instance = FindObjectOfType<GameManager>();
 
-        if (!instance)
-        {
-            GameObject go = new GameObject();
-            instance = go.AddComponent<GameManager>();
-            go.name = instance.GetType().Name;
-            DontDestroyOnLoad(go);
-        }
-    }
+    //    if (!instance)
+    //    {
+    //        GameObject go = new GameObject();
+    //        instance = go.AddComponent<GameManager>();
+    //        go.name = instance.GetType().Name;
+    //        DontDestroyOnLoad(go);
+    //    }
+    //}
     #endregion
 
+    #region　ステートマシーン
     public enum SystemState
     {
         Move,
@@ -70,6 +90,8 @@ public class GameManager : MonoBehaviour
         Select,
         Save,
         GameOver,
+
+        MacCount,
     }
 
     private SystemState _state;
@@ -80,102 +102,45 @@ public class GameManager : MonoBehaviour
         {
             if (_state == value) return;
             _state = value;
-            switch (_state)
-            {
-                case SystemState.Move:
-                    _moveState.Enter();
-                    break;
-                case SystemState.Talk:
-                    _talkState.Enter();
-                    break;
-                case SystemState.Option:
-                    _optionState.Enter();
-                    break;
-                case SystemState.Select:
-                    _selectState.Enter();
-                    break;
-                case SystemState.GameOver:
-                    _gameOverState.Enter();
-                    break;
-            }
+            _currentState = _states[(int)_state];
         }
     }
 
-    private string _posName = "";
-    public string PosName { get => _posName; set => _posName = value; }
-    private Vector3 _direction;
-    public Vector3 Direction { get => _direction; set => _direction = value; }
-    private EventManager _eventManager;
-    public EventManager EventManager => _eventManager;
-    private PanelManager _panelManager;
-    public PanelManager PanelManager => _panelManager;
-
-    private EventSystem _eventSystem;
-    public EventSystem EventSystem => _eventSystem;
-
-    private MoveState _moveState;
-    private TalkState _talkState;
-    private OptionState _optionState;
-    private SelectState _selectState;
-    private GameOverState _gameOverState;
+    private IStateMachine[] _states = new IStateMachine[(int)SystemState.MacCount];
+    private IStateMachine _currentState;
+    #endregion
 
     void Start()
     {
-        Debug.Log("Start");
-        _player = FindObjectOfType<Player>();
-        _girl = FindObjectOfType<Girl>();
-        _eventManager = FindObjectOfType<EventManager>();
-        _panelManager = FindObjectOfType<PanelManager>();
-        _eventSystem = FindObjectOfType<EventSystem>();
-        _player.Init(_eventManager);
-        _girl.Init(_eventManager);
-        _moveState = new MoveState(this);
-        _talkState = new TalkState(this);
-        _optionState = new OptionState(this);
-        _selectState = new SelectState(this);
-        _gameOverState = new GameOverState(this);
+        if (_nowState == GameState.OutGame) return;
+        Init();
+        _states[(int)SystemState.Move] = new MoveState(this);
+        _states[(int)SystemState.Talk] = new TalkState(this);
+        _states[(int)SystemState.Option] = new OptionState(this);
+        _states[(int)SystemState.Select] = new SelectState(this);
+        _states[(int)SystemState.GameOver] = new GameOverState(this);
+        _currentState = _states[(int)_state];
+        StateChange(SystemState.Move);
     }
 
     private void Update()
     {
-        switch(_state)
-        {
-            case SystemState.Move:
-                _moveState.Update();
-                break;
-            case SystemState.Talk:
-                _talkState.Update();
-                break;
-            case SystemState.Option:
-                _optionState.Update();
-                break;
-            case SystemState.Select:
-                _selectState.Update();
-                break;
-        }
+        if (_nowState == GameState.OutGame) return;
+        _currentState.Update();
     }
 
-    void SceneLoaded(Scene scene, LoadSceneMode mode)
+    private void Init()
     {
-        _player = FindObjectOfType<Player>();
-        _girl = FindObjectOfType<Girl>();
-        _eventManager = FindObjectOfType<EventManager>();
-        _panelManager = FindObjectOfType<PanelManager>();
-        _eventSystem = FindObjectOfType<EventSystem>();
-        if (PosName != "")
+        _player.Init(_eventManager);
+        _girl.Init(_eventManager);
+        if (PlayingData.Instance.PosName != "" && PlayingData.Instance.PosName != null)
         {
-            var pos = GameObject.Find(PosName).transform.position;
-            if (_player && _girl)
-            {
-                _player.Init(_eventManager);
-                _girl.Init(_eventManager);
-                _player.transform.position = pos;
-                _girl.transform.position = pos;
-                _player.transform.up = Direction;
-                _girl.transform.up = Direction;
-            }
+            var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position;
+            _player.transform.position = pos;
+            _girl.transform.position = pos;
+            _player.transform.up = PlayingData.Instance.Direction;
+            _girl.transform.up = PlayingData.Instance.Direction;
         }
-        StateChange(SystemState.Move);
     }
 
     public void StateChange(SystemState change)

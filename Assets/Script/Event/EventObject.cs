@@ -1,5 +1,4 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EventObject : MonoBehaviour, IEventObject, IAction
 {
@@ -33,9 +32,6 @@ public class EventObject : MonoBehaviour, IEventObject, IAction
             if (_flagList.GetFlagStatus(_eventData.CheckFlag))
             {
                 ResultEventTalkData = _eventData.TrueTalkData;
-                //変更するフラグが設定されていれば変更する
-                //if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
-
             }
             else //調べたフラグがfalseのとき
             {

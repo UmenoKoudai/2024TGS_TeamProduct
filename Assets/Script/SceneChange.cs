@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
-public class SceneChange : MonoBehaviour, IEventObject
+public class SceneChange : MonoBehaviour, IEventObject, IAction
 {
     [SerializeField, Tooltip("ëJà⁄Ç∑ÇÈÉVÅ[ÉìÇÃñºëO")]
     private string _nextScene;
@@ -29,20 +29,38 @@ public class SceneChange : MonoBehaviour, IEventObject
         _eventManager = FindObjectOfType<EventManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Execute(CharacterBase chara)
     {
-        if (collision.transform.TryGetComponent(out Player player))
+        if (_isKeyRoom != true || _event.CheckFlag.IsOn)
+        {
+            PlayingData.Instance.PosName = _posName;
+            PlayingData.Instance.Direction = chara.transform.up;
+            //GameManager.instance.StateChange(GameManager.SystemState.SceneMove);
+            SceneManager.LoadScene(_nextScene);
+        }
+        else
         {
             _eventManager.EventCheck(this);
-            if (_isKeyRoom != true || _event.CheckFlag.IsOn)
-            {
-                GameManager.Instance.PosName = _posName;
-                GameManager.Instance.Direction = player.transform.up;
-                GameManager.instance.StateChange(GameManager.SystemState.SceneMove);
-                SceneManager.LoadScene(_nextScene);
-            }
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.transform.TryGetComponent(out Player player))
+    //    {
+    //        if (_isKeyRoom != true || _event.CheckFlag.IsOn)
+    //        {
+    //            PlayingData.Instance.PosName = _posName;
+    //            PlayingData.Instance.Direction = player.transform.up;
+    //            //GameManager.instance.StateChange(GameManager.SystemState.SceneMove);
+    //            SceneManager.LoadScene(_nextScene);
+    //        }
+    //        else
+    //        {
+    //            _eventManager.EventCheck(this);
+    //        }
+    //    }
+    //}
 
     public void ChangeScene(string sceneName)
     {
