@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
-  m_Name: Bookshelf
+  m_Name: SarvantRoomCloseKey
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: efa4306c68c958b40b4072cea8675efa, type: 2}
-  _changeFlag: {fileID: 0}
+  _checkFlag: {fileID: 11400000, guid: 304317992a7714e4fb3f8f7dc4a77cdf, type: 2}
+  _changeFlag: {fileID: 11400000, guid: 7a248c128865c1047a786fba5bd75c7a, type: 2}
   _trueTalkData:
     isSelectTalk: 0
     eventStartTalk: []
@@ -26,7 +26,7 @@ MonoBehaviour:
     eventStartTalk:
     - image: {fileID: 0}
       name: 
-      sentence: "\u4E01\u5BE7\u306B\u8A18\u9332\u3055\u308C\u305F\u5E33\u7C3F\u3084\u30EA\u30B9\u30C8\u304C\u3042\u308B"
+      sentence: "\u9375\u304C\u304B\u304B\u3063\u3066\u3044\u308B\u3088\u3046\u3060"
     yesSelectText: 
     noSelectText: 
     yesTalk: []

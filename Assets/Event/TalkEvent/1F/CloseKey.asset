@@ -16,17 +16,17 @@ MonoBehaviour:
   _changeFlag: {fileID: 0}
   _trueTalkData:
     isSelectTalk: 0
-    eventStartTalk:
-    - image: {fileID: 0}
-      name: 
-      sentence: "\u9375\u304C\u304B\u304B\u3063\u3066\u3044\u308B\u3088\u3046\u3060"
+    eventStartTalk: []
     yesSelectText: 
     noSelectText: 
     yesTalk: []
     noTalk: []
   _falseTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u9375\u304C\u304B\u304B\u3063\u3066\u3044\u308B\u3088\u3046\u3060"
     yesSelectText: 
     noSelectText: 
     yesTalk: []

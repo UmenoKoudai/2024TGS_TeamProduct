@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
   m_Name: TeaTable
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
-  _changeFlag: {fileID: 0}
+  _checkFlag: {fileID: 11400000, guid: e9396aebc602e3c4f891b1a7358c2089, type: 2}
+  _changeFlag: {fileID: 11400000, guid: e9396aebc602e3c4f891b1a7358c2089, type: 2}
   _trueTalkData:
     isSelectTalk: 0
     eventStartTalk: []
