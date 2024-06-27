@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
-  m_Name: 1F_Corridor
+  m_Name: GirlCloseKey
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
-  _changeFlag: {fileID: 0}
+  _checkFlag: {fileID: 11400000, guid: 2ba7cbd949b980b479a070a0a208fb18, type: 2}
+  _changeFlag: {fileID: 11400000, guid: bb6fc1d760d6dae4c9b40b0edbf43d75, type: 2}
   _trueTalkData:
     isSelectTalk: 0
-    eventStartTalk:
-    - image: {fileID: 0}
-      name: ????
-      sentence: "\u3050\u304E\u3083\u3041\u3041\u3041\u3041\u3041\u304A\uFF01\uFF01"
+    eventStartTalk: []
     yesSelectText: 
     noSelectText: 
     yesTalk: []
     noTalk: []
   _falseTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u9375\u304C\u304B\u304B\u3063\u3066\u3044\u308B\u3088\u3046\u3060"
     yesSelectText: 
     noSelectText: 
     yesTalk: []

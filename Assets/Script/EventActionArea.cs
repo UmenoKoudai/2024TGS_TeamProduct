@@ -23,7 +23,7 @@ public class EventActionArea : MonoBehaviour, IEventObject
             {
                 ResultEventTalkData = _eventData.TrueTalkData;
                 //変更するフラグが設定されていれば変更する
-                if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
+                //if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
 
             }
             else //調べたフラグがfalseのとき

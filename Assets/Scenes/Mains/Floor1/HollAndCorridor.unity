@@ -2682,9 +2682,21 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
+      propertyPath: _event
+      value: 
+      objectReference: {fileID: 11400000, guid: 079b0f191df2ed54f9a85284a1ccd8b4, type: 2}
+    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
+      propertyPath: _keyFlag
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ba7cbd949b980b479a070a0a208fb18, type: 2}
+    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
       value: Children
       objectReference: {fileID: 0}
+    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
+      propertyPath: _flagList
+      value: 
+      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
       value: RoomA_DiningRoom
@@ -3230,9 +3242,21 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
+      propertyPath: _event
+      value: 
+      objectReference: {fileID: 11400000, guid: 56fc53082e8c1a54fac5ba2582b29603, type: 2}
+    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
+      propertyPath: _keyFlag
+      value: 
+      objectReference: {fileID: 11400000, guid: 304317992a7714e4fb3f8f7dc4a77cdf, type: 2}
+    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
       value: Servant
       objectReference: {fileID: 0}
+    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
+      propertyPath: _flagList
+      value: 
+      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
       value: RoomA_DiningRoom

@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
   m_Name: Gost_event
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
-  _changeFlag: {fileID: 0}
+  _checkFlag: {fileID: 11400000, guid: ba2061ac47e04f74e94cf761e49f7c06, type: 2}
+  _changeFlag: {fileID: 11400000, guid: 4cadfa9c10c3b214f8550190c620c7fd, type: 2}
   _trueTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u30CA\u30CB\u304B\u306F\u3069\u3053\u304B\u3078\u53BB\u3063\u305F\u3088\u3046\u3060"
+    - image: {fileID: 0}
+      name: 
+      sentence: "\u5B50\u4F9B\u90E8\u5C4B\u306E\u30AB\u30AE\u3092\u624B\u306B\u5165\u308C\u305F"
     yesSelectText: 
     noSelectText: 
     yesTalk: []
