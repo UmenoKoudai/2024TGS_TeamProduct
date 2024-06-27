@@ -1,4 +1,3 @@
-using System.Data;
 using UnityEngine;
 
 public class NormalMove : IStateMachine
@@ -12,7 +11,6 @@ public class NormalMove : IStateMachine
     private Vector3 _direction;
     private Vector3Int _nextPos;
     private Vector3 _nextTile;
-    private Vector3 _movePos;
 
     public NormalMove(CharacterBase character)
     {
@@ -20,6 +18,7 @@ public class NormalMove : IStateMachine
         _start = _character.Map.WorldToCell(_character.transform.position);
         _character.transform.position = _character.Map.GetCellCenterLocal(_start);
         _nextTile = _character.transform.position;
+        Debug.Log($"{_character.Map.GetCellCenterLocal(_start)}");
     }
 
     public void Enter()
@@ -52,18 +51,19 @@ public class NormalMove : IStateMachine
         _character.Animator.SetBool("Left", _isLeftMove);
         _character.Animator.SetBool("Right", _isRightMove);
         if(h > 0 || h < 0 || v > 0 || v < 0) _character.Direction = _direction;
-        if (Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical"))
+        if (Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && !_isMove)
         {
             if (h > 0)
             {
                 _isUpMove = false;
                 _isRightMove = true;
                 _isLeftMove = false;
-                _nextTile = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(_nextTile);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
@@ -74,28 +74,30 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = false;
                 _isLeftMove = true;
-                _nextTile = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(next);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
             }
         }
-        if(Input.GetButtonDown("Vertical") && !Input.GetButtonDown("Horizontal"))
+        if (Input.GetButton("Vertical") && !Input.GetButton("Horizontal") && !_isMove)
         {
             if (v > 0)
             {
                 _isUpMove = true;
                 _isRightMove = false;
                 _isLeftMove = false;
-                _nextTile = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(next);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
@@ -105,17 +107,17 @@ public class NormalMove : IStateMachine
                 _isUpMove = false;
                 _isRightMove = false;
                 _isLeftMove = false;
-                _nextTile = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
-                _nextPos = _character.Map.WorldToCell(_nextTile);
-                _character.CreatePos(_nextTile);
+                var next = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
+                _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
                 {
+                    _character.CreatePos(next);
+                    _nextTile = next;
                     _direction = _nextTile - _character.transform.position;
                     _isMove = true;
                 }
             }
         }
-
 
         if (Input.GetButtonDown("Fire1"))
         {
