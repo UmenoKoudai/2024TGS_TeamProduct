@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (!instance)
         {
             instance = this;
-            SceneManager.sceneLoaded += SceneLoaded;
+           //SceneManager.sceneLoaded += SceneLoaded;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -122,6 +122,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log("Start");
+        _player = FindObjectOfType<Player>();
+        _girl = FindObjectOfType<Girl>();
+        _eventManager = FindObjectOfType<EventManager>();
+        _panelManager = FindObjectOfType<PanelManager>();
+        _eventSystem = FindObjectOfType<EventSystem>();
         _player.Init(_eventManager);
         _girl.Init(_eventManager);
         _moveState = new MoveState(this);
