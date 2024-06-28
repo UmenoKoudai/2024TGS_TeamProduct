@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 [System.Serializable]
@@ -13,10 +10,6 @@ public class ItemList
     public int _itemID2;
     [SerializeField, Header("アイテムの名前")]
     public string _itemName;
-    [SerializeField, Header("アイテムのSprite")]
-    public Sprite _itemSprite;
     [SerializeField, Header("アイテムの説明")]
     public string _itemEffect;
-    [SerializeField, Header("アイテムのプレハブ")]
-    public GameObject _item;
 }

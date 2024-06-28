@@ -15,7 +15,25 @@ MonoBehaviour:
   _ItemLists:
   - _itemID: 1
     _itemID2: 0
-    _itemName: "\u9375"
-    _itemSprite: {fileID: 21300000, guid: aa116d2b6b6eee64cad492b3fd344782, type: 3}
-    _itemEffect: "\u3069\u3053\u304B\u306E\u6249\u3092\u958B\u3051\u308B\u3053\u3068\u304C\u51FA\u6765\u308B"
-    _item: {fileID: 2408063919052175325, guid: 83c9426ab2782b74abcbcefe8c746862, type: 3}
+    _itemName: "\u5B50\u4F9B\u90E8\u5C4B\u306E\u9375"
+    _itemEffect: "\u5B50\u4F9B\u90E8\u5C4B\u306E\u30AB\u30AE\u3092\u958B\u3051\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u3002"
+  - _itemID: 2
+    _itemID2: 0
+    _itemName: "\u7A7A\u306E\u74F6"
+    _itemEffect: "\u4E2D\u306E\u7802\u7CD6\u3092\u6368\u3066\u305F\u7A7A\u306E\u74F6\u3002\u4F55\u304B\u3092\u5165\u308C\u308B\u306E\u306B\u4F7F\u3048\u305D\u3046\u3060\u3002"
+  - _itemID: 3
+    _itemID2: 0
+    _itemName: "\u7F8E\u5473\u3057\u305D\u3046\u306A\u6599\u7406"
+    _itemEffect: "\u898B\u3066\u3044\u308B\u3060\u3051\u3067\u304A\u8179\u304C\u7A7A\u3044\u3066\u304F\u308B\u3002"
+  - _itemID: 4
+    _itemID2: 0
+    _itemName: "\u30E9\u30A4\u30BF\u30FC"
+    _itemEffect: "\u307E\u3060\u4F7F\u3048\u308B\u3088\u3046\u3060\u3002\u4F55\u304B\u306B\u706B\u3092\u3064\u3051\u308B\u306E\u306B\u4F7F\u3048\u308B\u3060\u308D\u3046\u3002"
+  - _itemID: 5
+    _itemID2: 0
+    _itemName: "\u679D\u5207\u308A\u30D0\u30B5\u30DF"
+    _itemEffect: "\u4E08\u592B\u306A\u30C4\u30BF\u306A\u3069\u3067\u3082\u5207\u308C\u305D\u3046\u3060\u3002"
+  - _itemID: 6
+    _itemID2: 0
+    _itemName: "\u4F7F\u7528\u4EBA\u5BA4\u306E\u30AB\u30AE"
+    _itemEffect: "\u4F7F\u7528\u4EBA\u5BA4\u306E\u30AB\u30AE\u3092\u958B\u3051\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u3002"

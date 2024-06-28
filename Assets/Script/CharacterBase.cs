@@ -25,6 +25,8 @@ public class CharacterBase : MonoBehaviour
         NormalMove,
         AutoMove,
         Action,
+
+        MacCount,
     }
 
     public virtual void StateChange(State changeState)

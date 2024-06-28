@@ -642,6 +642,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1256302002}
     - target: {fileID: 6658403971454114099, guid: 0458af221a3d2f745bc2ea42de02176f, type: 3}
+      propertyPath: _girlFlag
+      value: 
+      objectReference: {fileID: 11400000, guid: 7600fe8d489a9b043a2f52b7e0611e4e, type: 2}
+    - target: {fileID: 6658403971454114099, guid: 0458af221a3d2f745bc2ea42de02176f, type: 3}
       propertyPath: _nowState
       value: 1
       objectReference: {fileID: 0}
@@ -1185,11 +1189,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &844285811 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4685489147895086930, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-  m_PrefabInstance: {fileID: 881026447}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &881026447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1273,7 +1272,7 @@ PrefabInstance:
     - target: {fileID: 8185403789807252369, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 844285811}
+      objectReference: {fileID: 0}
     - target: {fileID: 8185403789807252369, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: _groundMap
       value: 
@@ -2458,7 +2457,7 @@ PrefabInstance:
     - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1357428688}
+      objectReference: {fileID: 0}
     - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
       propertyPath: _groundMap
       value: 
@@ -2648,11 +2647,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1357428688 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4005977607013194854, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-  m_PrefabInstance: {fileID: 1256302000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1409000665
 GameObject:
   m_ObjectHideFlags: 0

@@ -184,6 +184,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 406207383}
     - target: {fileID: 6658403971454114099, guid: 0458af221a3d2f745bc2ea42de02176f, type: 3}
+      propertyPath: _girlFlag
+      value: 
+      objectReference: {fileID: 11400000, guid: 7600fe8d489a9b043a2f52b7e0611e4e, type: 2}
+    - target: {fileID: 6658403971454114099, guid: 0458af221a3d2f745bc2ea42de02176f, type: 3}
       propertyPath: _nowState
       value: 1
       objectReference: {fileID: 0}
@@ -2567,22 +2571,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-      propertyPath: _obj
-      value: 
-      objectReference: {fileID: 1091474997055832236, guid: e16171aecd089064bbb76c3a12dc7a0f, type: 3}
-    - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-      propertyPath: _speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-      propertyPath: _isDebug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 406207382}
-    - target: {fileID: 473093953472587376, guid: 64f00cee20ed6b842996862758419f14, type: 3}
       propertyPath: _groundMap
       value: 
       objectReference: {fileID: 1912576593}
@@ -2627,10 +2615,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7466199572969406877, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 7466199572969406877, guid: 64f00cee20ed6b842996862758419f14, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
@@ -2642,11 +2626,6 @@ PrefabInstance:
 --- !u!4 &406207381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6887979777112616587, guid: 64f00cee20ed6b842996862758419f14, type: 3}
-  m_PrefabInstance: {fileID: 406207380}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &406207382 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4005977607013194854, guid: 64f00cee20ed6b842996862758419f14, type: 3}
   m_PrefabInstance: {fileID: 406207380}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &406207383 stripped
@@ -2730,7 +2709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomA_DiningRoom
+      value: RoomD_Chidren'sRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -2960,7 +2939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomA_DiningRoom
+      value: RoomF_StorageRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -3338,7 +3317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomA_DiningRoom
+      value: RoomE_ServantRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -3583,7 +3562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomA_DiningRoom
+      value: RoomC_TeaRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -3741,7 +3720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomA_DiningRoom
+      value: RoomG_ExhibitionRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -4714,11 +4693,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13578092014515191, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 13578092014515191, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.78
+      value: -4.15
       objectReference: {fileID: 0}
     - target: {fileID: 13578092014515191, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4753,28 +4732,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 661535764215162358, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 661535764215162358, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: m_Name
       value: Girl
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264303793864595203, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 247b3a1ab98376749ba6e7c1ac91c8d5, type: 3}
-    - target: {fileID: 2264303793864595203, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264303793864595203, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264303793864595203, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6338562260223918986, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: _map
@@ -4784,14 +4743,6 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 406207381}
-    - target: {fileID: 8185403789807252369, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: _speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8185403789807252369, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1801418199}
     - target: {fileID: 8185403789807252369, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
       propertyPath: _groundMap
       value: 
@@ -4812,11 +4763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfb02ad2e61bec43bc8518450267333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1801418199 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4685489147895086930, guid: 59bb78de16d42024babddbbbfbb5db1b, type: 3}
-  m_PrefabInstance: {fileID: 1801418194}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1865512605
 PrefabInstance:
   m_ObjectHideFlags: 0

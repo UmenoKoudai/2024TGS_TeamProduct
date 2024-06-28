@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Girl : CharacterBase
 {
+
+    #region ステートパターン
     private State _state;
     public State State
     {
@@ -22,9 +24,10 @@ public class Girl : CharacterBase
             }
         }
     }
-
     private NormalMove _normalMove;
     private Action _action;
+
+    #endregion
 
     public void Init(EventManager eventManager)
     {
