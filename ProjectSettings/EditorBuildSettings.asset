@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mains/Floor1/RoomG_ExhibitionRoom.unity
     guid: 93fe2bbdc2ef6264681cf9cc5968a28b
+  - enabled: 1
+    path: Assets/Scenes/Mains/OutGame/GameOver.unity
+    guid: 35294f5c36586c04e9dae99a3b0dd258
   m_configObjects: {}

@@ -177,6 +177,7 @@ MonoBehaviour:
     _enemySprites:
     - {fileID: 21300000, guid: aa14f1634c19fb443b26f3a03c173ed0, type: 3}
     - {fileID: 21300000, guid: b59f8f3d4d48c6a449bbd49d63e3614d, type: 3}
+  _gameOverSceneName: GameOver
 --- !u!114 &3584789073198083848
 MonoBehaviour:
   m_ObjectHideFlags: 0

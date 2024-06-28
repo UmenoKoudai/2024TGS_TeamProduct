@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     /// <summary>Enemyの食べる音の再生とGameOverシーンに遷移</summary>
     IEnumerator GameOverStart()
     {
-        //GameManager.Instance.StateChange(GameManager.SystemState.GameOver);
+        GameManager.Instance.StateChange(GameManager.SystemState.GameOver);
         AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.MonsterEating);
         yield return new WaitForSeconds(0.8f);
         AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.MonsterEating);
