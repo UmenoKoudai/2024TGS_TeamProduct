@@ -3794,6 +3794,7 @@ GameObject:
   - component: {fileID: 249032546}
   - component: {fileID: 249032545}
   - component: {fileID: 249032544}
+  - component: {fileID: 249032547}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -3816,6 +3817,7 @@ MonoBehaviour:
   _event: {fileID: 11400000, guid: 9ed4cd7f162f08746bc031c5d9dd6d36, type: 2}
   _flagList: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
   _animator: {fileID: 249032545}
+  _item: {fileID: 249032547}
 --- !u!95 &249032545
 Animator:
   serializedVersion: 5
@@ -3854,6 +3856,20 @@ Transform:
   - {fileID: 784434590}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249032547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249032543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e663739c71e8b47991d653c5c72490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDataBase: {fileID: 11400000, guid: ef5751c4fabfc7c45b73a95c2d5d3ce1, type: 2}
+  _itemName: "\u5B50\u4F9B\u90E8\u5C4B\u306E\u9375"
 --- !u!1 &279189494
 GameObject:
   m_ObjectHideFlags: 0
