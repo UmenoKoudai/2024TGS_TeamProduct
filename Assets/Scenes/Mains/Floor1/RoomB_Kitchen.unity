@@ -4826,7 +4826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemDataBase: {fileID: 11400000, guid: ef5751c4fabfc7c45b73a95c2d5d3ce1, type: 2}
-  _itemName: "\u6599\u7406"
+  _itemName: "\u7F8E\u5473\u3057\u305D\u3046\u306A\u6599\u7406"
 --- !u!114 &1607800017
 MonoBehaviour:
   m_ObjectHideFlags: 0
