@@ -17,9 +17,16 @@ public class EventManager  : MonoBehaviour
         //eventObject.ResultEventTalkData.NormalTalk.Image, eventObject.ResultEventTalkData.IsSelectTalk);
         EventTalkData data = eventObject.ResultEventTalkData;
         _talkSystem.ShowMessage(data);
-        if (data.IsSelectTalk)
+        try
         {
-            _selectSystem.SetButtonText(data.YesSelectText, data.NoSelectText);
+            if (data.IsSelectTalk)
+            {
+                _selectSystem.SetButtonText(data.YesSelectText, data.NoSelectText);
+            }
+        }
+        catch
+        {
+            Debug.LogError($"{eventObject}イベントオブジェクトがありません");
         }
     }
 

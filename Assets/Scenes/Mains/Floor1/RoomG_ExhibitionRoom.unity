@@ -7501,6 +7501,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1528035087}
     - target: {fileID: 6658403971454114099, guid: 0458af221a3d2f745bc2ea42de02176f, type: 3}
+      propertyPath: _girlFlag
+      value: 
+      objectReference: {fileID: 11400000, guid: 7600fe8d489a9b043a2f52b7e0611e4e, type: 2}
+    - target: {fileID: 6658403971454114099, guid: 0458af221a3d2f745bc2ea42de02176f, type: 3}
       propertyPath: _nowState
       value: 1
       objectReference: {fileID: 0}

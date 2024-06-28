@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +24,9 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("イベントシステムをアタッチ")]
     private EventSystem _eventSystem;
     public EventSystem EventSystem => _eventSystem;
+    [SerializeField]
+    private FlagData _girlFlag;
+
 
     enum GameState
     {
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
             if (!instance)
             {
                 instance = FindObjectOfType<GameManager>();
-                if(!instance)
+                if (!instance)
                 {
                     Debug.LogError("ゲームマネージャーが存在しません");
                 }
@@ -95,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
 
     private SystemState _state;
-    public SystemState State 
+    public SystemState State
     {
         get => _state;
         set
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         if (_nowState == GameState.OutGame) return;
         Init();
+        _girl.gameObject.SetActive(_girlFlag.IsOn);
         _states[(int)SystemState.Move] = new MoveState(this);
         _states[(int)SystemState.Talk] = new TalkState(this);
         _states[(int)SystemState.Option] = new OptionState(this);
@@ -131,22 +134,29 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
+        try
+        {
+            if (PlayingData.Instance.PosName != "" && PlayingData.Instance.PosName != null)
+            {
+                var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position;
+                _player.transform.position = pos;
+                _girl.transform.position = pos;
+                _player.transform.up = PlayingData.Instance.Direction;
+                _girl.transform.up = PlayingData.Instance.Direction;
+            }
+        }
+        catch
+        {
+            Debug.LogError($"{PlayingData.Instance.PosName}が存在しません");
+        }
         _player.Init(_eventManager);
         _girl.Init(_eventManager);
-        if (PlayingData.Instance.PosName != "" && PlayingData.Instance.PosName != null)
-        {
-            var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position;
-            _player.transform.position = pos;
-            _girl.transform.position = pos;
-            _player.transform.up = PlayingData.Instance.Direction;
-            _girl.transform.up = PlayingData.Instance.Direction;
-        }
     }
 
     public void StateChange(SystemState change)
     {
         State = change;
-        if(change != SystemState.Move)
+        if (change != SystemState.Move)
         {
             _player.Rb.velocity = Vector2.zero;
             _girl.Rb.velocity = Vector2.zero;
