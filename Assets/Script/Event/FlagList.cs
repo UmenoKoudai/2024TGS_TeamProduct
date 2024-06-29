@@ -9,6 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New FlagList", menuName = "ScriptableObject/Flags/FlagList")]
 public class FlagList : ScriptableObject
 {
+    [ContextMenuItem("ResetFlag","InitFlags")]
 
     [SerializeField, Header("フラグを追加するリスト")]
     List<FlagData> flags = new();

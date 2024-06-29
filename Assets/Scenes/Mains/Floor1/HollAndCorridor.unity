@@ -3770,6 +3770,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 4.6423
       objectReference: {fileID: 0}
+    - target: {fileID: 4877419067866943285, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877419067866943285, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 36943192}
+    - target: {fileID: 4877419067866943285, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Close
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877419067866943285, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5872488885689299707, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
       propertyPath: m_Name
       value: No
@@ -3801,6 +3817,22 @@ PrefabInstance:
     - target: {fileID: 7900449719748750145, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590975327352607588, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590975327352607588, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 36943192}
+    - target: {fileID: 8590975327352607588, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Save
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590975327352607588, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9009924448764394864, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
       propertyPath: m_SizeDelta.x
