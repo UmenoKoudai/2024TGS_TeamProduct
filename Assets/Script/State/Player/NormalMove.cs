@@ -18,7 +18,6 @@ public class NormalMove : IStateMachine
         _start = _character.Map.WorldToCell(_character.transform.position);
         _character.transform.position = _character.Map.GetCellCenterLocal(_start);
         _nextTile = _character.transform.position;
-        Debug.Log($"{_character.Map.GetCellCenterLocal(_start)}");
     }
 
     public void Enter()
@@ -34,9 +33,10 @@ public class NormalMove : IStateMachine
     public void FixedUpdate()
     {
         if (!_isMove) return;
+        _character.Direction = _direction;
         float distance = Vector3.Distance(_nextTile, _character.transform.position);
         _character.Rb.velocity = _direction * _character.Speed;
-        if (distance < 0.1f) 
+        if (distance < 0.1f)
         {
             _isMove = false;
             _character.Rb.velocity = Vector3.zero;
@@ -47,17 +47,16 @@ public class NormalMove : IStateMachine
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        _character.Animator.SetBool("Up", _isUpMove);
-        _character.Animator.SetBool("Left", _isLeftMove);
-        _character.Animator.SetBool("Right", _isRightMove);
-        if(h > 0 || h < 0 || v > 0 || v < 0) _character.Direction = _direction;
+        if (h > 0 || h < 0 || v > 0 || v < 0)
+        {
+            _character.Direction = _direction;
+            _character.Animator.SetFloat("X", h);
+            _character.Animator.SetFloat("Y", v);
+        }
         if (Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && !_isMove)
         {
             if (h > 0)
             {
-                _isUpMove = false;
-                _isRightMove = true;
-                _isLeftMove = false;
                 var next = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
@@ -71,9 +70,6 @@ public class NormalMove : IStateMachine
 
             if (h < 0)
             {
-                _isUpMove = false;
-                _isRightMove = false;
-                _isLeftMove = true;
                 var next = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
@@ -89,9 +85,6 @@ public class NormalMove : IStateMachine
         {
             if (v > 0)
             {
-                _isUpMove = true;
-                _isRightMove = false;
-                _isLeftMove = false;
                 var next = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
@@ -104,9 +97,6 @@ public class NormalMove : IStateMachine
             }
             if (v < 0)
             {
-                _isUpMove = false;
-                _isRightMove = false;
-                _isLeftMove = false;
                 var next = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
                 if (_character.Map.HasTile(_nextPos))
@@ -121,8 +111,24 @@ public class NormalMove : IStateMachine
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Exit();
-            _character.StateChange(CharacterBase.State.Action);
+            Action();
+        }
+    }
+
+    private void Action()
+    {
+        RaycastHit2D[] hit = Physics2D.RaycastAll(_character.transform.position, _character.Direction, 2);
+        Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
+        foreach (var h in hit)
+        //{
+        //    if (h.collider.gameObject.TryGetComponent(out IAction action))
+        //    {
+        //        action.Execute(_character);
+        //    }
+            if (h.collider.gameObject.TryGetComponent(out IEventObject events))
+            {
+                _character.Event.EventCheck(events);
+            }
         }
     }
 }

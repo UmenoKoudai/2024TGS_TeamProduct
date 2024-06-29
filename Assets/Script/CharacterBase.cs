@@ -9,17 +9,14 @@ public class CharacterBase : MonoBehaviour
     public float Speed => _speed;
     [SerializeField, Tooltip("キャラの移動可能なタイルマップ")]
     private Tilemap _groundMap;
-    [SerializeField, Tooltip("アニメーターを設定")]
-    private Animator animator;
 
     public Tilemap Map => _groundMap;
 
     public EventManager Event { get; set; }
 
-    public Rigidbody2D Rb { get;  set; }
+    public Rigidbody2D Rb { get; set; }
     public Vector2 Direction { get; set; }
-    public Animator Animator => animator;
-
+    public Animator Animator { get; set; }
     public enum State
     {
         NormalMove,
@@ -29,13 +26,69 @@ public class CharacterBase : MonoBehaviour
         MacCount,
     }
 
-    public virtual void StateChange(State changeState)
+    private State _state;
+    public State MoveState
     {
-        Debug.LogError("オーバーライドしていません");
+        get => _state;
+        set
+        {
+            if (_state == value) return;
+            _state = value;
+            _currentState = _states[(int)_state];
+        }
+    }
+
+    private IStateMachine[] _states = new IStateMachine[(int)State.MacCount];
+    private IStateMachine _currentState;
+
+    public void Init(EventManager eventManager)
+    {
+        if (!Animator) Animator = GetComponentInChildren<Animator>();
+        Rb = GetComponent<Rigidbody2D>();
+        _states[(int)State.NormalMove] = new NormalMove(this);
+        _states[(int)State.Action] = new Action(this);
+        Event = eventManager;
+        SetDirection(Direction);
+        _currentState = _states[(int)_state];
+    }
+
+    public void ManualUpdate()
+    {
+        try
+        {
+            _currentState.Update();
+        }
+        catch
+        {
+            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}");
+        }
+    }
+
+    public void ManualFixedUpdate()
+    {
+        try
+        {
+            _currentState.FixedUpdate();
+        }
+        catch
+        {
+            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}");
+        }
     }
 
     public virtual void CreatePos(Vector3 pos)
     {
+        Debug.LogError("CreatePos関数をオーバーライドしていません");
+    }
 
+    public void StateChange(State changeState)
+    {
+        MoveState = changeState;
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        Animator.SetFloat("X", direction.x);
+        Animator.SetFloat("Y", direction.y);
     }
 }
