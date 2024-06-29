@@ -29,9 +29,12 @@ public class EventActionArea : MonoBehaviour, IEventObject
             else //調べたフラグがfalseのとき
             {
                 ResultEventTalkData = _eventData.FalseTalkData;
-                foreach(var action in _action)
+                if (_action != null)
                 {
-                    action.Execute(_character);
+                    foreach (var action in _action)
+                    {
+                        action.Execute(_character);
+                    }
                 }
                 if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
             }
@@ -47,5 +50,4 @@ public class EventActionArea : MonoBehaviour, IEventObject
             _character = character;
         }
     }
-
 }

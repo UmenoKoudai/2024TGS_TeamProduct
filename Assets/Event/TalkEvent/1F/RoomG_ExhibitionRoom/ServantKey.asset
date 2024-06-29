@@ -23,7 +23,10 @@ MonoBehaviour:
     noTalk: []
   _falseTalkData:
     isSelectTalk: 0
-    eventStartTalk: []
+    eventStartTalk:
+    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+      sentence: "\u4F7F\u7528\u4EBA\u5BA4\u306E\u9375\u3092\u624B\u306B\u5165\u308C\u305F"
     yesSelectText: 
     noSelectText: 
     yesTalk: []

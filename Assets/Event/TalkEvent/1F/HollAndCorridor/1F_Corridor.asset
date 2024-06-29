@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
   m_Name: 1F_Corridor
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: 545c526883cff0d4f97dea5c24ee2d51, type: 2}
-  _changeFlag: {fileID: 11400000, guid: 545c526883cff0d4f97dea5c24ee2d51, type: 2}
+  _checkFlag: {fileID: 11400000, guid: 973280170881a0a42aa8c151da3f2322, type: 2}
+  _changeFlag: {fileID: 11400000, guid: 973280170881a0a42aa8c151da3f2322, type: 2}
   _trueTalkData:
     isSelectTalk: 0
     eventStartTalk: []

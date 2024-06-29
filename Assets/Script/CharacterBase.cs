@@ -20,9 +20,6 @@ public class CharacterBase : MonoBehaviour
     public enum State
     {
         NormalMove,
-        AutoMove,
-        Action,
-
         MacCount,
     }
 
@@ -35,6 +32,7 @@ public class CharacterBase : MonoBehaviour
             if (_state == value) return;
             _state = value;
             _currentState = _states[(int)_state];
+            _currentState.Enter();
         }
     }
 
@@ -46,7 +44,6 @@ public class CharacterBase : MonoBehaviour
         if (!Animator) Animator = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
         _states[(int)State.NormalMove] = new NormalMove(this);
-        _states[(int)State.Action] = new Action(this);
         Event = eventManager;
         SetDirection(Direction);
         _currentState = _states[(int)_state];
@@ -60,7 +57,7 @@ public class CharacterBase : MonoBehaviour
         }
         catch
         {
-            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}");
+            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}:{name}");
         }
     }
 

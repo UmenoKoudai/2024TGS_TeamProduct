@@ -47,6 +47,7 @@ public class NormalMove : IStateMachine
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+        Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
         if (h > 0 || h < 0 || v > 0 || v < 0)
         {
             _character.Direction = _direction;
@@ -118,13 +119,8 @@ public class NormalMove : IStateMachine
     private void Action()
     {
         RaycastHit2D[] hit = Physics2D.RaycastAll(_character.transform.position, _character.Direction, 2);
-        Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
         foreach (var h in hit)
-        //{
-        //    if (h.collider.gameObject.TryGetComponent(out IAction action))
-        //    {
-        //        action.Execute(_character);
-        //    }
+        {
             if (h.collider.gameObject.TryGetComponent(out IEventObject events))
             {
                 _character.Event.EventCheck(events);

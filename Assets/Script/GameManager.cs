@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
             if (_state == value) return;
             _state = value;
             _currentState = _states[(int)_state];
+            _currentState.Enter();
         }
     }
 
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
         }
         catch
         {
-            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}");
+            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}:{name}");
         }
     }
 

@@ -18,6 +18,25 @@ public class ExhibitionFirsEvent : MonoBehaviour, IEventObject
 
     public EventTalkData ResultEventTalkData { get; set; }
 
+    private void Start()
+    {
+        if (_event.CheckFlag.IsOn)
+        {
+            foreach (var obj in _firstObject)
+            {
+                obj.SetActive(true);
+            }
+            foreach (var obj in _secondObject)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else
+        {
+            _timeLine.Play();
+        }
+    }
+
     public void TalkStart()
     {
         FindObjectOfType<EventManager>().EventCheck(this);

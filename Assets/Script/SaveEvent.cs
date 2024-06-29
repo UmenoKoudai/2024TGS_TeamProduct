@@ -18,20 +18,18 @@ public class SaveEvent : MonoBehaviour, IEventObject, IAction
 
     public void ResultFlagCheck()
     {
-        Debug.Log("Save");
-        GameManager.Instance.StateChange(GameManager.SystemState.Talk);
-        ResultEventTalkData = _eventData.TrueTalkData;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(_eventData != null)
+        {
+            if(_flagList.GetFlagStatus(_eventData.CheckFlag))
+            {
+                ResultEventTalkData = _eventData.TrueTalkData;
+            }
+            else
+            {
+                ResultEventTalkData = _eventData.FalseTalkData;
+                if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
+            }
+            SaveLoadManager.Instance.SaveAction();
+        }
     }
 }

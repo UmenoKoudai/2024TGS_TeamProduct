@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EventObject : MonoBehaviour, IEventObject, IAction
+public class EventObject : MonoBehaviour, IEventObject
 {
     [SerializeField] FlagList _flagList = null;
     [SerializeField] EventData _eventData = null;
@@ -11,19 +11,10 @@ public class EventObject : MonoBehaviour, IEventObject, IAction
     //↓追加分　ウメノ
     [SerializeField] private ParticleSystem _effect;
     //
-    public Sprite _resultImage { get; set; }
-    public string _resultName { get; set; }
-    public string _resultText { get; set; }
-    //↓追加分　ウメノ
-    public void Execute(CharacterBase chara)
-    {
-        if (_eventData.CheckFlag.IsOn) return;
-        if(_item != null)
-        _item.PickUp();
-        if(_effect != null)
-        _effect.Stop();
-    }
-    //
+    //public Sprite _resultImage { get; set; }
+    //public string _resultName { get; set; }
+    //public string _resultText { get; set; }
+
     public void ResultFlagCheck()
     {
         if (_eventData != null)
@@ -36,6 +27,8 @@ public class EventObject : MonoBehaviour, IEventObject, IAction
             else //調べたフラグがfalseのとき
             {
                 ResultEventTalkData = _eventData.FalseTalkData;
+                _item.PickUp();
+                _effect.Stop();
                 if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
             }
 
