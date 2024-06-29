@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -123,13 +124,19 @@ public class GameManager : MonoBehaviour
         _states[(int)SystemState.Select] = new SelectState(this);
         _states[(int)SystemState.GameOver] = new GameOverState(this);
         _currentState = _states[(int)_state];
-        StateChange(SystemState.Move);
     }
 
     private void Update()
     {
         if (_nowState == GameState.OutGame) return;
-        _currentState.Update();
+        try
+        {
+            _currentState.Update();
+        }
+        catch
+        {
+            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}");
+        }
     }
 
     private void Init()
@@ -138,11 +145,12 @@ public class GameManager : MonoBehaviour
         {
             if (PlayingData.Instance.PosName != "" && PlayingData.Instance.PosName != null)
             {
-                var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position;
+                Debug.Log($"DIrectionPaste{PlayingData.Instance.Direction}");
+                var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position + (PlayingData.Instance.Direction * 2);
+                _player.Direction = PlayingData.Instance.Direction;
+                _girl.Direction = PlayingData.Instance.Direction;
                 _player.transform.position = pos;
                 _girl.transform.position = pos;
-                _player.transform.up = PlayingData.Instance.Direction;
-                _girl.transform.up = PlayingData.Instance.Direction;
             }
         }
         catch

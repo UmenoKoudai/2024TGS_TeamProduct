@@ -15,10 +15,6 @@ public class Action : IStateMachine
         Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
         foreach(var h in hit)
         {
-            if(h.collider)
-            {
-                Debug.Log(h.collider.gameObject.name);
-            }
             if (h.collider.gameObject.TryGetComponent(out IAction action))
             {
                 action.Execute(_character);
@@ -26,27 +22,8 @@ public class Action : IStateMachine
             if (h.collider.gameObject.TryGetComponent(out IEventObject events))
             {
                 _character.Event.EventCheck(events);
-                Debug.Log("イベント呼び出し");
             }
         }
-        //if(hit.collider)
-        //{
-        //    Debug.Log(hit.collider.gameObject.name);
-        //    if (hit.collider.gameObject.TryGetComponent(out EventObject events))
-        //    {
-        //        _character.EventManager.EventCheck(events);
-        //        Debug.Log("イベント呼び出し");
-        //    }
-        //}
-        //if(hit.collider.gameObject.TryGetComponent(out IAction action))
-        //{
-        //    action.Execute();
-        //}
-        //if (hit.collider.gameObject.TryGetComponent(out IEventObject events))
-        //{
-        //    _character.EventManager.EventCheck(events);
-        //    Debug.Log("イベント呼び出し");
-        //}
         _character.StateChange(CharacterBase.State.NormalMove);
     }
 
