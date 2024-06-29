@@ -171,4 +171,14 @@ public class GameManager : MonoBehaviour
             _girl.Rb.velocity = Vector2.zero;
         }
     }
+
+    public void Save()
+    {
+        SaveLoadManager.Instance.SaveAction();
+    }
+
+    public void Close()
+    {
+        _panelManager.SelectPanel.SetActive(false);
+    }
 }

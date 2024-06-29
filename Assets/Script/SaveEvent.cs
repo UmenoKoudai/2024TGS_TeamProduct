@@ -1,20 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveEvent : MonoBehaviour, IEventObject, IAction
+public class SaveEvent : MonoBehaviour, IEventObject
 {
     [SerializeField] FlagList _flagList = null;
     [SerializeField] EventData _eventData = null;
     [SerializeField] SavePoint _save;
     public EventData EventData => _eventData;
     public EventTalkData ResultEventTalkData { get; set; }
-
-    public void Execute(CharacterBase chara)
-    {
-        Debug.Log("SaveAction");
-        SaveLoadManager.Instance.SaveAction();
-    }
 
     public void ResultFlagCheck()
     {
@@ -29,7 +21,6 @@ public class SaveEvent : MonoBehaviour, IEventObject, IAction
                 ResultEventTalkData = _eventData.FalseTalkData;
                 if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
             }
-            SaveLoadManager.Instance.SaveAction();
         }
     }
 }
