@@ -11,13 +11,13 @@ public class OptionState : IStateMachine
     }
     public void Enter()
     {
-        Debug.Log("Option");
-        _gameManager.PanelManager.OptionPanel.SetActive(true);
+        _gameManager.PanelManager.OptionPanel?.SetActive(true);
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        _gameManager.PanelManager.OptionPanel?.SetActive(false);
+        _gameManager.StateChange(GameManager.SystemState.Move);
     }
 
     public void FixedUpdate()
@@ -27,6 +27,6 @@ public class OptionState : IStateMachine
 
     public void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape)) { Exit(); }
     }
 }

@@ -5,6 +5,8 @@ public class GhostEvent : MonoBehaviour, IEventObject
     [SerializeField]
     private EventData _event;
     [SerializeField]
+    private EventData _girlKeyEvent;
+    [SerializeField]
     private FlagList _flagList;
     [SerializeField]
     private Animator _animator;
@@ -32,6 +34,7 @@ public class GhostEvent : MonoBehaviour, IEventObject
                 ResultEventTalkData = _event.TrueTalkData;
                 _item.PickUp();
                 if (_event.ChangeFlag) _flagList.SetFlag(_event.ChangeFlag);
+                if (_girlKeyEvent.ChangeFlag) _flagList.SetFlag(_girlKeyEvent.ChangeFlag);
             }
             else
             {

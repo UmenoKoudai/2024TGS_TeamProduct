@@ -12,21 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
   m_Name: God_SaveTalk
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: 8bc0b10bf378da345a8dd92d914df1ef, type: 2}
-  _changeFlag: {fileID: 0}
+  _checkFlag: {fileID: 11400000, guid: d34c1da23b86bc54b8347210955e1257, type: 2}
+  _changeFlag: {fileID: 11400000, guid: d34c1da23b86bc54b8347210955e1257, type: 2}
   _trueTalkData:
-    isSelectTalk: 1
-    eventStartTalk: []
-    yesSelectText: 
-    noSelectText: 
-    yesTalk: []
-    noTalk: []
-  _falseTalkData:
     isSelectTalk: 1
     eventStartTalk:
     - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
       name: "\u5973\u795E\u50CF"
       sentence: "\u304A\u3084\uFF1F\n\u541B\u306E\u3053\u3068\u3092\u8A18\u9332\u3057\u3066\u6B32\u3057\u3044\u306E\u304B\u3044\uFF1F"
+    yesSelectText: "\u8A18\u9332\u3057\u3066\u3082\u3089\u3046"
+    noSelectText: "\u8A18\u9332\u3057\u306A\u3044"
+    yesTalk:
+    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+      sentence: "\u3042\u3041\u3001\u983C\u3080"
+    noTalk:
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "\u305D\u3046\u304B\u3001\u307E\u305F\u5FC5\u8981\u306A\u6642\u306B\u6765\u308B\u3068\u3044\u3044"
+  _falseTalkData:
+    isSelectTalk: 0
+    eventStartTalk:
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "...\u5168\u304F\u3001\u305D\u3093\u306A\u306B\u898B\u3064\u3081\u3089\u308C\u305F\u3089\u7167\u308C\u3066\u308B\u3058\u3083\u306A\u3044\u304B"
+    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+      sentence: "\uFF01\uFF1F"
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "\u3042\u306F\u306F\u3001\u305D\u3093\u306A\u306B\u9A5A\u304B\u306A\u3044\u3067\u304F\u308C\n\u3053\u3053\u3067\u306F\u3001\u3053\u308C\u304C\u666E\u901A\u306A\u306E\u3055\n\u541B\u306E\u3088\u3046\u306B\u8A71\u3059\u306E\u306F\u3053\u3053\u3067\u306F\u4EBA\u9593\u3060\u3051\u3067\u306F\u306A\u3044\u3002\u899A\u3048\u3066\u304A\u304F\u3068\u3044\u3044\u3088"
+    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+      sentence: "....\u308F\u3051\u304C\u5206\u304B\u3089\u306A\u304F\u306A\u3063\u3066\u304D\u305F\u308F\u306D\n\u305D\u3082\u305D\u3082\u3001\u8CB4\u65B9\u306F\u4F55\u8005\u306A\u306E\uFF1F"
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "\u3093\uFF1F\u79C1\u304C\u4F55\u8005\u304B\u3060\u3063\u3066\uFF1F\u306A\u306B\u3001\u79C1\u306F\u305F\u3060\u306E\u8A18\u9332\u8005\u3055\n\u541B\u9054\u3092\u305A\u3063\u3068\u898B\u3066\u3001\u7269\u8A9E\u3092\u66F8\u304D\u8A18\u3059\u3060\u3051"
+    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+      sentence: "\u8A18\u9332\u8005...\u3058\u3083\u3042\u3001\u3053\u3053\u304C\u3069\u3053\u3067\u79C1\u304C\u4F55\u6545\u9023\u308C\u3066\u3089\u308C\u305F\u304B\u3082\u77E5\u3063\u3066\u3044\u308B\u306E\u304B\u3057\u3089"
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "\u3042\u3041\u77E5\u3063\u3066\u3044\u308B\u3088\u3002\u4ECA\u6559\u3048\u3089\u308C\u308B\u306E\u306F\u541B\u306F\u4E3B\u306E\u6687\u3064\u3076\u3057\u306E\u305F\u3081\u306B\u547C\u3070\u308C\u305F\u3063\u3066\u3053\u3068\u3060\u3051\u304B\u306A"
+    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+      sentence: "\u6687\u3064\u3076\u3057\u3063\u3066..\u305D\u3093\u306A\u3075\u3056\u3051\u305F\u7406\u7531\u3067"
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "\u3067\u3082\u3001\u79C1\u306B\u8A71\u3057\u304B\u3051\u308C\u3070\u8A18\u9332\u3057\u3066\u3042\u3052\u308B\u3088\n\u6D3B\u7528\u3057\u3066\u304F\u308C\n\u3042\u3041\u306A\u306B\u3001\u8A18\u9332\u3057\u3066\u304A\u3051\u3070\u305D\u3053\u304B\u3089\u3084\u308A\u76F4\u3059\u3053\u3068\u304C\u3067\u304D\u308B"
+    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+      name: "\u5973\u795E\u50CF"
+      sentence: "\u305F\u3068\u3048\u6B7B\u3093\u3067\u3082\u3001\u306D\uFF1F"
     yesSelectText: "\u8A18\u9332\u3057\u3066\u3082\u3089\u3046"
     noSelectText: "\u8A18\u9332\u3057\u306A\u3044"
     yesTalk:

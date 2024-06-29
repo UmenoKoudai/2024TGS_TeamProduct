@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class ChildrenFirstEvent : MonoBehaviour, IEventObject
 {
@@ -19,9 +20,35 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
 
     public EventTalkData ResultEventTalkData { get; set; }
 
+    private void Start()
+    {
+        if (_event.CheckFlag.IsOn)
+        {
+            foreach (var obj in _firstObject)
+            {
+                obj.SetActive(true);
+            }
+            foreach (var obj in _secondObject)
+            {
+                obj.SetActive(false);
+            }
+        }
+        else
+        {
+            _timeLine.Play();
+        }
+    }
+
     public void TalkStart()
     {
         FindObjectOfType<EventManager>().EventCheck(this);
+    }
+
+    public void SceneChange()
+    {
+        PlayingData.Instance.PosName = "HoolF";
+        PlayingData.Instance.Direction = new Vector2(-1, 0);
+        SceneManager.LoadScene("HollAndCorridor");
     }
 
     public void ResultFlagCheck()
