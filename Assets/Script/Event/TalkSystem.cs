@@ -107,11 +107,20 @@ public class TalkSystem : MonoBehaviour
         if(_currentTalkData.Image != null)
         {
             _charaImage.sprite = _currentTalkData.Image;
+            _charaImage.enabled = true;
+        }
+        else
+        {
+            _charaImage.enabled = false;
         }
 
         if (_currentTalkData.Name != null || _currentTalkData.Name != "")
         {
             _charaName.text = _currentTalkData.Name;
+        }
+        else
+        {
+            _charaName.text = "";
         }
 
         _isTalkTextDisplaying = true;
