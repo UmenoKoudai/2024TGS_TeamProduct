@@ -73,7 +73,7 @@ public class TalkSystem : MonoBehaviour
         _talkData = _eventTalkData.EventStartTalk;
         
         //会話があるかどうかチェック
-        if (_talkData == null)
+        if (_talkData == null || _talkData.Length == 0)
         {
             _isTalking = false;
             _isSelectEventTalk = false;
