@@ -9,18 +9,19 @@ public class SaveData : MonoBehaviour
     [Header("セーブする値の確認")]
     //[SerializeField]をつけて保存したい値を宣言
     //現在はセーブ地点、キャラクターのsan値、イベントのフラグ
-    [SerializeField] Transform _savePos;
-    [SerializeField] int _sanNum;
-    [SerializeField] List<bool> _flags;
+    Transform _savePos;
+    int _sanNum;
+    List<bool> _flags;
+    string _nowTime;
 
     //セーブするときに値を代入する
     public void Save()
     {
         //セーブ地点、キャラクターの位置
-        //_savePos = ;
+        _savePos = FindObjectOfType<Player>().transform;
 
-        //san値を代入
-        //_sanNum = ;
+        var dateTime = DateTime.Now;
+        _nowTime = $"{dateTime.Year}/{dateTime.Month}/{dateTime.Day} {dateTime.Hour}:{dateTime.Minute}";
 
         //フラグを代入
         _flags = new List<bool>();
@@ -35,7 +36,7 @@ public class SaveData : MonoBehaviour
     public void Load()
     {
         //セーブ地点、キャラクターの位置
-        //
+        FindObjectOfType<Player>().transform.position = _savePos.position;
         //san値を代入
         //
         //フラグを代入
@@ -43,5 +44,10 @@ public class SaveData : MonoBehaviour
         {
             GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
         }
+    }
+
+    public string GetDateTime()
+    {
+        return _nowTime;
     }
 }
