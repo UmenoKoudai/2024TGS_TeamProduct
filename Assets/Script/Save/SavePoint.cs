@@ -14,13 +14,13 @@ public class SavePoint : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K))
             {
                 //セーブするときはこれを呼べばできます
-                SaveLoadManager.Instance.SaveAction();
+                //SaveLoadManager.Instance.SaveAction();
             }
             //Lでロード
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 //ロードするときはこれを呼べばできます
-                SaveLoadManager.Instance.LoadAction();
+                //SaveLoadManager.Instance.LoadAction();
             }
         }
     }

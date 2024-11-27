@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public EventSystem EventSystem => _eventSystem;
     [SerializeField]
     private FlagData _girlFlag;
+    [SerializeField]
+    private GameObject _savepanel;
 
 
     enum GameState
@@ -174,7 +176,12 @@ public class GameManager : MonoBehaviour
 
     public void Save()
     {
-        SaveLoadManager.Instance.SaveAction();
+        FindObjectOfType<SaveLoadManager>().OpenSavePanel();
+    }
+
+    public void Load()
+    {
+        FindObjectOfType<SaveLoadManager>().OpenLoadPanel();
     }
 
     public void Close()
