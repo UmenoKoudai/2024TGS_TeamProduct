@@ -179,6 +179,11 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<SaveLoadManager>().OpenSavePanel();
     }
 
+    public void Load()
+    {
+        FindObjectOfType<SaveLoadManager>().OpenLoadPanel();
+    }
+
     public void Close()
     {
         _panelManager.SelectPanel.SetActive(false);

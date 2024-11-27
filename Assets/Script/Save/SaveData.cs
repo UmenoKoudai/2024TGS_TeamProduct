@@ -4,6 +4,41 @@ using UnityEngine;
 using System;
 
 [Serializable]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class SaveData : MonoBehaviour
 {
     [Header("セーブする値の確認")]
@@ -35,14 +70,21 @@ public class SaveData : MonoBehaviour
     //ロードするときに値を代入する
     public void Load()
     {
-        //セーブ地点、キャラクターの位置
-        FindObjectOfType<Player>().transform.position = _savePos.position;
-        //san値を代入
-        //
-        //フラグを代入
-        for (int i = 0; i < _flags.Count; i++)
+        try
         {
-            GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
+            //セーブ地点、キャラクターの位置
+            FindObjectOfType<Player>().transform.position = _savePos.position;
+            //san値を代入
+            //
+            //フラグを代入
+            for (int i = 0; i < _flags.Count; i++)
+            {
+                GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
+            }
+        }
+        catch
+        {
+            Debug.LogError("データが存在しません");   
         }
     }
 

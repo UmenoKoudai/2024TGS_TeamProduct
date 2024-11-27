@@ -106,6 +106,7 @@ public class SaveLoadManager : MonoBehaviour
         _data.Save();
         Save();
         _saveButton[fileIndex].GetComponentInChildren<Text>().text = _data.GetDateTime();
+        _loadButton[fileIndex].GetComponentInChildren<Text>().text= _data.GetDateTime();
     }
 
     //ƒ[ƒh‚µ‚½‚¢‚Æ‚«‚ÉŒÄ‚Ño‚·
