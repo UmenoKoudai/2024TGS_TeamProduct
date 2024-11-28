@@ -262,8 +262,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.08070001, y: 2.0917501, z: 0}
-    m_Extent: {x: 0.89970005, y: 3.60645, z: 0}
+    m_Center: {x: 0.085099995, y: 2.0840502, z: 0}
+    m_Extent: {x: 0.9, y: 3.59615, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1841,8 +1841,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.567, y: 1.5426, z: 0}
-    m_Extent: {x: 1.8239, y: 1.1829001, z: 0}
+    m_Center: {x: -0.5614, y: 1.5423, z: 0}
+    m_Extent: {x: 1.8189001, y: 1.1830001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4125,11 +4125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: DiningC
+      value: HoolB
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomA_DiningRoom
+      value: 2F_Floor
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -4137,7 +4137,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: Kitchen
+      value: 2F_RoomB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
