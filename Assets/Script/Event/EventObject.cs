@@ -27,11 +27,13 @@ public class EventObject : MonoBehaviour, IEventObject
             else //調べたフラグがfalseのとき
             {
                 ResultEventTalkData = _eventData.FalseTalkData;
-                _item.PickUp();
-                _effect.Stop();
+                if (_item)
+                {
+                    _item.PickUp();
+                    _effect.Stop();
+                }
                 if (_eventData.ChangeFlag != null) _flagList.SetFlag(_eventData.ChangeFlag);
             }
-
         }
     }
 
