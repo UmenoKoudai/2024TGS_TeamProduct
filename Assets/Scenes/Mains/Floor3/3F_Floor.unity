@@ -2978,16 +2978,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -26, y: 2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 25, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -2998,31 +2988,11 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -26, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 25, y: 3, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 2
       m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -26, y: 4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3490,15 +3460,15 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 58
+  - m_RefCount: 57
     m_Data: {fileID: 11400000, guid: 38471760753109d4da9b642f4653e5d3, type: 2}
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: 9c6bc55ce1c4fdb4dbfc667bbb3cf486, type: 2}
-  - m_RefCount: 46
+  - m_RefCount: 45
     m_Data: {fileID: 11400000, guid: 2042d8539ee59044fad56a7f0b572d6c, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: affbdde21bc263944989318f764683ac, type: 2}
-  - m_RefCount: 81
+  - m_RefCount: 80
     m_Data: {fileID: 11400000, guid: d31dc6fe964e9dc4587dc10fad8e6840, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 6bfe54508d1cffa40b0075c4b7931271, type: 2}
@@ -3507,15 +3477,15 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 58
+  - m_RefCount: 57
     m_Data: {fileID: -237264960, guid: 1488d5c6cb1f2ef438e0d5612422dfd0, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 21419057, guid: 1488d5c6cb1f2ef438e0d5612422dfd0, type: 3}
-  - m_RefCount: 46
+  - m_RefCount: 45
     m_Data: {fileID: 1752472096, guid: 1488d5c6cb1f2ef438e0d5612422dfd0, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -598918729, guid: 1488d5c6cb1f2ef438e0d5612422dfd0, type: 3}
-  - m_RefCount: 81
+  - m_RefCount: 80
     m_Data: {fileID: 803452354, guid: 1488d5c6cb1f2ef438e0d5612422dfd0, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: -119792146, guid: 1488d5c6cb1f2ef438e0d5612422dfd0, type: 3}
@@ -3524,7 +3494,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 207
+  - m_RefCount: 204
     m_Data:
       e00: 1
       e01: 0
@@ -3561,7 +3531,7 @@ Tilemap:
       e32: 5.16e-43
       e33: 5.18e-43
   m_TileColorArray:
-  - m_RefCount: 207
+  - m_RefCount: 204
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4498,26 +4468,26 @@ PrefabInstance:
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _event
       value: 
-      objectReference: {fileID: 11400000, guid: 079b0f191df2ed54f9a85284a1ccd8b4, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _keyFlag
       value: 
       objectReference: {fileID: 11400000, guid: 2ba7cbd949b980b479a070a0a208fb18, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: Children
+      value: HoolE
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _flagList
       value: 
-      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _isKeyRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomD_Chidren'sRoom
+      value: 3F_RoomE
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -4525,7 +4495,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: HoolF
+      value: RoomE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5140,7 +5110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.99
+      value: 12.54
       objectReference: {fileID: 0}
     - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5176,11 +5146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: Storage
+      value: HoolB
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomF_StorageRoom
+      value: 3F_RoomB
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -5188,7 +5158,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: HoolD
+      value: RoomB
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5432,22 +5402,22 @@ PrefabInstance:
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _event
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 5480a82b55effe843ad3ee7ab005df02, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: Exhibition
+      value: HoolCRightSide
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _flagList
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _isKeyRoom
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomG_ExhibitionRoom
+      value: 3F_RoomC
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -5455,7 +5425,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: HoolC (1)
+      value: RoomCRightSide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6010,26 +5980,26 @@ PrefabInstance:
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _event
       value: 
-      objectReference: {fileID: 11400000, guid: 56fc53082e8c1a54fac5ba2582b29603, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _keyFlag
       value: 
       objectReference: {fileID: 11400000, guid: 304317992a7714e4fb3f8f7dc4a77cdf, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: Servant
+      value: HoolA
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _flagList
       value: 
-      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _isKeyRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomE_ServantRoom
+      value: 3F_RoomA
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -6037,7 +6007,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: HoolE
+      value: RoomA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7056,22 +7026,22 @@ PrefabInstance:
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _event
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 5480a82b55effe843ad3ee7ab005df02, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: Exhibition
+      value: HoolCLeftSide
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _flagList
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _isKeyRoom
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomG_ExhibitionRoom
+      value: 3F_RoomC
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -7079,7 +7049,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: HoolC (2)
+      value: RoomCLeftSide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7553,80 +7523,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1679723339825191727, guid: 149b4275ff114f644ae86b64beb67178, type: 3}
   m_PrefabInstance: {fileID: 1132552853}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1156906926
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1799184487}
-    m_Modifications:
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0046720887
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: _posName
-      value: Tea
-      objectReference: {fileID: 0}
-    - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: _nextScene
-      value: RoomC_TeaRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-      propertyPath: m_Name
-      value: HoolG
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
---- !u!4 &1156906927 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1345375786804594714, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
-  m_PrefabInstance: {fileID: 1156906926}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1171750674
 GameObject:
   m_ObjectHideFlags: 0
@@ -7979,7 +7875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
-      value: Exhibition
+      value: HoolD
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _flagList
@@ -7991,7 +7887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
-      value: RoomG_ExhibitionRoom
+      value: 3F_RoomD
       objectReference: {fileID: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Icon
@@ -7999,7 +7895,7 @@ PrefabInstance:
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8353500886614268010, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: m_Name
-      value: HoolC
+      value: RoomD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11500,13 +11396,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1185803887}
+  - {fileID: 891711093}
+  - {fileID: 625437928}
   - {fileID: 733345513}
   - {fileID: 1029099981}
-  - {fileID: 625437928}
-  - {fileID: 891711093}
+  - {fileID: 1185803887}
   - {fileID: 476388600}
-  - {fileID: 1156906927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801147694
@@ -16866,16 +16761,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -26, y: 1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 25, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -17837,6 +17722,16 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -27, y: 9, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 25, y: 9, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 2
