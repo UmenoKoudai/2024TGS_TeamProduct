@@ -14,6 +14,8 @@ public class ItemInventry : MonoBehaviour
 
     [SerializeField] public Button[] _itemButton;//ボタン対応への追記文
 
+    IvyEnent _IvyEnent; //蔦イベント
+
     private KeyCode[] _key = new KeyCode[]
 {
     KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2,
@@ -25,6 +27,7 @@ public class ItemInventry : MonoBehaviour
     void Start()
     {
         _itemPanel = FindObjectOfType<ItemPanel>();
+        _IvyEnent = FindObjectOfType<IvyEnent>();
     }
     private void Update()
     {
@@ -89,9 +92,14 @@ public class ItemInventry : MonoBehaviour
 
         _pushKeyNum = index;
 
-        if (ItemCheck(_pushKeyNum, _itemDataBases.Count))
+        //もし蔦の範囲に入っていてアイテムを使用した場合
+        if (ItemCheck(_pushKeyNum, _itemDataBases.Count)　&& _IvyEnent._playerTrigger)
         {
-            Debug.Log(_itemDataBases[_pushKeyNum]._itemID);
+            _IvyEnent.AnswerNumberCheck(_itemDataBases[_pushKeyNum]._itemID);
+        }
+        else if(ItemCheck(_pushKeyNum, _itemDataBases.Count))
+        {
+            Debug.Log(_itemDataBases[_pushKeyNum]._itemID); //ボタンに入っているアイテムのIdを出力
             ItemIDCheck(_unionItemIDs, _itemDataBases[_pushKeyNum]._itemID);
         }
     }
