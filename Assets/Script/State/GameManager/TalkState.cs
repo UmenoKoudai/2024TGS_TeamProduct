@@ -34,7 +34,7 @@ public class TalkState : IStateMachine
     public void Update()
     {
         //クドウ追記
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Fire1"))
         {
             if (_eventManager.TalkSystem.IsTalkTextDisplaying)  //会話Text表示中なら
             {

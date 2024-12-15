@@ -1,43 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectSystem : MonoBehaviour
 {
-    [Header("SelectPanelのButtonText")]
+    [Header("SelectPanel")]
 
-    [Tooltip("選択肢の中の行動にうつす方")]
     [SerializeField]
-    Text _yesButtonText;
+    GameObject _selectPanel;
 
-    [Tooltip("選択肢の中の行動にうつす方")]
-    [SerializeField]
-    Text _noButtonText;
-
-    bool _isYes;
+    List<GameObject> _choiceButtons = new List<GameObject>();
 
     bool _isSelecting;
 
-    public bool IsSelecting => _isSelecting;
+    /// <summary> 選択したボタンのID</summary>
+    int _selectedButtonID = -1;
 
-    public bool IsYes => _isYes;
+    public int SelectedButtonID => _selectedButtonID;
 
-    /// <summary>ボタンのText設定</summary>
-    /// <param name="yes">行動に移す</param>
-    /// <param name="no">行動に移さない</param>
-    public void SetButtonText(string yes, string no)
+    /// <summary>今選択中かどうか</summary>
+    public bool IsSelecting { get => _isSelecting; set => _isSelecting = value; }
+
+    /// <summary>選択肢ボタンの生成とID設定 </summary>
+    /// <param name="button">生成するボタンPrefab</param>
+    /// <param name="choiceButtonText">ボタンのTextに表示する文字</param>
+    public void SetButton(GameObject button, string choiceButtonText)
     {
-        _yesButtonText.text = " " + yes;
-        _noButtonText.text = " " + no;   
-        _isSelecting = true;
+        //ボタン生成/文字設定
+        GameObject choiceButton = Instantiate(button);
+        choiceButton.transform.GetChild(0).GetComponent<Text>().text = choiceButtonText;
+        choiceButton.transform.parent = _selectPanel.transform;
+        _choiceButtons.Add(choiceButton);
+
+        //ボタンのID設定
+        ChoiceButtonBase buttonBase = choiceButton.GetComponent<ChoiceButtonBase>();
+
+        if (buttonBase == null)
+            Debug.LogError("選択肢となるボタンPrefabに　ChoiceButtonBase.cs をアタッチしてください");
+
+        buttonBase.SetID(_choiceButtons.Count - 1, this);
     }
 
-    /// <summary>行動するか、しないか</summary>
-    ///<param name="isYes">行動する</param>
-    public void YesOrNoSelect(bool isYes)
+    /// <summary>選択肢ボタンの削除</summary>
+    public void DestroyChoiceButtons()
     {
-        _isSelecting = false;
-        _isYes = isYes;
+        for (int i = 0; i < _choiceButtons.Count; i++)
+        {
+            Destroy(_choiceButtons[i]);
+        }
+        _choiceButtons.Clear();
+    }
+
+    /// <summary>選択終了</summary>
+    /// <param name="id">選択したボタンのID</param>
+    public void EndSelected(int id)
+    {
+        _selectedButtonID = id;
+        _isSelecting = false;       //選択終了
+        DestroyChoiceButtons();  
     }
 }

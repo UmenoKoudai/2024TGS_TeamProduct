@@ -131,11 +131,11 @@ public class TalkSystem : MonoBehaviour
         _isTalking = true;
     }
 
-    /// <summary>実行するかどうか(選択肢込みの会話だったら)で話の内容を変える</summary>
-    /// <param name="isYes">実行するかどうか</param>
-    public void IsEventSelectTalk(bool isYes)
+    /// <summary>選択後の話の内容の更新</summary>
+    /// <param name="talkData">選択後の会話</param>
+    public void IsEventSelectTalk(int choiceNumber)
     {
-        _talkData = isYes ? _eventTalkData.YesTalk : _eventTalkData.NoTalk;
+        _talkData = _eventTalkData.ChoiceButtonData[choiceNumber].talk;
 
         _isSelectEventTalk = false;
 

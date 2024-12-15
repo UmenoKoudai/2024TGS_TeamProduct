@@ -55,33 +55,30 @@ public class EventTalkData
     [SerializeField]
     public TalkData[] eventStartTalk;
 
-    /// <summary>実行する側の文</summary>
     [SerializeField]
-    public string yesSelectText;
+    public int choiceNum;
 
-    /// <summary>実行しない側の文</summary>
     [SerializeField]
-    public string noSelectText;
-
-    /// <summary>実行した場合の会話</summary>
-    [SerializeField]
-    public TalkData[] yesTalk;
-
-    /// <summary>実行しなかった場合の会話</summary>
-    [SerializeField]
-    public TalkData[] noTalk;
+    public ChoiceButtonData[] choiceButtonDatas;
 
     /// <summary>選択肢込みの会話かどうか</summary>
     public bool IsSelectTalk => isSelectTalk;
     /// <summary>選択イベントが始まる前の会話</summary>
     public TalkData[] EventStartTalk => eventStartTalk;
-    /// <summary>実行しない側の文</summary>
-    public string NoSelectText => noSelectText;
-    /// <summary>実行する側の文</summary>
-    public string YesSelectText => yesSelectText;
-    /// <summary>実行しなかった場合の会話</summary>
-    public TalkData[] NoTalk => noTalk;
-    /// <summary>実行した場合の会話</summary>
-    public TalkData[] YesTalk => yesTalk;
+
+    public ChoiceButtonData[] ChoiceButtonData => choiceButtonDatas;
+}
+
+[Serializable]
+public class ChoiceButtonData
+{
+    [SerializeField]
+    public GameObject button;
+
+    [SerializeField]
+    public string buttonText = "";
+
+    [SerializeField]
+    public TalkData[] talk = new TalkData[0];
 }
 
