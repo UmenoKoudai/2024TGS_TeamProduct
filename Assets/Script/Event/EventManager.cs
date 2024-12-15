@@ -17,17 +17,21 @@ public class EventManager  : MonoBehaviour
         //eventObject.ResultEventTalkData.NormalTalk.Image, eventObject.ResultEventTalkData.IsSelectTalk);
         EventTalkData data = eventObject.ResultEventTalkData;
         _talkSystem.ShowMessage(data);
-        try
-        {
+        //try
+        //{
             if (data.IsSelectTalk)
             {
-                _selectSystem.SetButtonText(data.YesSelectText, data.NoSelectText);
+                for(int i = 0; i < data.choiceButtonDatas.Length; i++)
+                {
+                    ChoiceButtonData choice = data.choiceButtonDatas[i];
+                    _selectSystem.SetButton(choice.button, choice.buttonText);
+                }
             }
-        }
-        catch
-        {
-            Debug.LogError($"{eventObject}イベントオブジェクトがありません");
-        }
+        //}
+        //catch
+        //{
+        //    Debug.LogError($"{eventObject}イベントオブジェクトがありません");
+        //}
     }
 
     /// <summary>↓人と物で仕様が別なら人のとき用</summary>

@@ -57,33 +57,55 @@ public class EventDataEditor : Editor
             GUI.backgroundColor = UnityEngine.Color.black;
             GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
             GUI.backgroundColor = color;
-            EditorGUILayout.Space(30);
+            EditorGUILayout.Space(25);
 
             EditorGUILayout.LabelField("選択イベント", EditorStyles.boldLabel);
+
             EditorGUI.BeginChangeCheck();
-
-            string yesText = EditorGUILayout.TextField("Yes", eventTalkData.yesSelectText);
-            string noText = EditorGUILayout.TextField("No", eventTalkData.noSelectText);
-
+            int choiceNum = EditorGUILayout.IntField("選択数", eventTalkData.choiceNum);
             if (EditorGUI.EndChangeCheck())
             {
-                eventTalkData.yesSelectText = yesText;
-                eventTalkData.noSelectText = noText;
-                Undo.RecordObject(_target, "Changed TalkData");
-                EditorUtility.SetDirty(_target);
+                int deleteNum = eventTalkData.choiceButtonDatas.Length - choiceNum;
+                if(deleteNum > 0)
+                {
+                    for (int i = deleteNum; i > 0; i--)
+                    {
+                        ArrayUtility.RemoveAt(ref eventTalkData.choiceButtonDatas, eventTalkData.choiceButtonDatas.Length - 1);
+                    }
+                    Undo.RecordObject(target, "Deleted TalkData");
+                    EditorUtility.SetDirty(_target);
+                }
+                else if(deleteNum < 0)
+                {
+                    deleteNum *= -1;
+                    for (int i = 0; i < deleteNum; i++)
+                    {
+                        ChoiceButtonData choiceButtonData = new ChoiceButtonData();
+                        ArrayUtility.Add(ref eventTalkData.choiceButtonDatas, choiceButtonData);
+                    }
+                    Undo.RecordObject(_target, "Add Talk");
+                    EditorUtility.SetDirty(_target);
+                }
+                eventTalkData.choiceNum = eventTalkData.choiceButtonDatas.Length;
             }
 
-            EditorGUILayout.Space(30);
-            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-
-            EditorGUILayout.LabelField("Yesの場合");
-            TalkView(ref eventTalkData.yesTalk);
-
-            EditorGUILayout.Space(30);
-            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-
-            EditorGUILayout.LabelField("Noの場合");
-            TalkView(ref eventTalkData.noTalk);
+            for (int i = 0; i < eventTalkData.choiceButtonDatas.Length; i++)
+            {
+                EditorGUILayout.Space(30);
+                GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
+                EditorGUILayout.LabelField($"選択肢 {i}");
+                EditorGUI.BeginChangeCheck();
+                GameObject button =  (GameObject)EditorGUILayout.ObjectField("ButtonPrefab", eventTalkData.choiceButtonDatas[i].button, typeof(GameObject), true);
+                string choiceButtonText = EditorGUILayout.TextField("選択肢Text", eventTalkData.choiceButtonDatas[i].buttonText);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    eventTalkData.choiceButtonDatas[i].button = button;
+                    eventTalkData.choiceButtonDatas[i].buttonText = choiceButtonText;
+                    Undo.RecordObject(_target, "Changed ChoiceButtonText");
+                    EditorUtility.SetDirty(_target);
+                }
+                TalkView(ref eventTalkData.choiceButtonDatas[i].talk);
+            }
         }
     }
 

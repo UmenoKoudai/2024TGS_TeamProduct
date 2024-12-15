@@ -20,16 +20,20 @@ MonoBehaviour:
     - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
       name: "\u5973\u795E\u50CF"
       sentence: "\u304A\u3084\uFF1F\n\u541B\u306E\u3053\u3068\u3092\u8A18\u9332\u3057\u3066\u6B32\u3057\u3044\u306E\u304B\u3044\uFF1F"
-    yesSelectText: "\u8A18\u9332\u3057\u3066\u3082\u3089\u3046"
-    noSelectText: "\u8A18\u9332\u3057\u306A\u3044"
-    yesTalk:
-    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
-      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
-      sentence: "\u3042\u3041\u3001\u983C\u3080"
-    noTalk:
-    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
-      name: "\u5973\u795E\u50CF"
-      sentence: "\u305D\u3046\u304B\u3001\u307E\u305F\u5FC5\u8981\u306A\u6642\u306B\u6765\u308B\u3068\u3044\u3044"
+    choiceNum: 2
+    choiceButtonDatas:
+    - button: {fileID: 4456493806854247177, guid: 6bcdcbe9b4d165c4680ff8d651f034b1, type: 3}
+      buttonText: "\u8A18\u61B6\u3057\u3066\u3082\u3089\u3046"
+      talk:
+      - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
+        name: "\u77F3\u90FD\u3000\u30EB\u30A4"
+        sentence: "\u3042\u3041\u3001\u983C\u3080"
+    - button: {fileID: 4456493806854247177, guid: 6bcdcbe9b4d165c4680ff8d651f034b1, type: 3}
+      buttonText: "\u8A18\u61B6\u3057\u306A\u3044"
+      talk:
+      - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
+        name: "\u5973\u795E\u50CF"
+        sentence: "\u305D\u3046\u304B\u3001\u307E\u305F\u5FC5\u8981\u306A\u6642\u306B\u6765\u308B\u3068\u3044\u3044"
   _falseTalkData:
     isSelectTalk: 0
     eventStartTalk:
@@ -63,13 +67,5 @@ MonoBehaviour:
     - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
       name: "\u5973\u795E\u50CF"
       sentence: "\u305F\u3068\u3048\u6B7B\u3093\u3067\u3082\u3001\u306D\uFF1F"
-    yesSelectText: "\u8A18\u9332\u3057\u3066\u3082\u3089\u3046"
-    noSelectText: "\u8A18\u9332\u3057\u306A\u3044"
-    yesTalk:
-    - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}
-      name: "\u77F3\u90FD\u3000\u30EB\u30A4"
-      sentence: "\u3042\u3041\u3001\u983C\u3080"
-    noTalk:
-    - image: {fileID: 21300000, guid: 343257c06c96553418db574ae894ebf4, type: 3}
-      name: "\u5973\u795E\u50CF"
-      sentence: "\u305D\u3046\u304B\u3001\u307E\u305F\u5FC5\u8981\u306A\u6642\u306B\u6765\u308B\u3068\u3044\u3044"
+    choiceNum: 0
+    choiceButtonDatas: []

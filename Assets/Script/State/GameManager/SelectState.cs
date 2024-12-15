@@ -10,9 +10,6 @@ public class SelectState : IStateMachine
 
     private EventSystem _eventSystem;
 
-    private GameObject _yesButton;
-
-    private GameObject _noButton;
     public SelectState(GameManager gameManager)
     {
         _gameManager = gameManager;
@@ -23,8 +20,7 @@ public class SelectState : IStateMachine
     public void Enter()
     {
         _gameManager.PanelManager.SelectPanel.SetActive(true);
-        _yesButton = _gameManager.PanelManager.SelectPanel.transform.GetChild(0).gameObject;
-        _noButton = _gameManager.PanelManager.SelectPanel.transform.GetChild(1).gameObject;
+        _eventManager.SelectSystem.IsSelecting = true;
     }
 
     public void Exit()
@@ -42,20 +38,11 @@ public class SelectState : IStateMachine
 
     public void Update()
     {
-        float y = Input.GetAxisRaw("Vertical");
-        if(Input.GetButtonDown("Vertical") && y > 0)
-        {
-            EventSystem.current.SetSelectedGameObject(_yesButton);
-        }
-        else if(Input.GetButtonDown("Vertical") && y < 0)
-        {
-            EventSystem.current.SetSelectedGameObject(_noButton);
-        }
 
         if (!_eventManager.SelectSystem.IsSelecting)
         {
             AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.ButtonClick);
-            _eventManager.TalkSystem.IsEventSelectTalk(_eventManager.SelectSystem.IsYes);
+            _eventManager.TalkSystem.IsEventSelectTalk(_eventManager.SelectSystem.SelectedButtonID);
             Exit();
         }
     }
