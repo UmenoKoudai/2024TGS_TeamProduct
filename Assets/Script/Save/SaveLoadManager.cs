@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using System;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    [SerializeField] SaveData _data;
+    //[SerializeField] SaveData _data;
     string _filePath;
     [SerializeField, Header("保存先のファイル名")] string _fileName;
     [SerializeField]
@@ -16,8 +17,24 @@ public class SaveLoadManager : MonoBehaviour
     [SerializeField]
     GameObject _loadPanel;
 
-    SaveData[] _saveDate = new SaveData[10];
-    
+    Date[] _saveDate = new Date[10];
+
+    [Header("セーブする値の確認")]
+    Transform _savePos;
+    bool[] _flags;
+    string _nowTime = "";
+    Date _date;
+
+    public class Date
+    {
+
+        public float X;
+        public float Y;
+        public float Z;
+        public string NowTime;
+        public bool[] Flag;
+    }
+
 
     #region　シングルトン
 
@@ -66,18 +83,19 @@ public class SaveLoadManager : MonoBehaviour
 
     void Start()
     {
+        _date = new Date();
         //保存先等
         //Debug.Log(Application.dataPath);
         //現在こっちに保存してます
         //Debug.Log(Application.persistentDataPath);
-
-        _data = GetComponent<SaveData>();
-
         if (!File.Exists(_filePath))
         {
-            Save();
+          //Save();
         }
-
+        for(int i = 0; i < _saveDate.Length; i++)
+        {
+            _saveDate[i] = new Date();
+        }
         //タイトルなどで変化をつける場合最初にロードしておきたいため
         InitLoad();
     }
@@ -85,6 +103,7 @@ public class SaveLoadManager : MonoBehaviour
     public void OpenSavePanel()
     {
         _savePanel.SetActive(true);
+        //TimeReflection(_saveButton);
     }
     public void CloseSavePanel()
     {
@@ -93,27 +112,81 @@ public class SaveLoadManager : MonoBehaviour
     public void OpenLoadPanel()
     {
         _loadPanel.SetActive(true);
+        //TimeReflection(_loadButton);
     }
     public void CloseLoadPanel()
     {
         _loadPanel.SetActive(false);
     }
 
+    private void TimeReflection(Button[] buttons)
+    {
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            var saveTime = _saveDate[i].NowTime;
+            if (saveTime != "")
+            {
+                buttons[i].GetComponentInChildren<Text>().text = saveTime.ToString();
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
+
     //セーブしたいときに呼び出す
     public void SaveAction(int fileIndex)
     {
         _filePath = $"{Application.persistentDataPath}/SaveDate{fileIndex}.json";
-        _data.Save();
-        Save();
-        _saveButton[fileIndex].GetComponentInChildren<Text>().text = _data.GetDateTime();
-        _loadButton[fileIndex].GetComponentInChildren<Text>().text= _data.GetDateTime();
+        //セーブ地点、キャラクターの位置
+        _savePos = FindObjectOfType<Player>().transform;
+
+        var dateTime = DateTime.Now;
+        _nowTime = $"{dateTime.Year}/{dateTime.Month}/{dateTime.Day} {dateTime.Hour}:{dateTime.Minute}";
+
+        //フラグを代入
+        _flags = new bool[GameManager.Instance.FlagList.Flags.Count];
+        for (int i = 0; i < GameManager.Instance.FlagList.Flags.Count; i++)
+        {
+            _flags[i] = GameManager.Instance.FlagList.GetFlagStatus(GameManager.Instance.FlagList.Flags[i]);
+
+        }
+        _date.X = _savePos.position.x;
+        _date.Y = _savePos.position.y;
+        _date.Z = _savePos.position.z;
+        _date.NowTime = _nowTime;
+        _date.Flag = _flags;
+        _saveDate[fileIndex] = _date;
+        Save(_filePath);
+        _saveButton[fileIndex].GetComponentInChildren<Text>().text = _nowTime;
+        _loadButton[fileIndex].GetComponentInChildren<Text>().text= _nowTime;
     }
 
     //ロードしたいときに呼び出す
     public void LoadAction(int filIndex)
     {
-        _data = _saveDate[filIndex];
-        _data.Load();
+        var loadDate = _saveDate[filIndex];
+        _savePos.position = new Vector3(loadDate.X, loadDate.Y, loadDate.Z);
+        _nowTime = loadDate.NowTime;
+        _flags = loadDate.Flag;
+        try
+        {
+            //セーブ地点、キャラクターの位置
+            FindObjectOfType<Player>().transform.position = _savePos.position;
+            //san値を代入
+            //
+            //フラグを代入
+            for (int i = 0; i < _flags.Length; i++)
+            {
+                GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
+            }
+        }
+        catch
+        {
+            Debug.LogError("データが存在しません");
+        }
+
     }
 
     private void InitLoad()
@@ -123,20 +196,20 @@ public class SaveLoadManager : MonoBehaviour
             _filePath = $"{Application.persistentDataPath}/SaveDate{i}.json";
             if(File.Exists(_filePath))
             {
-                Load();
-                _saveDate[i] = _data;
-                _saveButton[i].GetComponentInChildren<Text>().text = _data.GetDateTime();
+                _saveDate[i] = Load(_filePath);
+                _saveButton[i].GetComponentInChildren<Text>().text = _saveDate[i].NowTime;
             }
         }
     }
 
-    void Save()
+    //セーブするときに値を代入する
+    public void Save(string filePath)
     {
         try
         {
-            string json = JsonUtility.ToJson(_data);
+            string json = JsonUtility.ToJson(_date);
             Debug.Log(json);
-            using (StreamWriter wrter = new StreamWriter(_filePath, false))
+            using (StreamWriter wrter = new StreamWriter(filePath, false))
             {
                 wrter.WriteLine(json);
                 wrter.Close();
@@ -146,25 +219,26 @@ public class SaveLoadManager : MonoBehaviour
         {
             Debug.LogError("セーブ中にエラーが発生しました: " + e.Message);
         }
-
-
     }
 
-    void Load()
+    //ロードするときに値を代入する
+    public Date Load(string failePath)
     {
+        Date curentDate = new Date();
         try
         {
-            using (StreamReader sr = new StreamReader(_filePath))
+            using (StreamReader sr = new StreamReader(failePath))
             {
                 string json = sr.ReadToEnd();
                 Debug.Log(json);
                 sr.Close();
-                JsonUtility.FromJsonOverwrite(json, _data);
+                curentDate = JsonUtility.FromJson<Date>(json);
             }
         }
         catch (System.Exception e)
         {
             Debug.LogError("ロード中にエラーが発生しました: " + e.Message);
         }
+        return curentDate;
     }
 }
