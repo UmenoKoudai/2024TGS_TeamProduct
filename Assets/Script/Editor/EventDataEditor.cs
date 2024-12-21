@@ -7,6 +7,7 @@ public class EventDataEditor : Editor
     EventData _target;
     private int toolbarSelected = 0;
 
+    private string inputString = "";
     public void OnEnable()
     {
         _target = target as EventData;
@@ -62,31 +63,39 @@ public class EventDataEditor : Editor
             EditorGUILayout.LabelField("選択イベント", EditorStyles.boldLabel);
 
             EditorGUI.BeginChangeCheck();
-            int choiceNum = EditorGUILayout.IntField("選択数", eventTalkData.choiceNum);
+            inputString = eventTalkData.choiceNum.ToString();
+
+            inputString = EditorGUILayout.TextField("選択数", inputString);
+            
             if (EditorGUI.EndChangeCheck())
             {
-                int deleteNum = eventTalkData.choiceButtonDatas.Length - choiceNum;
-                if(deleteNum > 0)
+                bool isHalfWidth = IsHalfWidth(inputString);
+                int choiceNum = 0;
+                if (isHalfWidth &&  (int.TryParse(inputString, out choiceNum)))
                 {
-                    for (int i = deleteNum; i > 0; i--)
+                    int deleteNum = eventTalkData.choiceButtonDatas.Length - choiceNum;
+                    if (deleteNum > 0)
                     {
-                        ArrayUtility.RemoveAt(ref eventTalkData.choiceButtonDatas, eventTalkData.choiceButtonDatas.Length - 1);
+                        for (int i = deleteNum; i > 0; i--)
+                        {
+                            ArrayUtility.RemoveAt(ref eventTalkData.choiceButtonDatas, eventTalkData.choiceButtonDatas.Length - 1);
+                        }
+                        Undo.RecordObject(target, "Deleted TalkData");
+                        EditorUtility.SetDirty(_target);
                     }
-                    Undo.RecordObject(target, "Deleted TalkData");
-                    EditorUtility.SetDirty(_target);
-                }
-                else if(deleteNum < 0)
-                {
-                    deleteNum *= -1;
-                    for (int i = 0; i < deleteNum; i++)
+                    else if (deleteNum < 0)
                     {
-                        ChoiceButtonData choiceButtonData = new ChoiceButtonData();
-                        ArrayUtility.Add(ref eventTalkData.choiceButtonDatas, choiceButtonData);
+                        deleteNum *= -1;
+                        for (int i = 0; i < deleteNum; i++)
+                        {
+                            ChoiceButtonData choiceButtonData = new ChoiceButtonData();
+                            ArrayUtility.Add(ref eventTalkData.choiceButtonDatas, choiceButtonData);
+                        }
+                        Undo.RecordObject(_target, "Add Talk");
+                        EditorUtility.SetDirty(_target);
                     }
-                    Undo.RecordObject(_target, "Add Talk");
-                    EditorUtility.SetDirty(_target);
+                    eventTalkData.choiceNum = eventTalkData.choiceButtonDatas.Length;
                 }
-                eventTalkData.choiceNum = eventTalkData.choiceButtonDatas.Length;
             }
 
             for (int i = 0; i < eventTalkData.choiceButtonDatas.Length; i++)
@@ -206,5 +215,20 @@ public class EventDataEditor : Editor
             EditorUtility.SetDirty(_target);
         }
 
+    }
+
+    /// <summary>半角数字かどうかを判定するメソッド</summary>
+    /// <param name="input">文字</param>
+    /// <returns>半角数字ならTrue</returns>
+    bool IsHalfWidth(string input)
+    {
+        foreach (char c in input)
+        {
+            if (c < '0' || c > '9') 
+            {
+                return false;
+            }
+        }
+        return true;  
     }
 }
