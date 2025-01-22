@@ -1,0 +1,19 @@
+{
+    "name": "VantanConnect",
+    "rootNamespace": "",
+    "references": [
+        "GUID:570000fad695d6a4caf24264af242457",
+        "GUID:9ab43a9138e8929469639ca1f3a566d8",
+        "GUID:bbde805d927e795439d7a746d1749cab",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,19 @@
+{
+    "name": "VantanConnectEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ee7b279adb18bbb4998eeb3a2edf616e",
+        "GUID:570000fad695d6a4caf24264af242457",
+        "GUID:6c48ff07c32e4524d91cf0cc26e301c7",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

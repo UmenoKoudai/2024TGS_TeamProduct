@@ -1,0 +1,21 @@
+{
+    "name": "BasySystemEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f26cbda431740a443957853803dee367",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:570000fad695d6a4caf24264af242457"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
