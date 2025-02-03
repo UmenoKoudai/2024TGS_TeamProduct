@@ -23,17 +23,17 @@ public class CorpseGenerator : MonoBehaviour
             float randomY = Random.Range(-sizeY, sizeY);
             Instantiate(_corpsePrefab, new Vector3(randomX, randomY, 0), Quaternion.identity);
         }
-        if(_manager.DeathCount > 5)
+        if(_manager.DeathCount > 15)
         {
-            _roomLayout[0].SetActive(true);
+            _roomLayout[2].SetActive(true);
         }
         else if(_manager.DeathCount > 10)
         {
             _roomLayout[1].SetActive(true);
         }
-        else if(_manager.DeathCount > 15)
+        else if(_manager.DeathCount > 5)
         {
-            _roomLayout[2].SetActive(true);
+            _roomLayout[0].SetActive(true);
         }
     }
 

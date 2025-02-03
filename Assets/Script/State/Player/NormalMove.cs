@@ -41,6 +41,19 @@ public class NormalMove : IStateMachine
             _isMove = false;
             _character.Rb.velocity = Vector3.zero;
         }
+        //if (!_isMove) return;
+        //_character.Direction = _direction;
+        //float distance = _direction.magnitude;
+        //_direction.Normalize();
+        //float step = _character.Speed * Time.deltaTime;
+        //if (step >= distance)
+        //{
+        //    _character.transform.position = _nextTile;
+        //}
+        //else
+        //{
+        //    _character.transform.Translate(_direction * step, Space.World);
+        //}
     }
 
     public void Update()
@@ -56,7 +69,7 @@ public class NormalMove : IStateMachine
         }
         if (Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && !_isMove)
         {
-            if (h > 0)
+            if (h > 0)//âE
             {
                 var next = new Vector3(_nextTile.x + 1, _nextTile.y, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
@@ -69,7 +82,7 @@ public class NormalMove : IStateMachine
                 }
             }
 
-            if (h < 0)
+            if (h < 0)//ç∂
             {
                 var next = new Vector3(_nextTile.x - 1, _nextTile.y, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
@@ -84,7 +97,7 @@ public class NormalMove : IStateMachine
         }
         if (Input.GetButton("Vertical") && !Input.GetButton("Horizontal") && !_isMove)
         {
-            if (v > 0)
+            if (v > 0)//è„
             {
                 var next = new Vector3(_nextTile.x, _nextTile.y + 1, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
@@ -96,7 +109,7 @@ public class NormalMove : IStateMachine
                     _isMove = true;
                 }
             }
-            if (v < 0)
+            if (v < 0)//â∫
             {
                 var next = new Vector3(_nextTile.x, _nextTile.y - 1, _nextTile.z);
                 _nextPos = _character.Map.WorldToCell(next);
