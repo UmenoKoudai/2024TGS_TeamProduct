@@ -19,10 +19,23 @@ namespace ToyBox
         {
             VantanConnect.GameStart(async (VC_StatusCode code) =>
             {
-                _fadeSystem.Play();
+                _fadeSystem = FindObjectOfType<FadeSystem>();
+                if(UnityEngine.Random.value < 0.01f)
+                {
+                    _fadeSystem.Play(FadeSystem.AnimType.Special);
+                }
+                else
+                {
+                    _fadeSystem.Play(FadeSystem.AnimType.FadeOut);
+                }
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
                 SceneManager.LoadScene(sceneName);
             });
+        }
+
+        public void LoadPanelOpen()
+        {
+            FindObjectOfType<SaveLoadManager>().OpenLoadPanel();
         }
     }
 }

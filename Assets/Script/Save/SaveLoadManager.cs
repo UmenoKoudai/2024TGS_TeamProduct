@@ -2,12 +2,13 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    //[SerializeField] SaveData _data;
-    string _filePath;
-    [SerializeField, Header("保存先のファイル名")] string _fileName;
+    [SerializeField]
+    private FadeSystem _fadeSystem;
     [SerializeField]
     Button[] _saveButton = new Button[10];
     [SerializeField]
@@ -23,7 +24,9 @@ public class SaveLoadManager : MonoBehaviour
     Transform _savePos;
     bool[] _flags;
     string _nowTime = "";
+    string _sceneName;
     Date _date;
+    string _filePath;
 
     public class Date
     {
@@ -33,6 +36,7 @@ public class SaveLoadManager : MonoBehaviour
         public float Z;
         public string NowTime;
         public bool[] Flag;
+        public string SceneName;
     }
 
 
@@ -54,17 +58,14 @@ public class SaveLoadManager : MonoBehaviour
 
     void Awake()
     {
-        if (!instance)
-        {
-            instance = this;
-        }
-        else if (instance != this)
+        if(FindObjectsOfType<SaveLoadManager>().Length > 2)
         {
             Destroy(gameObject);
-            return;
         }
-
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     static void SetupInstance()
@@ -103,7 +104,7 @@ public class SaveLoadManager : MonoBehaviour
     public void OpenSavePanel()
     {
         _savePanel.SetActive(true);
-        //TimeReflection(_saveButton);
+        TimeReflection(_saveButton);
     }
     public void CloseSavePanel()
     {
@@ -112,7 +113,7 @@ public class SaveLoadManager : MonoBehaviour
     public void OpenLoadPanel()
     {
         _loadPanel.SetActive(true);
-        //TimeReflection(_loadButton);
+        TimeReflection(_loadButton);
     }
     public void CloseLoadPanel()
     {
@@ -124,7 +125,7 @@ public class SaveLoadManager : MonoBehaviour
         for(int i = 0; i < buttons.Length; i++)
         {
             var saveTime = _saveDate[i].NowTime;
-            if (saveTime != "")
+            if (saveTime != null)
             {
                 buttons[i].GetComponentInChildren<Text>().text = saveTime.ToString();
             }
@@ -157,6 +158,7 @@ public class SaveLoadManager : MonoBehaviour
         _date.Z = _savePos.position.z;
         _date.NowTime = _nowTime;
         _date.Flag = _flags;
+        _date.SceneName = SceneManager.GetActiveScene().name;
         _saveDate[fileIndex] = _date;
         Save(_filePath);
         _saveButton[fileIndex].GetComponentInChildren<Text>().text = _nowTime;
@@ -164,20 +166,21 @@ public class SaveLoadManager : MonoBehaviour
     }
 
     //ロードしたいときに呼び出す
-    public void LoadAction(int filIndex)
+    public async void LoadAction(int filIndex)
     {
+        _fadeSystem.Play(FadeSystem.AnimType.FadeOut);
+        await UniTask .Delay(TimeSpan.FromSeconds(1));
         var loadDate = _saveDate[filIndex];
-        _savePos.position = new Vector3(loadDate.X, loadDate.Y, loadDate.Z);
-        _nowTime = loadDate.NowTime;
-        _flags = loadDate.Flag;
+        if (loadDate == null) return;
+        Date currentData = loadDate;
         try
         {
             //セーブ地点、キャラクターの位置
-            FindObjectOfType<Player>().transform.position = _savePos.position;
+            FindObjectOfType<Player>().transform.position = new Vector3(currentData.X, currentData.Y, currentData.Z);
             //san値を代入
             //
             //フラグを代入
-            for (int i = 0; i < _flags.Length; i++)
+            for (int i = 0; i < currentData.Flag.Length; i++)
             {
                 GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
             }
@@ -186,7 +189,13 @@ public class SaveLoadManager : MonoBehaviour
         {
             Debug.LogError("データが存在しません");
         }
+        //SceneManager.sceneLoaded += LoadedEvent;
+        SceneManager.LoadScene(currentData.SceneName);
+    }
 
+    public void LoadedEvent(Scene scene, LoadSceneMode mode)
+    {
+        _fadeSystem.Play(FadeSystem.AnimType.FadeIn);
     }
 
     private void InitLoad()

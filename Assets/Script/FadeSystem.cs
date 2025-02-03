@@ -5,13 +5,12 @@ using UnityEngine.Playables;
 
 public class FadeSystem : MonoBehaviour
 {
-    [SerializeField]
-    private AnimType _type;
     private Animator _anim;
 
     public enum AnimType
     {
-        Normal,
+        FadeIn,
+        FadeOut,
         Special,
     }
     void Start()
@@ -19,13 +18,17 @@ public class FadeSystem : MonoBehaviour
         _anim = GetComponent<Animator>();
     }
 
-    public void Play()
+    public void Play(AnimType type)
     {
-        if(_type == AnimType.Normal)
+        if(type == AnimType.FadeIn)
         {
-            _anim.Play("NormalFade");
+            _anim.Play("FadeIn");
         }
-        else if(_type == AnimType.Special)
+        else if (type == AnimType.FadeOut)
+        {
+            _anim.Play("FadeOut");
+        }
+        else if(type == AnimType.Special)
         {
             _anim.Play("SpecialFade");
         }
