@@ -77,6 +77,7 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
     void CorpseSpown()
     {
         _deathCount++;
+        Debug.Log(_deathCount);
     }
 
     void PlayScream()
@@ -87,14 +88,14 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
 
     public void OnEventCall(VTNConnect.EventData data)
     {
-        if (data.EventId == 103)
+        switch (data.EventCode)
         {
-            CorpseSpown();
+            case EventDefine.DeathStack:
+                CorpseSpown();
+                break;
+            case EventDefine.DeathScream:
+                PlayScream();
+                break;
         }
-        else if (data.EventId == 110)
-        {
-            PlayScream();
-        }
-
     }
 }
