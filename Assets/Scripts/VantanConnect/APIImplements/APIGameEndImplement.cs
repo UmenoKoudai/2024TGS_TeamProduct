@@ -36,7 +36,19 @@ namespace VTNConnect
         async public UniTask<GameEndResult> Request(GameEndRequest req)
         {
             string request = String.Format("{0}/gameend", VantanConnect.Environment.APIServerURI);
-            string json = await Network.WebRequest.PostRequest(request, req);
+
+            //かえってくるまでリトライ
+            string json = null;
+            for (int i = 0; i < 5; ++i)
+            {
+                json = await Network.WebRequest.PostRequest(request, req);
+                if (json != null) break;
+
+                await UniTask.Delay(500);
+            }
+
+            if (json == null) throw new Exception("サーバがダウンしている");
+
             var ret = JsonUtility.FromJson<GameEndResult>(json);
             return ret;
         }

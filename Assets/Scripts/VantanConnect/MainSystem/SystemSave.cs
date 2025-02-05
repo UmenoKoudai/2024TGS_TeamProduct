@@ -20,6 +20,8 @@ namespace VTNConnect
         //環境設定
         public EnvironmentSetting Environment = EnvironmentSetting.Develop; //環境設定
 
+        public bool IsRecording = false;        //イベントを記録する
+
         //ここからコネクト処理
         public bool IsUseQRCode = false;        //コネクト処理用のQRコードを表示する
         public bool IsDebugConnect = false;     //コネクト処理をローカル実行する

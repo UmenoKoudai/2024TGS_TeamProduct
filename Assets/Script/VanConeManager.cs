@@ -90,9 +90,9 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
     {
         switch (data.EventCode)
         {
-            case EventDefine.DeathStack:
-                CorpseSpown();
-                break;
+            //case EventDefine.DeathStack:
+            //    CorpseSpown();
+            //    break;
             case EventDefine.DeathScream:
                 PlayScream();
                 break;

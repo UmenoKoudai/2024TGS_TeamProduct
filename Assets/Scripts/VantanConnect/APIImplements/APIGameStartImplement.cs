@@ -12,6 +12,7 @@ namespace VTNConnect
     {
         public int GameId;
         public int UserId = 0;
+        public int Option = 0;
     }
 
     /// <summary>

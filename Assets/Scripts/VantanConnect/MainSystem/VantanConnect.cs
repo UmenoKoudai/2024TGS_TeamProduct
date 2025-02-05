@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 namespace VTNConnect
@@ -33,7 +32,10 @@ namespace VTNConnect
         static public SystemSaveData SystemSave => _instance._systemSave;
 
         /// <summary>ゲーム中かどうかを返す</summary>
-        public bool IsInGame => _instance._gameStateSave.IsInGame;
+        static public bool IsInGame => _instance._gameStateSave.IsInGame;
+
+        static public string GameHash => _instance._gameStateSave.GameHash;
+
 
         #region ゲームAPI
 
@@ -66,11 +68,14 @@ namespace VTNConnect
 
         /// <summary>現在のAIゲームに参加しているユーザーリストを返す(GameStart後に取得可能)</summary>
         static public UserData[] GetMainGameUsers() { return _instance.GetMainGameUsersImplement(); }
+
+        /// <summary>生死を保存</summary>
+        static public void UserRecord(int userId, bool gameResult, bool isMissionClear) { _instance.UserRecordImplement(userId, gameResult, isMissionClear); }
 #else
         /// <summary>ゲーム終了</summary>
         static public void GameEnd(bool gameResult, ExecuteCallback callback) { _instance.CallbackAction(callback, _instance.GameEndImplement, gameResult); }
 #endif
-#endregion
+        #endregion
 
         #region イベント
         /// <summary>イベントを受信するクラスを登録(何個登録しても良い)</summary>
@@ -82,7 +87,16 @@ namespace VTNConnect
         /// <summary>イベントを送信(IDのみで送信)</summary>
         static public void SendEvent(EventDefine eventId) { _instance.SendVCEvent(eventId); }
 
-        #endregion
+
+#if AIGAME_IMPLEMENT
+#else
+        /// <summary>ゲーム内物語の作成ヘルパ(物語データにUserIdを絡ませる)</summary>
+        static public GameEpisode CreateEpisode(EpisodeCode epiCode) { return _instance.CreateVCEpisode(epiCode); }
+#endif
+        /// <summary>ゲーム内物語を送信(物語データを作って送信)</summary>
+        static public void SendEpisode(GameEpisode episode) { _instance.SendVCEpisode(episode); }
+
+#endregion
 
 
         #region 内部処理用
@@ -153,7 +167,7 @@ namespace VTNConnect
             _instance._linkageSystem.Setup(overlay.GetComponentInChildren<VC_LoginView>());
 
             //イベント登録系など
-            _instance._wsManager.SetEventSystem(_instance._eventSystem);
+            _instance._eventSystem.SetEventSystem(_instance._wsManager);
             _instance._eventSystem.RegisterReceiver(_instance._linkageSystem);
             _instance._eventSystem.SystemInitialSave();
         }
@@ -212,12 +226,23 @@ namespace VTNConnect
         {
             return _gameStateSave.Users;
         }
+
+        void UserRecordImplement(int userId, bool gameResult, bool isMissionClear)
+        {
+            _gameStateSave.StackUser(userId, gameResult, isMissionClear);
+        }
 #else
         async UniTask<VC_StatusCode> GameStartVCGame()
         {
             GameStartRequest request = new GameStartRequest();
             request.GameId = ProjectSettings.GameID;
             request.UserId = 0;
+
+            //特殊なステータス
+            if (_systemSave.IsRecording)
+            {
+                request.Option |= (int)GameOption.Recording;
+            }
 
             //ユーザがリンクしていればそのユーザのUserIdを送信する
             if(_linkageSystem.IsLink)
@@ -248,11 +273,30 @@ namespace VTNConnect
             EventData data = new EventData(evCode);
             SendVCEvent(data);
         }
+
+#if AIGAME_IMPLEMENT
+#else
+        GameEpisode CreateVCEpisode(EpisodeCode epiCode)
+        {
+            if (!_linkageSystem.IsLink)
+            {
+                return new GameEpisode(epiCode, 0);
+            }
+            
+            return new GameEpisode(epiCode, _instance._linkageSystem.UserData.UserId);
+        }
+#endif
         void SendVCEvent(EventData d)
         {
-            _eventSystem.SendEvent(d);
+            _wsManager.Send(d);
         }
 
+        void SendVCEpisode(GameEpisode d)
+        {
+            if (!d.IsValidEpisode) return;
+
+            _wsManager.Send(d);
+        }
 #endregion
     }
 }

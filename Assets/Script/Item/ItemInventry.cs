@@ -23,11 +23,23 @@ public class ItemInventry : MonoBehaviour
     KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8,
     KeyCode.Alpha9
 };
+    private void Awake()
+    {
+        if(FindObjectsOfType<ItemInventry>().Length > 2)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         _itemPanel = FindObjectOfType<ItemPanel>();
         _IvyEnent = FindObjectOfType<IvyEnent>();
+        
     }
     private void Update()
     {
