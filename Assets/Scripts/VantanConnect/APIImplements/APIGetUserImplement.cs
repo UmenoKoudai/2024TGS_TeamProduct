@@ -19,8 +19,8 @@ namespace VTNConnect
 
 
     /// <summary>
-    /// ゲーム終了
-    /// NOTE: https://candle-stoplight-544.notion.site/API-def8a39d6b524c0fbf9e1a552d4b5428#16a39cbfbab980d1b861f696d0f99f8e
+    /// ユーザデータ取得
+    /// NOTE: https://www.notion.so/API-def8a39d6b524c0fbf9e1a552d4b5428?pvs=4#16a39cbfbab980d1b861f696d0f99f8e
     /// </summary>
     public class APIGetUserImplement
     {

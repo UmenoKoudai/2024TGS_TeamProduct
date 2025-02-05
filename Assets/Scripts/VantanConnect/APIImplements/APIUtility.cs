@@ -18,4 +18,18 @@ public class APIUtility
         }
         return VC_StatusCode.OK;
     }
+
+    /// <summary>
+    /// パラメータがほぼ同じデータの型変換を行う(非リフレクション)
+    /// </summary>
+    /// <typeparam name="T">変換後の型</typeparam>
+    /// <typeparam name="V">元の型</typeparam>
+    /// <param name="original">元の型の情報</param>
+    /// <returns>変換後の情報</returns>
+    static public T Marshal<T, V>(V original)
+    {
+        //一度Jsonにする
+        string json = JsonUtility.ToJson(original);
+        return JsonUtility.FromJson<T>(json);
+    }
 }

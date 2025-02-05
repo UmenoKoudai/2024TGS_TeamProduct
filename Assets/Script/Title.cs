@@ -20,6 +20,7 @@ namespace ToyBox
             VantanConnect.GameStart(async (VC_StatusCode code) =>
             {
                 _fadeSystem = FindObjectOfType<FadeSystem>();
+                SceneManager.sceneLoaded += FadeIn;
                 if(UnityEngine.Random.value < 0.01f)
                 {
                     _fadeSystem.Play(FadeSystem.AnimType.Special);
@@ -31,6 +32,11 @@ namespace ToyBox
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
                 SceneManager.LoadScene(sceneName);
             });
+        }
+
+        public void FadeIn(Scene scene, LoadSceneMode mode)
+        {
+            _fadeSystem.Play(FadeSystem.AnimType.FadeIn);
         }
 
         public void LoadPanelOpen()
