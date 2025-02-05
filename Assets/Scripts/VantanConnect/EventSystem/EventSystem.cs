@@ -10,7 +10,6 @@ namespace VTNConnect
     {
         public delegate void EventDataSender(EventData data);
         public delegate void EventDataCallback(EventData data);
-        EventDataSender _sender = null;
         List<IVantanConnectEventReceiver> _initialSavedListener = new List<IVantanConnectEventReceiver>();
         List<IVantanConnectEventReceiver> _eventListener = new List<IVantanConnectEventReceiver>();
         List<IVantanConnectEventReceiver> _reNewListener = new List<IVantanConnectEventReceiver>();
@@ -84,12 +83,11 @@ namespace VTNConnect
         }
 
         /// <summary>
-        /// メインシステムから呼び出される
+        /// WebSocketシステム設定
         /// </summary>
-        public void Setup(EventDataSender send, out EventDataCallback recv)
+        public void SetEventSystem(WebSocketEventManager wsManager)
         {
-            _sender = send;
-            recv = DataReceive;
+            wsManager.Setup(DataReceive);
         }
 
 
@@ -99,14 +97,6 @@ namespace VTNConnect
         public void RegisterReceiver(IVantanConnectEventReceiver receiver)
         {
             _eventListener.Add(receiver);
-        }
-
-        /// <summary>
-        /// イベントを送信
-        /// </summary>
-        public void SendEvent(EventData data)
-        {
-            _sender?.Invoke(data);
         }
 
 #if UNITY_EDITOR

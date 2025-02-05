@@ -105,9 +105,10 @@ namespace VTNConnect
 
         #region 内部実装
         //シリアライズされるメンバ
-        [SerializeField] public int EventId = -1;
-        [SerializeField] protected int FromId = ProjectSettings.GameID;
-        [SerializeField] protected List<ParamData> Payload = new List<ParamData>();
+        [SerializeField] public EventDefine EventId;                                    // イベントコード(ルールシートを参照)
+        [SerializeField] protected int FromId = ProjectSettings.GameID;                 // 誰から送信されたイベントか(自動付与)
+        [SerializeField] protected string GameHash = "";                                // ゲームハッシュ(自動付与)
+        [SerializeField] protected List<ParamData> Payload = new List<ParamData>();     // 補足情報
         //ここまで
 
         //主にコピーやイベントの変換に使う
@@ -116,16 +117,14 @@ namespace VTNConnect
             EventId = d.EventId;
             FromId = d.FromId;
             Payload = d.Payload;
+            GameHash = d.GameHash;
         }
 
         //新しいイベントの作成に使う
-        public EventData(int eventId)
-        {
-            EventId = eventId;
-        }
         public EventData(EventDefine eventId)
         {
-            EventId = (int)eventId;
+            EventId = eventId;
+            GameHash = VantanConnect.GameHash; //あんまりきれいではないが
         }
         #endregion
     }

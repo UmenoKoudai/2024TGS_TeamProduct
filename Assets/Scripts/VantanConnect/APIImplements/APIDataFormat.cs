@@ -57,4 +57,10 @@ namespace VTNConnect
     {
         public int Status;
     }
+
+    public enum GameOption
+    {
+        None = 0,
+        Recording = (1<<0),
+    }
 }
