@@ -15,6 +15,7 @@ namespace VTNConnect
         public string GameHash => _gameHash;
 
         string _gameHash = null;
+        string _gameTitle = "";
 
 
 #if AIGAME_IMPLEMENT
@@ -30,6 +31,7 @@ namespace VTNConnect
 
 
 #if AIGAME_IMPLEMENT
+        public string GameTitle => _gameTitle;
         public UserData[] Users => _users;
 
         GameEndAIGameRequest CreateAIGameResult()
@@ -40,17 +42,18 @@ namespace VTNConnect
             return req;
         }
 
-        public async UniTask<VC_StatusCode> GameStartAIGame()
+        public async UniTask<GameStartAIGameResult> GameStartAIGame()
         {
             var result = await _gameStartAI.Request();
             var status = APIUtility.PacketCheck(result);
-            if (status != VC_StatusCode.OK) return status;
+            if (status != VC_StatusCode.OK) return null;
             
             _gameHash = result.GameHash;
+            _gameTitle = result.GameTitle;
             _users = result.GameUsers;
             _saveData.Clear();
 
-            return VC_StatusCode.OK;
+            return result;
         }
 
         public async UniTask<VC_StatusCode> GameEndAIGame()

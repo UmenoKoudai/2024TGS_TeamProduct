@@ -35,7 +35,7 @@ namespace VTNConnect
         /// <returns>特になし</returns>
         async public UniTask<GameEndResult> Request(GameEndRequest req)
         {
-            string request = String.Format("{0}/gameend", VantanConnect.Environment.APIServerURI);
+            string request = String.Format("{0}/vc/gameend", VantanConnect.Environment.APIServerURI);
 
             //かえってくるまでリトライ
             string json = null;

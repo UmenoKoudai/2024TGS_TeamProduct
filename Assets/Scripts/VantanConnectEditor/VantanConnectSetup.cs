@@ -7,6 +7,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+using UnityEditor.Overlays;
 
 /// <summary>
 /// バンタンコネクト コントロールパネル
@@ -316,6 +317,13 @@ namespace VTNConnect
 
             byte[] bytes = Encoding.UTF8.GetBytes(sourceCode);
             fs.Write(bytes, 0, bytes.Length);
+        }
+
+        var systemSave = LocalData.Load<SystemSaveData>("SystemSave.json");
+        if (systemSave != null)
+        {
+            systemSave.GameID = _gameID;
+            LocalData.Save<SystemSaveData>("SystemSave.json", systemSave);
         }
 
         _isSetupDone = true;

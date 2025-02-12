@@ -24,7 +24,7 @@ namespace VTNConnect
     {
         async public UniTask<string> Request()
         {
-            string request = String.Format("{0}/getaddr", VantanConnect.Environment.APIServerURI);
+            string request = String.Format("{0}/vc/getaddr", VantanConnect.Environment.APIServerURI);
 
             //かえってくるまでリトライ
             string json = null;

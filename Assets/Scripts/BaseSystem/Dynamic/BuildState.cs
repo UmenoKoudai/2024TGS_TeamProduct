@@ -1,9 +1,9 @@
 
 public class BuildState
 {
-    const string _hash = "1b51f0c6-930b-472d-a9ff-8e12235a9dbd";
+    const string _hash = "61576ce0-12ce-41fa-9889-15cd8c3bbe06";
     const string _project = "VTNConnect";
-    public const string Version = "0.4.1";
+    public const string Version = "0.7.0";
 
     public static string BuildHash
     {

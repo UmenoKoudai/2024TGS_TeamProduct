@@ -32,28 +32,29 @@ public class NormalMove : IStateMachine
 
     public void FixedUpdate()
     {
+        //if (!_isMove) return;
+        //_character.Direction = _direction;
+        //float distance = Vector3.Distance(_nextTile, _character.transform.position);
+        //_character.Rb.velocity = _direction * _character.Speed;
+        //if (distance < 0.1f)
+        //{
+        //    _isMove = false;
+        //    _character.Rb.velocity = Vector3.zero;
+        //}
         if (!_isMove) return;
         _character.Direction = _direction;
         float distance = Vector3.Distance(_nextTile, _character.transform.position);
-        _character.Rb.velocity = _direction * _character.Speed;
+        _direction.Normalize();
+        float step = _character.Speed * Time.deltaTime;
         if (distance < 0.1f)
         {
             _isMove = false;
-            _character.Rb.velocity = Vector3.zero;
+            _character.transform.position = _nextTile;
         }
-        //if (!_isMove) return;
-        //_character.Direction = _direction;
-        //float distance = _direction.magnitude;
-        //_direction.Normalize();
-        //float step = _character.Speed * Time.deltaTime;
-        //if (step >= distance)
-        //{
-        //    _character.transform.position = _nextTile;
-        //}
-        //else
-        //{
-        //    _character.transform.Translate(_direction * step, Space.World);
-        //}
+        else
+        {
+            _character.transform.Translate(_direction * step, Space.World);
+        }
     }
 
     public void Update()

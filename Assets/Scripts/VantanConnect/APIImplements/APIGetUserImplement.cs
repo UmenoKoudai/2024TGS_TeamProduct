@@ -31,7 +31,7 @@ namespace VTNConnect
         /// <returns>ユーザ情報</returns>
         async public UniTask<GetUserResult> Request(int userId, bool withLog = false, int logCount = 0)
         {
-            string request = String.Format("{0}/user/{1}", VantanConnect.Environment.APIServerURI, userId);
+            string request = String.Format("{0}/vc/user/{1}", VantanConnect.Environment.APIServerURI, userId);
             if (withLog)
             {
                 request += "?withLog=1&logCount" + logCount;
@@ -49,7 +49,7 @@ namespace VTNConnect
         /// <returns>ユーザ情報</returns>
         async public UniTask<GetUserResult> Request(string userHash, bool withLog, int logCount)
         {
-            string request = String.Format("{0}/user/{1}", VantanConnect.Environment.APIServerURI, userHash);
+            string request = String.Format("{0}/vc/user/{1}", VantanConnect.Environment.APIServerURI, userHash);
             if (withLog)
             {
                 request += "?withLog=1&logCount" + logCount;
