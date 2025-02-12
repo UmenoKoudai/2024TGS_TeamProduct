@@ -31,11 +31,11 @@ public class Enemy : MonoBehaviour
     {
         if(_followSystem.MovingX > 0)
         {
-            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Left, true);
+            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Left, false);
         }
         else if (_followSystem.MovingX < 0)
         {
-            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Left);
+            _enemyImageController.SpriteChange(EnemyImageController.EnemyImagePattern.Left, true);
         }
 
         if(_followSystem.MovingY < 0 || _followSystem.MovingY > 0)
