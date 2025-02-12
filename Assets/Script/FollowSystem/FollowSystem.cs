@@ -95,6 +95,8 @@ public class FollowSystem : MonoBehaviour
     /// <summary>今追従を起動しているかどうか</summary>
     public bool IsFollow => _isFollow;
 
+    public Transform Target => _target;
+
     Vector3 _moveVec = Vector3.zero;
 
     // Start is called before the first frame update
