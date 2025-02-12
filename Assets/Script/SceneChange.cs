@@ -36,7 +36,6 @@ public class SceneChange : MonoBehaviour, IEventObject
         GameEnd,
     }
 
-
     private void Awake()
     {
         if (_sceneType == SceneType.InGame)
