@@ -84,7 +84,7 @@ public class SceneChange : MonoBehaviour, IEventObject
 
     public async void ChangeScene(string sceneName)
     {
-        _fadeSystem.Play(FadeSystem.AnimType.FadeOut);
+        //_fadeSystem.Play(FadeSystem.AnimType.FadeOut);
         await UniTask.Delay(TimeSpan.FromSeconds(1));
         SceneManager.LoadScene(sceneName);
     }

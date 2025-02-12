@@ -239,7 +239,6 @@ public class SaveLoadManager : MonoBehaviour
             using (StreamReader sr = new StreamReader(failePath))
             {
                 string json = sr.ReadToEnd();
-                Debug.Log(json);
                 sr.Close();
                 curentDate = JsonUtility.FromJson<Date>(json);
             }
