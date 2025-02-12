@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>追従機能クラス</summary>
@@ -43,6 +44,16 @@ public class FollowSystem : MonoBehaviour
     [SerializeField, ReadOnly]
     int _moveY = 0;
 
+    [Header("現在向いている方向(上下左右をXとY軸で表現)")]
+    [Tooltip("-1, 0, 1の値で返す")]
+    [SerializeField, ReadOnly]
+    int _forwardX = 0;
+
+    [Tooltip("-1, 0, 1の値で返す")]
+    [SerializeField, ReadOnly]
+    int _forwardY = 0;
+
+
     /// <summary>追従する自分のRigidbody2D</summary>
     Rigidbody2D _rb;
     /// <summary>Gizmo用追従経路の各地点のデータ配列</summary>
@@ -52,19 +63,39 @@ public class FollowSystem : MonoBehaviour
     /// <summary>今対象を追いかけているかどうか</summary>
     bool _isFollowMoving = false;
 
+    Vector3 _pastPoint = Vector3.zero;
+
     SearchPathFind _followPathFind = new();
 
     bool _isFollow = false;
+
+    float _count = 0;
+
+    bool _isStopMove = false;
+
+    [Header("追従時に止まる中間のマス数")]
+    [SerializeField]
+    int _stopDistanceSquare = 2;
+
+    [Header("追従を再開する中間のマス数")]
+    [SerializeField]
+    int _restartDistanceSquare = 4;
 
     /// <summary>移動可能マップ</summary>
     public Tilemap Map => _map;
 
     /// <summary>現在動いている方向を示すもの(X軸)</summary>
-    public float MovingX => _moveX;
+    public int MovingX => _moveX;
     /// <summary>現在動いている方向を示すもの(Y軸)</summary>
-    public float MovingY => _moveY;
+    public int MovingY => _moveY;
+    /// <summary>現在向いている方向を示すもの(X軸)</summary>
+    public int ForwardX => _forwardX;
+    /// <summary>現在向いている方向を示すもの(Y軸)</summary>
+    public int ForwardY => _forwardY;
     /// <summary>今追従を起動しているかどうか</summary>
     public bool IsFollow => _isFollow;
+
+    Vector3 _moveVec = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +104,8 @@ public class FollowSystem : MonoBehaviour
 
         //初期化
         _followPathFind.Init(this);
+
+        _rb.velocity = Vector3.zero;
 
         //探索開始
         FollowStart();
@@ -89,17 +122,12 @@ public class FollowSystem : MonoBehaviour
             //追従している
             if (_isFollowMoving)
             {
-                //対象に追いついたら
-                if (Vector3.Distance(_target.position, this.transform.position) < _followingStopDistance)
-                {
-                    _rb.velocity = Vector3.zero;
-                    _isFollowMoving = false;
-                }
 
                 //目的の経路地点についたら
-                if (Vector3.Distance(_nextPoint, transform.position) < 0.05f)
+                if (Vector3.Distance(_nextPoint, transform.position) < 0.1f)
                 {
-                    if (_followPathFind.GoalPath.Count == 0) _isFollowMoving = false;
+                    FollowPathUpdate();
+                    if (_followPathFind.GoalPath.Count == _stopDistanceSquare) _isFollowMoving = false;
                     //次の目的となる経路地点に更新
                     else _nextPoint = _followPathFind.GoalPath.Pop();
                 }
@@ -110,14 +138,13 @@ public class FollowSystem : MonoBehaviour
             　　//対象から一定距離離れたら
                 if (Vector3.Distance(_target.position, this.transform.position) > _followingStopDistance)
                 {
-                    //追従経路リセット
-                    NextFollowPathPrepare();
-                    //Gizmo用
-                    _goalPathGizmo = new Vector3[_followPathFind.GoalPath.Count];
-                    _followPathFind.GoalPath.CopyTo(_goalPathGizmo, 0);
-                   
-                    _isFollowMoving = true;
+                    FollowPathUpdate();
+                    if (_followPathFind.GoalPath.Count >= _restartDistanceSquare)
+                    {
+                        _isFollowMoving = true;
+                    }
                 }
+
             }
         }
     }
@@ -127,8 +154,16 @@ public class FollowSystem : MonoBehaviour
         //追従移動
         if (_isFollowMoving)
         {
-            Vector3 vec = _nextPoint - transform.position;
-            _rb.velocity = vec.normalized * _followSpeed * Time.fixedDeltaTime;
+            if (_pastPoint != _nextPoint)
+            {
+                _moveVec = _nextPoint - transform.position;
+                _pastPoint = _nextPoint;
+                _rb.velocity = _moveVec.normalized * _followSpeed * Time.fixedDeltaTime;
+            }
+        }
+        else
+        {
+            _rb.velocity = Vector3.zero;
         }
     }
 
@@ -143,6 +178,16 @@ public class FollowSystem : MonoBehaviour
         //追従開始
         _isFollow = true;
         _isFollowMoving = true;
+    }
+
+    /// <summary>追従経路更新</summary>
+    public void FollowPathUpdate()
+    {
+        NextFollowPathPrepare();
+        Debug.Log("経路更新");
+        //Gizmo用
+        _goalPathGizmo = new Vector3[_followPathFind.GoalPath.Count];
+        _followPathFind.GoalPath.CopyTo(_goalPathGizmo, 0);
     }
 
     /// <summary>追従を終了する</summary>
@@ -174,7 +219,7 @@ public class FollowSystem : MonoBehaviour
             return;
         }
 
-        if(vec.x >= -0.5 &&  vec.x <= 0.5)
+        if(vec.x >= - Mathf.Cos(45) &&  vec.x <= Mathf.Cos(45))
         {
             if (vec.y >= 0)
             {
@@ -186,6 +231,8 @@ public class FollowSystem : MonoBehaviour
                 _moveX = 0;
                 _moveY = -1;
             }
+            _forwardX = _moveX;
+            _forwardY = _moveY;
         }
         else
         {
@@ -199,6 +246,8 @@ public class FollowSystem : MonoBehaviour
                 _moveX = -1;
                 _moveY = 0;
             }
+            _forwardX = _moveX;
+            _forwardY = _moveY;
         }
     }
 
