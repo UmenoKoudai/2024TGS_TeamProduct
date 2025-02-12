@@ -12,10 +12,9 @@ public class Girl : CharacterBase
 
     private void Update()
     {
-        if (_follow.MovingX > 0 || _follow.MovingX < 0 || _follow.MovingY > 0 || _follow.MovingY < 0)
-        {
-            Animator.SetFloat("X", _follow.MovingX);
-            Animator.SetFloat("Y", _follow.MovingY);
-        }
+        Animator.SetFloat("Forward_X", _follow.ForwardX);
+        Animator.SetFloat("Forward_Y", _follow.ForwardY);
+        Animator.SetFloat("X", _follow.MovingX);
+        Animator.SetFloat("Y", _follow.MovingY);
     }
 }
