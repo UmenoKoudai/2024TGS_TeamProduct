@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7778703f384cf41865d5ce2772f6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingStopDistance: 1
+  _followingStopDistance: 2
   _followSpeed: 300
   _target: {fileID: 0}
   _map: {fileID: 0}
@@ -203,7 +203,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 247b3a1ab98376749ba6e7c1ac91c8d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -148,7 +148,6 @@ public class GameManager : MonoBehaviour
         {
             if (PlayingData.Instance.PosName != "" && PlayingData.Instance.PosName != null)
             {
-                Debug.Log($"DIrectionPaste{PlayingData.Instance.Direction}");
                 var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position + (PlayingData.Instance.Direction * 3);
                 _player.Direction = PlayingData.Instance.Direction;
                 _girl.Direction = PlayingData.Instance.Direction;
