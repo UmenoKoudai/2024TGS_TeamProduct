@@ -38,7 +38,7 @@ namespace VTNConnect
         /// <returns>AIゲーム開始用パラメータ</returns>
         async public UniTask<GameEndAIGameResult> Request(GameEndAIGameRequest req)
         {
-            string request = String.Format("{0}/ai/gameend", VantanConnect.Environment.APIServerURI);
+            string request = String.Format("{0}/vc/ai/gameend", VantanConnect.Environment.APIServerURI);
             string json = await Network.WebRequest.PostRequest(request, req);
             var ret = JsonUtility.FromJson<GameEndAIGameResult>(json);
             return ret;

@@ -98,6 +98,9 @@ public class VantanConnectControlPanel : EditorWindow
 
             EditorGUIUtility.labelWidth = 250;
             isDirty |= CheckParam(ref _saveData.IsRecording, EditorGUILayout.Toggle("イベントを記録する", _saveData.IsRecording, GUILayout.Width(400)));
+#if !AIGAME_IMPLEMENT
+            isDirty |= CheckParam(ref _saveData.IsDebugSceneLaunch, EditorGUILayout.Toggle("自動でゲームスタート", _saveData.IsDebugSceneLaunch, GUILayout.Width(400)));
+            isDirty |= CheckParam(ref _saveData.GameID, EditorGUILayout.IntField("GameID変更", _saveData.GameID, GUILayout.Width(400)));
             isDirty |= CheckParam(ref _saveData.IsUseQRCode, EditorGUILayout.Toggle("コネクト処理用のQRコードを表示する", _saveData.IsUseQRCode, GUILayout.Width(400)));
             isDirty |= CheckParam(ref _saveData.IsDebugConnect, EditorGUILayout.Toggle("コネクト処理をローカル実行する", _saveData.IsDebugConnect, GUILayout.Width(400)));
 
@@ -105,8 +108,12 @@ public class VantanConnectControlPanel : EditorWindow
             {
                 isDirty |= CheckParam(ref _saveData.UseConnectUserId, EditorGUILayout.IntField("デバッグ用のコネクト処理に使用するテスト用ID", _saveData.UseConnectUserId, GUILayout.Width(400)));
             }
+#endif
+            EditorGUILayout.Space(50);
+            EditorGUILayout.LabelField("AI系");
+            isDirty |= CheckParam(ref _saveData.OpenAIAPIKey, EditorGUILayout.TextField("OPENAI_API_KEY", _saveData.OpenAIAPIKey, GUILayout.Width(400)));
 
-            if(isDirty)
+            if (isDirty)
             {
                 Debug.Log("システムデータを保存");
                 LocalData.Save<SystemSaveData>("SystemSave.json", _saveData);
@@ -187,7 +194,7 @@ public class VantanConnectControlPanel : EditorWindow
             }).Forget();
         }
 
-    #if !AIGAME_IMPLEMENT
+#if !AIGAME_IMPLEMENT
         //ゲームスタートのAPI
         //NOTE: 情報を保存する
         if (GUILayout.Button(@"API: GameStart実行"))
@@ -213,7 +220,7 @@ public class VantanConnectControlPanel : EditorWindow
             }).Forget();
         }
 
-    #else
+#else
 
         //ゲームスタートのAPI
         //NOTE: 通常ゲームとは引数が異なる
@@ -244,7 +251,7 @@ public class VantanConnectControlPanel : EditorWindow
                 var result = await GameAPI.GameEndAIGame();
             }).Forget();
         }
-    #endif
+#endif
         */
         /*
         //特に必要ないのでコメントアウトしているコード

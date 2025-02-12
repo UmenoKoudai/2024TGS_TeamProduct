@@ -50,6 +50,22 @@ public class SceneChange : MonoBehaviour, IEventObject
         _fadeSystem = FindObjectOfType<FadeSystem>();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.TryGetComponent(out Player player))
+        {
+            if (_isKeyRoom != true || _event.CheckFlag.IsOn)
+            {
+                PlayingData.Instance.PosName = _posName;
+                PlayingData.Instance.Direction = player.Direction;
+                SceneManager.LoadScene(_nextScene);
+            }
+            else
+            {
+                _eventManager.EventCheck(this);
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.TryGetComponent(out Player player))

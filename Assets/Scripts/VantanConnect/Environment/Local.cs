@@ -5,6 +5,6 @@ namespace VTNConnect
     /// </summary>
     public class LocalEnvironment : IEnvironment
     {
-        public string APIServerURI => "http://localhost:4649/vc";
+        public string APIServerURI => "http://localhost:4649";
     }
 }

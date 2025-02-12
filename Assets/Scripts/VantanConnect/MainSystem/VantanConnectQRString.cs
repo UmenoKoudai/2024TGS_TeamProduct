@@ -13,7 +13,7 @@ namespace VTNConnect
     {
         class GameLink
         {
-            public int GameID = ProjectSettings.GameID;
+            public int GameID = VantanConnect.GameID;
             public int EventId = (int)LinkageSyatem.VC_LinkageEvent.Link;
         };
 
@@ -21,7 +21,7 @@ namespace VTNConnect
         static public string MakeQRStringLinkage()
         {
             var json = new GameLink();
-            return string.Format("VantanConnectQR:{0}", JsonUtility.ToJson(json));
+            return string.Format("http://www.vtn-game.com/vc/index.html?qrcode={0}", JsonUtility.ToJson(json));
         }
     }
 }

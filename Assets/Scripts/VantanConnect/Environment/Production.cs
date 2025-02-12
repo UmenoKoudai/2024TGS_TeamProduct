@@ -5,6 +5,6 @@ namespace VTNConnect
     /// </summary>
     public class ProductionEnvironment : IEnvironment
     {
-        public string APIServerURI => "https://vc.vtn-game.com/vc";
+        public string APIServerURI => "https://vc.vtn-game.com";
     }
 }

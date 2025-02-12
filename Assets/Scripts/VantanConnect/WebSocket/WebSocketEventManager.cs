@@ -54,11 +54,11 @@ namespace VTNConnect
 
         async public void Setup()
         {
-            _gameId = ProjectSettings.GameID;
+            _gameId = VantanConnect.GameID;
             string address = await _getAddress.Request();
             _isReconnect = false;
             if (address == "") return;
-            Connect(address);
+            await _client.Connect(address, Message);
         }
 
         public void Setup(EventDataCallback callback)
@@ -68,6 +68,8 @@ namespace VTNConnect
 
         void Update()
         {
+            _client.Update();
+
             //切断されていたら再接続
             if (_client.IsClosed)
             {
@@ -98,12 +100,6 @@ namespace VTNConnect
 #if UNITY_EDITOR
             _sendEventLog.Add(d);
 #endif
-        }
-
-
-        void Connect(string address)
-        {
-            _client.Connect(address, Message);
         }
 
         public void Send(EventData data)

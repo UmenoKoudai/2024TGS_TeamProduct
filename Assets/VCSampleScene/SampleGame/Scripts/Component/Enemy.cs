@@ -13,12 +13,12 @@ namespace GameLoopTest
         {
             if(this.transform.position.y < -20)
             {
-                /*
+                
                 //イベントを送信する
-                EventData data = new EventData(EventDefine.Cheer);
+                EventData data = new EventData(EventDefine.EnemyEscape);
                 data.DataPack("Position", this.transform.position);
                 VantanConnect.SendEvent(data);
-                */
+                
 
 #if AIGAME_IMPLEMENT
 #else
