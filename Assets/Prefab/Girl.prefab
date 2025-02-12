@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1.5
   _groundMap: {fileID: 0}
+  _spriteRenderer: {fileID: 5380801259443641341}
 --- !u!114 &6338562260223918986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followingStopDistance: 1
-  _followSpeed: 300
+  _followSpeed: 245
   _target: {fileID: 0}
   _map: {fileID: 0}
   _moveX: 0

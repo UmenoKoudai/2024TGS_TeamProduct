@@ -5,6 +5,10 @@ public class Girl : CharacterBase
 {
     private FollowSystem _follow;
 
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+
+
     private void Start()
     {
         _follow = GetComponent<FollowSystem>();
@@ -12,6 +16,14 @@ public class Girl : CharacterBase
 
     private void Update()
     {
+        if(_follow.Target.position.y > this.transform.position.y)
+        {
+            _spriteRenderer.sortingOrder = 1;
+        }
+        else
+        {
+            _spriteRenderer.sortingOrder = -1;
+        }
         Animator.SetFloat("Forward_X", _follow.ForwardX);
         Animator.SetFloat("Forward_Y", _follow.ForwardY);
         Animator.SetFloat("X", _follow.MovingX);
