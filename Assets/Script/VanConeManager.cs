@@ -13,7 +13,7 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
     int _deathCount;
     public int DeathCount => _deathCount;
 
-    public bool IsActive => throw new System.NotImplementedException();
+    public bool IsActive => true;
 
     private static VanConeManager _instance;
     public static VanConeManager Instance
