@@ -34,7 +34,11 @@ namespace GameLoopTest
         {
 #if AIGAME_IMPLEMENT
             //ゲームスタート時に通信する
-            VantanConnect.GameStart().Forget();
+            UniTask.RunOnThreadPool(async () =>
+            {
+                var result = await VantanConnect.GameStart();
+                Debug.Log(result.GameTitle);
+            }).Forget();
             SceneManager.LoadScene("InGame");
 #else
             if(Input.GetKeyDown(KeyCode.Return))

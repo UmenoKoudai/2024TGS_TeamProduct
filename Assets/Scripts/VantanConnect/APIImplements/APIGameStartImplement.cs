@@ -22,7 +22,6 @@ namespace VTNConnect
     public class GameStartResult : APIResponce
     {
         public string GameHash;
-        public GameInfo[] GameInfo;
     }
 
     /// <summary>
