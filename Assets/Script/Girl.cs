@@ -18,7 +18,7 @@ public class Girl : CharacterBase
     {
         if(_follow.Target.position.y > this.transform.position.y)
         {
-            _spriteRenderer.sortingOrder = 1;
+            _spriteRenderer.sortingOrder = 5;
         }
         else
         {

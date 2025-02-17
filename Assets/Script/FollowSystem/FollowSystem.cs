@@ -89,9 +89,9 @@ public class FollowSystem : MonoBehaviour
     /// <summary>現在動いている方向を示すもの(Y軸)</summary>
     public int MovingY => _moveY;
     /// <summary>現在向いている方向を示すもの(X軸)</summary>
-    public int ForwardX => _forwardX;
+    public int ForwardX { get => _forwardX; set => value = _forwardX; }
     /// <summary>現在向いている方向を示すもの(Y軸)</summary>
-    public int ForwardY => _forwardY;
+    public int ForwardY { get => _forwardY; set => value = _forwardY; }
     /// <summary>今追従を起動しているかどうか</summary>
     public bool IsFollow => _isFollow;
 
@@ -116,11 +116,10 @@ public class FollowSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DirMovementJudge();
-
         //追従システム作動中
         if(_isFollow)
         {
+            DirMovementJudge();
             //追従している
             if (_isFollowMoving)
             {
@@ -196,6 +195,10 @@ public class FollowSystem : MonoBehaviour
     public void FollowStop()
     {
         _isFollow = false;
+        if(_rb == null)
+        {
+           _rb = GetComponent<Rigidbody2D>();
+        }
         _rb.velocity = Vector3.zero;
     }
 
@@ -204,6 +207,8 @@ public class FollowSystem : MonoBehaviour
     {
         //探索経路のリセット
         _followPathFind.GoalPathClear();
+        //初期化
+        _followPathFind.Init(this);
         //探索
         _followPathFind.AstarSearchPath(this.transform.position, _target.position);
         //次の目的地の設定
