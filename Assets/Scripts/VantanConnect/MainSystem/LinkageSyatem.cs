@@ -1,11 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 namespace VTNConnect
 {
@@ -41,9 +35,7 @@ namespace VTNConnect
             //状態をリセット
             _user = null;
 
-#if AIGAME_IMPLEMENT
-            return ;
-#endif
+#if !AIGAME_IMPLEMENT
             if (!VantanConnect.SystemSave.IsDebugSceneLaunch)
             {
                 SetViewEnable(true);
@@ -85,6 +77,7 @@ namespace VTNConnect
                     _view.Link(_user.DisplayName);
                 }).Forget();
             }
+#endif
         }
 
         public void SetViewEnable(bool isEnableView)
@@ -95,9 +88,7 @@ namespace VTNConnect
         //チェインするデータを受け取り処理する
         public void OnEventCall(EventData data)
         {
-#if AIGAME_IMPLEMENT
-            return;
-#endif
+#if !AIGAME_IMPLEMENT
             switch ((VC_LinkageEvent)data.EventId)
             {
                 case VC_LinkageEvent.Link:
@@ -165,6 +156,7 @@ namespace VTNConnect
                     }
                     break;
             }
+#endif
         }
     }
 }

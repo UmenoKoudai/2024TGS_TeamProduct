@@ -3,13 +3,13 @@ using System;
 namespace VTNConnect
 {
     /// <summary>
-    /// ゲーム内で使用する「情報」が渡される
+    /// ゲーム内で使用する「アーティファクト」の情報が渡される
     /// </summary>
     [Serializable]
-    public class GameInfo
+    public class ArtifactInfo
     {
-        //tbd
-        int DataId;
+        public int Id;
+        public int OwnerId;
     }
 
     /// <summary>
@@ -25,6 +25,8 @@ namespace VTNConnect
         public int Type;            //ユニークユーザか一般ユーザか
         public string Name;         //名前。フルネーム
         public int Level;           //レベル。1～
+        public int Exp;             //経験値。0～
+        public int Karma;           //罪の値。0～
         public int Gold;            //所持ゴールド。アウトゲームのみ参照する想定。
         public int PlayCount;       //プレイ回数
         public DateTime CreatedAt;      //生成日時
