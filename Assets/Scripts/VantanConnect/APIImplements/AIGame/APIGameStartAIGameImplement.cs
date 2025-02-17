@@ -18,7 +18,7 @@ namespace VTNConnect
         public string GameHash;
         public string GameTitle;
         public UserData[] GameUsers;
-        public GameInfo[] GameInfo;
+        public ArtifactInfo[] Artifacts;
     }
 
     /// <summary>

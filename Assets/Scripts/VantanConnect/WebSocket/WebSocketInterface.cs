@@ -83,6 +83,8 @@ namespace VTNConnect
     {
         public string SessionId;
         public int GameId;
+        public string Version;
+        public string BuildHash;
         public int Command = (int)WebSocketCommand.SEND_JOIN;
     };
 

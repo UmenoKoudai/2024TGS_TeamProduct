@@ -22,7 +22,6 @@ namespace VTNConnect
     [Serializable]
     public class GameEndAIGameResult : APIResponce
     {
-        public GameInfo[] GameInfo;
     }
 
 

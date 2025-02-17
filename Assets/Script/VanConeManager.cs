@@ -88,6 +88,7 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
 
     public void OnEventCall(VTNConnect.EventData data)
     {
+
         switch (data.EventCode)
         {
             //case EventDefine.DeathStack:
@@ -95,6 +96,17 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
             //    break;
             case EventDefine.DeathScream:
                 PlayScream();
+                break;
+            case EventDefine.Cheer:
+                CheerEvent cheer = new CheerEvent(data);
+                if(cheer.GetEmotion() > 0)
+                {
+
+                }
+                else if(cheer.GetEmotion() < 0)
+                {
+
+                }
                 break;
         }
     }

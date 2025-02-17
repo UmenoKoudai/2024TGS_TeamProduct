@@ -33,11 +33,13 @@ namespace VTNConnect
         void Update()
         {
             _timer += Time.deltaTime;
+            /*
             if (_timer > _spawnInterval)
             {
                 _timer -= _spawnInterval;
                 GameObject.Instantiate(_enemy, new Vector3(UnityEngine.Random.Range(-20,20), 50, -1), Quaternion.identity);
             }
+            */
 
             if(Input.GetKeyDown(KeyCode.Space))
             {
@@ -54,7 +56,7 @@ namespace VTNConnect
 #endif
             }
 
-            if(_timer > 10.0f)
+            if(_timer > 2.0f)
             {
 #if AIGAME_IMPLEMENT
                 //ゲーム終了

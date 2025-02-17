@@ -139,6 +139,8 @@ namespace VTNConnect
                             var welcome = JsonUtility.FromJson<WSPR_Welcome>(data.Data);
                             var join = new WSPS_Join();
                             join.SessionId = welcome.SessionId;
+                            join.BuildHash = BuildState.BuildHash;
+                            join.Version = BuildState.Version;
                             join.GameId = _gameId;
                             _client.Send(JsonUtility.ToJson(join));
                             _sessionId = welcome.SessionId;
