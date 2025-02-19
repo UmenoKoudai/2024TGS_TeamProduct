@@ -16,6 +16,9 @@ public class TalkSystem : MonoBehaviour
 
     EventTalkData _eventTalkData;
 
+   //↓ウメノ追加
+    EventData _eventData;
+
     TalkData[] _talkData;
 
     /// <summary>現在のTalk内容</summary>
@@ -64,11 +67,13 @@ public class TalkSystem : MonoBehaviour
 
     //↓クドウ追記
     /// <summary>選択肢込みの会話かどうか判断しUIに反映</summary>
-    public void ShowMessage(EventTalkData eventTalkData)
+    public void ShowMessage(EventTalkData eventTalkData, EventData eventData)
     {
         if(eventTalkData == null) return;
 
         _eventTalkData = eventTalkData;
+        //↓ウメノ追加
+        _eventData = eventData;
         _isSelectEventTalk = eventTalkData.IsSelectTalk;
         _talkData = _eventTalkData.EventStartTalk;
         
@@ -97,6 +102,8 @@ public class TalkSystem : MonoBehaviour
             _talkCount = 0;
             _isTalking = false;
             _isTalkTextDisplaying = false;
+            //↓ウメノ追加
+            _eventData.TalkEnd(_eventData);
             return;
         }
 
