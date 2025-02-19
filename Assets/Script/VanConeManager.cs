@@ -13,6 +13,9 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
     int _deathCount;
     public int DeathCount => _deathCount;
 
+    [SerializeField]
+    FlagData _flagData;
+
     public bool IsActive => true;
 
     private static VanConeManager _instance;
@@ -42,6 +45,7 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
 
     private void Awake()
     {
+
         if (!_instance)
         {
             _instance = this;
@@ -66,7 +70,7 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
         //テスト用
         if(Input.GetKeyDown(KeyCode.V))
         {
-            CorpseSpown();
+            _flagData.SetFlagStatus(true);
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -94,6 +98,9 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
             //case EventDefine.DeathStack:
             //    CorpseSpown();
             //    break;
+            case EventDefine.KnockWindow:
+                _flagData.SetFlagStatus(true);
+                break;
             case EventDefine.DeathScream:
                 PlayScream();
                 break;

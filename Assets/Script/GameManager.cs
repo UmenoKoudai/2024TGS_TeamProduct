@@ -132,14 +132,15 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (_nowState == GameState.OutGame) return;
-        try
-        {
-            _currentState.Update();
-        }
-        catch
-        {
-            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}:{name}");
-        }
+        _currentState.Update();
+        //try
+        //{
+        //    _currentState.Update();
+        //}
+        //catch
+        //{
+        //    Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}:{name}");
+        //}
     }
 
     private void Init()

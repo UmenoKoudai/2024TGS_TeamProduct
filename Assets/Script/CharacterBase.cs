@@ -51,14 +51,15 @@ public class CharacterBase : MonoBehaviour
 
     public void ManualUpdate()
     {
-        try
-        {
-            _currentState.Update();
-        }
-        catch
-        {
-            Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}:{name}");
-        }
+        _currentState.Update();
+        //try
+        //{
+        //    _currentState.Update();
+        //}
+        //catch
+        //{
+        //    Debug.LogError($"ステートが設定されていません{this.gameObject.GetType()}:{name}");
+        //}
     }
 
     public void ManualFixedUpdate()
