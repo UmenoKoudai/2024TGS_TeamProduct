@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 /// <summary>
 /// シナリオや画像等、イベント関係の処理に使用するデータを格納するScriptableObject
@@ -25,6 +26,17 @@ public class EventData : ScriptableObject
     //クドウ追記
     public EventTalkData TrueTalkData { get => _trueTalkData; set => _trueTalkData = value; }
     public EventTalkData FalseTalkData => _falseTalkData;
+
+    public event UnityAction<EventData> talkEnded;
+
+    public void TalkEnd(EventData data)
+    {
+        if (talkEnded != null)
+        {
+            talkEnded(data);
+        }
+    }
+
 }
 
 //クドウ追記
@@ -67,6 +79,7 @@ public class EventTalkData
     public TalkData[] EventStartTalk => eventStartTalk;
 
     public ChoiceButtonData[] ChoiceButtonData => choiceButtonDatas;
+
 }
 
 [Serializable]

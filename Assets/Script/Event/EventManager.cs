@@ -16,7 +16,8 @@ public class EventManager  : MonoBehaviour
         //_talkSystem.ShowMessage(eventObject.ResultEventTalkData.NormalTalk.Name, eventObject.ResultEventTalkData.NormalTalk.Sentences, 
         //eventObject.ResultEventTalkData.NormalTalk.Image, eventObject.ResultEventTalkData.IsSelectTalk);
         EventTalkData data = eventObject.ResultEventTalkData;
-        _talkSystem.ShowMessage(data);
+        EventData eventData = eventObject.EventData;
+        _talkSystem.ShowMessage(data, eventData);
         //try
         //{
             if (data.IsSelectTalk)
