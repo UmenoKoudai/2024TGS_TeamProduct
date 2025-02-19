@@ -6,6 +6,8 @@ public class TeaRoomFirstEvent : MonoBehaviour, IEventObject
     [SerializeField]
     private EventData _event;
     [SerializeField]
+    private FlagData _girlFlag;
+    [SerializeField]
     private FlagList _flagList;
     [SerializeField]
     private PlayableDirector _timeLine;
@@ -20,7 +22,7 @@ public class TeaRoomFirstEvent : MonoBehaviour, IEventObject
 
     private void Start()
     {
-        if(_event.CheckFlag.IsOn)
+        if(_event.CheckFlag.IsOn && _girlFlag.IsOn)
         {
             foreach (var obj in _firstObject)
             {
@@ -30,10 +32,11 @@ public class TeaRoomFirstEvent : MonoBehaviour, IEventObject
             {
                 obj.SetActive(false);
             }
+            _timeLine.Play();
         }
         else
         {
-            _timeLine.Play();
+            _firstObject[0].SetActive(true);
         }
     }
 

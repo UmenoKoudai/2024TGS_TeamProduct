@@ -6126,7 +6126,7 @@ PrefabInstance:
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _event
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 167f0f2962c7b1549b801916393feada, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _posName
       value: Exhibition
@@ -6134,10 +6134,10 @@ PrefabInstance:
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _flagList
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _isKeyRoom
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7657979983905144818, guid: c98d4bb8615e3b244928a0abd00db388, type: 3}
       propertyPath: _nextScene
