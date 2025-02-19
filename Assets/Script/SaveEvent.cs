@@ -23,4 +23,14 @@ public class SaveEvent : MonoBehaviour, IEventObject
             }
         }
     }
+
+    public void TalkEnd(EventData data)
+    {
+        Debug.Log("TalkEnd");
+    }
+
+    private void Start()
+    {
+        _eventData.talkEnded += TalkEnd;
+    }
 }

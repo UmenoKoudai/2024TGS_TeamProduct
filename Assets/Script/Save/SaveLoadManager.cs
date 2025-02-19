@@ -189,7 +189,8 @@ public class SaveLoadManager : MonoBehaviour
         {
             Debug.LogError("ГfБ[Г^В™СґНЁВµВ№ВєВс");
         }
-        //SceneManager.sceneLoaded += LoadedEvent;
+        SceneManager.sceneLoaded += LoadedEvent;
+        CloseLoadPanel();
         SceneManager.LoadScene(currentData.SceneName);
     }
 
