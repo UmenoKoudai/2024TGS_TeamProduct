@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Playables;
-using UnityEngine.SceneManagement;
 
 public class ChildrenFirstEvent : MonoBehaviour, IEventObject
 {
@@ -9,11 +7,24 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
     [SerializeField]
     private FlagList _flagList;
     [SerializeField]
-    private PlayableDirector _timeLine;
+    private GameObject _firstObject;
     [SerializeField]
-    private GameObject[] _firstObject;
+    private GameObject _secondObject;
+
     [SerializeField]
-    private GameObject[] _secondObject;
+    private Transform _player;
+
+    [SerializeField]
+    private EventManager _eventManager;
+
+    [SerializeField]
+    private Sprite _girlLeft;
+    [SerializeField]
+    private Sprite _girlRight;
+
+    FollowSystem _followSystem;
+
+    bool _isGirl = false; 
 
 
     public EventData EventData => _event;
@@ -22,55 +33,58 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
 
     private void Start()
     {
-        if (_event.CheckFlag.IsOn)
+        if (_flagList.GetFlagStatus(_event.CheckFlag))
         {
-            foreach (var obj in _firstObject)
-            {
-                obj.SetActive(true);
-            }
-            foreach (var obj in _secondObject)
-            {
-                obj.SetActive(false);
-            }
+            _firstObject.SetActive(false);
+            _secondObject.SetActive(true);
+            Destroy(this);
         }
-        else
-        {
-            _timeLine.Play();
-        }
+        _isGirl = false;
     }
 
-    public void TalkStart()
+    private void Update()
     {
-        FindObjectOfType<EventManager>().EventCheck(this);
-    }
-
-    public void SceneChange()
-    {
-        PlayingData.Instance.PosName = "HoolF";
-        PlayingData.Instance.Direction = new Vector2(-1, 0);
-        SceneManager.LoadScene("HollAndCorridor");
+        if(!_isGirl)
+        {
+            if (_flagList.GetFlagStatus(_event.CheckFlag))
+            {
+                if (!_eventManager.TalkSystem.IsTalking)
+                {
+                    _firstObject.SetActive(false);
+                    _secondObject.SetActive(true);
+                    _followSystem = _secondObject.GetComponent<FollowSystem>();
+                    if (_followSystem.Target.transform.position.x < _secondObject.transform.position.x)
+                    {
+                        _followSystem.ForwardX = -1;
+                    }
+                    else
+                    {
+                        _followSystem.ForwardX = 1;
+                    }
+                    _secondObject.GetComponent<FollowSystem>().FollowStart();
+                    _isGirl = true;
+                }
+            }
+        }
     }
 
     public void ResultFlagCheck()
     {
         if(_event != null)
         {
-            if(_flagList.GetFlagStatus(_event.CheckFlag))
-            {
-                ResultEventTalkData = _event.TrueTalkData;
-                foreach (var obj in _firstObject)
-                {
-                    obj.SetActive(true);
-                }
-                foreach (var obj in _secondObject)
-                {
-                    obj.SetActive(false);
-                }
-            }
-            else
+            if(!_flagList.GetFlagStatus(_event.CheckFlag))
             {
                 ResultEventTalkData = _event.FalseTalkData;
-                _timeLine.Play();
+                _secondObject.transform.position = _firstObject.transform.position;
+                SpriteRenderer spriteRenderer = _firstObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>();
+                if (_player.transform.position.x <= _firstObject.transform.position.x)
+                {
+                    spriteRenderer.sprite = _girlLeft;
+                }
+                else
+                {
+                    spriteRenderer.sprite = _girlRight;
+                }
                 if (_event.ChangeFlag != null) _flagList.SetFlag(_event.ChangeFlag);
             }
         }
