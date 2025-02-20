@@ -9,6 +9,8 @@ public class ItemPanel : MonoBehaviour
     ItemInventry _itemInventry;
     [SerializeField] Image[] _images;
     [SerializeField]public Text _itemEffectText;
+
+    [SerializeField, Header("文字数のマジックナンバー")] int _num = 6;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,15 +58,13 @@ public class ItemPanel : MonoBehaviour
                 Text text = _itemInventry._itemButton[i].GetComponentInChildren<Text>();
                 text.text = _itemInventry._itemDataBases[i]._itemName;
 
-                // 追記　ボタンの幅を取得
-                RectTransform buttonRect = _itemInventry._itemButton[i].GetComponent<RectTransform>();
-                float buttonWidth = buttonRect.rect.width;
+                int itemNum = _itemInventry._itemDataBases[i]._itemName.Length;
 
-                // テキストがボタンの幅を超えてたら、フォントサイズを縮小
-                if (text.preferredWidth > buttonWidth)
+                if(itemNum > _num)
                 {
-                    float scale = buttonWidth / text.preferredWidth;
-                    text.fontSize = Mathf.RoundToInt(text.fontSize * scale);
+                    int down = itemNum - _num;
+                    text.fontSize -= down;
+
                 }
             }
         }
