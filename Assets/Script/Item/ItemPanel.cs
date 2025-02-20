@@ -49,12 +49,23 @@ public class ItemPanel : MonoBehaviour
             {
                 _itemInventry._itemButton[i].image.sprite = null;
                 Text text = _itemInventry._itemButton[i].GetComponentInChildren<Text>();
-                text.text = null;
+                text.text = "";
             }
             for (int i = 0; i < count; i++)
             {
                 Text text = _itemInventry._itemButton[i].GetComponentInChildren<Text>();
                 text.text = _itemInventry._itemDataBases[i]._itemName;
+
+                // 追記　ボタンの幅を取得
+                RectTransform buttonRect = _itemInventry._itemButton[i].GetComponent<RectTransform>();
+                float buttonWidth = buttonRect.rect.width;
+
+                // テキストがボタンの幅を超えてたら、フォントサイズを縮小
+                if (text.preferredWidth > buttonWidth)
+                {
+                    float scale = buttonWidth / text.preferredWidth;
+                    text.fontSize = Mathf.RoundToInt(text.fontSize * scale);
+                }
             }
         }
     }
