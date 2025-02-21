@@ -29,6 +29,10 @@ public class SelectSystem : MonoBehaviour
         //ボタン生成/文字設定
         GameObject choiceButton = Instantiate(button);
         choiceButton.transform.GetChild(0).GetComponent<Text>().text = choiceButtonText;
+
+        if(_selectPanel == null)
+            Debug.LogError(" selectPanelの参照先がありません ");
+
         choiceButton.transform.parent = _selectPanel.transform;
         _choiceButtons.Add(choiceButton);
 

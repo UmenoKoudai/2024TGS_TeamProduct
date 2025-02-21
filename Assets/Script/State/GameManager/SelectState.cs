@@ -8,13 +8,10 @@ public class SelectState : IStateMachine
 
     private EventManager _eventManager;
 
-    private EventSystem _eventSystem;
-
     public SelectState(GameManager gameManager)
     {
         _gameManager = gameManager;
         _eventManager = gameManager.EventManager;
-        _eventSystem = gameManager.EventSystem;
     }
 
     public void Enter()
@@ -26,8 +23,6 @@ public class SelectState : IStateMachine
     public void Exit()
     {
         _gameManager.PanelManager.SelectPanel.SetActive(false);
-        _eventSystem.firstSelectedGameObject = null;
-        EventSystem.current.SetSelectedGameObject(null);
         _gameManager.StateChange(GameManager.SystemState.Talk);
     }
 
