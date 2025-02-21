@@ -110,7 +110,7 @@ public class FollowSystem : MonoBehaviour
         _rb.velocity = Vector3.zero;
 
         //探索開始
-        FollowStart();
+        //FollowStart();
     }
 
     // Update is called once per frame
