@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System;
-using System.Linq;
 
 public class ItemPanel : MonoBehaviour
 {

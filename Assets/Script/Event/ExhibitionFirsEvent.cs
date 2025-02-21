@@ -10,6 +10,8 @@ public class ExhibitionFirsEvent : MonoBehaviour, IEventObject
     [SerializeField]
     private PlayableDirector _timeLine;
     [SerializeField]
+    private PlayableDirector _afterTimeLine;
+    [SerializeField]
     private GameObject[] _firstObject;
     [SerializeField]
     private GameObject[] _secondObject;
@@ -20,6 +22,7 @@ public class ExhibitionFirsEvent : MonoBehaviour, IEventObject
 
     private void Start()
     {
+        _event.talkEnded += TalkEnd;
         if (_event.CheckFlag.IsOn)
         {
             foreach (var obj in _firstObject)
@@ -40,6 +43,11 @@ public class ExhibitionFirsEvent : MonoBehaviour, IEventObject
     public void TalkStart()
     {
         FindObjectOfType<EventManager>().EventCheck(this);
+    }
+
+    public void TalkEnd(EventData data)
+    {
+        _afterTimeLine.Play();
     }
 
     public void ResultFlagCheck()

@@ -33,22 +33,9 @@ public class WindowKnock : MonoBehaviour, IEventObject
         }
     }
 
-    public void EventStart()
-    {
-        _audio.Stop();
-        _windowAnim.StopPlayback();
-        _event.CheckFlag.SetFlagStatus(false);
-        _ghostAnim.gameObject.SetActive(true);
-        _ghostAnim.Play("WindowGhost");
-    }
-
-    public void EventClose()
-    {
-        _event.CheckFlag.SetFlagStatus(false);
-    }
-
     public void TalkEnd(EventData date)
     {
+        _event.CheckFlag.SetFlagStatus(false);
         _ghostAnim.gameObject.SetActive(false);
         _talkSystem.TalkTextAllDisplay();
         Debug.Log("トーク終了");
