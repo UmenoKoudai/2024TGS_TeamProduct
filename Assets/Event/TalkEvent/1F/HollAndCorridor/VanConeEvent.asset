@@ -23,7 +23,7 @@ MonoBehaviour:
     choiceNum: 2
     choiceButtonDatas:
     - button: {fileID: 0}
-      buttonText: "\u7A93\u3092\u9664\u304F"
+      buttonText: "\u7A93\u3092\u8997\u304F"
       talk:
       - image: {fileID: -632871782, guid: 348ccb135302c124eaeaa4615db5285f, type: 3}
         name: 
