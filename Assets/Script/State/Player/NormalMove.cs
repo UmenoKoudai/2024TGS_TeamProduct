@@ -12,6 +12,8 @@ public class NormalMove : IStateMachine
     private Vector3Int _nextPos;
     private Vector3 _nextTile;
 
+    private Vector3 _rayDirection;
+
     public NormalMove(CharacterBase character)
     {
         _character = character;
@@ -32,15 +34,6 @@ public class NormalMove : IStateMachine
 
     public void FixedUpdate()
     {
-        //if (!_isMove) return;
-        //_character.Direction = _direction;
-        //float distance = Vector3.Distance(_nextTile, _character.transform.position);
-        //_character.Rb.velocity = _direction * _character.Speed;
-        //if (distance < 0.1f)
-        //{
-        //    _isMove = false;
-        //    _character.Rb.velocity = Vector3.zero;
-        //}
         if (!_isMove) return;
         _character.Direction = _direction;
         float distance = Vector3.Distance(_nextTile, _character.transform.position);
@@ -61,7 +54,9 @@ public class NormalMove : IStateMachine
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
+        _rayDirection = new Vector3(h, v, 0);
+        //Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
+        Debug.DrawRay(_character.transform.position, _rayDirection * 5, Color.yellow);
         if (h > 0 || h < 0 || v > 0 || v < 0)
         {
             _character.Direction = _direction;
@@ -132,7 +127,7 @@ public class NormalMove : IStateMachine
 
     private void Action()
     {
-        RaycastHit2D[] hit = Physics2D.RaycastAll(_character.transform.position, _character.Direction, 2);
+        RaycastHit2D[] hit = Physics2D.RaycastAll(_character.transform.position, _rayDirection, 5);
         foreach (var h in hit)
         {
             if (h.collider.gameObject.TryGetComponent(out IEventObject events))
