@@ -21,11 +21,14 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
     private Sprite _girlLeft;
     [SerializeField]
     private Sprite _girlRight;
+    [SerializeField]
+    private Sprite _girlForward;
 
     FollowSystem _followSystem;
 
     bool _isGirl = false; 
 
+    bool _isTalk = false;
 
     public EventData EventData => _event;
 
@@ -65,6 +68,14 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
                     _isGirl = true;
                 }
             }
+            else
+            {
+                if (!_eventManager.TalkSystem.IsTalking)
+                {
+                    SpriteRenderer spriteRenderer = _firstObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = _girlForward;
+                }
+            }
         }
     }
 
@@ -85,8 +96,13 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
                 {
                     spriteRenderer.sprite = _girlRight;
                 }
-                if (_event.ChangeFlag != null) _flagList.SetFlag(_event.ChangeFlag);
+                //if (_event.ChangeFlag != null) _flagList.SetFlag(_event.ChangeFlag);
             }
         }
+    }
+
+    public void SetFlag()
+    {
+        _flagList.SetFlag(_event.ChangeFlag);
     }
 }

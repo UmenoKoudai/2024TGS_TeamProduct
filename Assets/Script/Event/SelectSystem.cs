@@ -21,6 +21,10 @@ public class SelectSystem : MonoBehaviour
 
     ColorBlock _normalButtonColor;
 
+    int _normalButtonTextSize;
+
+    Font _normalButtonTextFont;
+
     RectTransform _normalButtonRectTransform;
 
     bool _isSelecting;
@@ -35,7 +39,10 @@ public class SelectSystem : MonoBehaviour
 
     private void Start()
     {
-        _normalButtonTextColor = _normalButton.transform.GetChild(0).GetComponent<Text>().color;
+        Text text = _normalButton.transform.GetChild(0).GetComponent<Text>();
+        _normalButtonTextColor = text.color;
+        _normalButtonTextSize = text.fontSize;
+        _normalButtonTextFont = text.font;
         _normalButtonImageColor = _normalButton.GetComponent<Image>().color;
         _normalButtonColor = _normalButton.GetComponent<Button>().colors;
         _normalButtonRectTransform = _normalButtonRectTransform.GetComponent<RectTransform>();
@@ -53,7 +60,9 @@ public class SelectSystem : MonoBehaviour
         Text text = choiceButton.transform.GetChild(0).GetComponent<Text>();
         Button selectButton = choiceButton.GetComponent<Button>();
         text.text = choiceButtonText;
+        text.fontSize = _normalButtonTextSize;
         text.color = _normalButtonTextColor;
+        text.font = _normalButtonTextFont;
         selectButton.GetComponent<Image>().color = _normalButtonImageColor;
         selectButton.GetComponent<Button>().colors = _normalButtonColor;
 
