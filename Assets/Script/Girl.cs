@@ -8,14 +8,28 @@ public class Girl : CharacterBase
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
+    private float _followStartTime = 1f;
+
+    private float _timer = 0f;
+
 
     private void Start()
     {
         _follow = GetComponent<FollowSystem>();
+        _timer = 0;
     }
 
     private void Update()
     {
+        if(!_follow.IsFollow)
+        {
+            _timer += Time.deltaTime;
+            if(_timer >= _followStartTime)
+            {
+                _follow.FollowStart();
+            }
+        }
+
         if(_follow.Target.position.y > this.transform.position.y)
         {
             _spriteRenderer.sortingOrder = 5;
