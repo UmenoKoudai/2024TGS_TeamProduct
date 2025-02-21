@@ -641,7 +641,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &96489045
@@ -7656,8 +7656,8 @@ Transform:
   m_GameObject: {fileID: 577192106}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12630627, y: -0, z: -0, w: 0.99199134}
-  m_LocalPosition: {x: -6.0467, y: 5.345, z: -0.16}
-  m_LocalScale: {x: 7.5266, y: 1.435, z: 1}
+  m_LocalPosition: {x: -5.99, y: 5.44, z: -0.16}
+  m_LocalScale: {x: 7.5266, y: 1.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 800419461}
@@ -7998,7 +7998,7 @@ Transform:
   m_GameObject: {fileID: 603004061}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12630627, y: -0, z: -0, w: 0.99199134}
-  m_LocalPosition: {x: 5.02, y: 5.345, z: -0.16}
+  m_LocalPosition: {x: 5.02, y: 5.46, z: -0.16}
   m_LocalScale: {x: 7.5266, y: 1.435, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8358,7 +8358,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.3
+  orthographic size: 11.21
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8383,7 +8383,7 @@ Transform:
   m_GameObject: {fileID: 782049003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.7849388, y: -1.1175599, z: -10}
+  m_LocalPosition: {x: -0.06882095, y: 2.92526, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9613,7 +9613,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &841053318
@@ -9744,7 +9744,7 @@ SpriteRenderer:
   m_Size: {x: 3.4, y: 3.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &848943662
@@ -10081,7 +10081,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &872023486
@@ -11222,6 +11222,7 @@ MonoBehaviour:
   _event: {fileID: 11400000, guid: 007a5d10510ac6a44a475a3efe60b1e2, type: 2}
   _flagList: {fileID: 11400000, guid: 61f6e3181b7d54f439a0fe208c6190fe, type: 2}
   _timeLine: {fileID: 1147140137}
+  _afterTimeLine: {fileID: 0}
   _firstObject:
   - {fileID: 1528035086}
   - {fileID: 162840739}
@@ -13965,7 +13966,7 @@ Transform:
   m_GameObject: {fileID: 1539505589}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12630627, y: -0, z: -0, w: 0.99199134}
-  m_LocalPosition: {x: -6.08, y: -0.75, z: -0.16}
+  m_LocalPosition: {x: -6.04, y: -0.68, z: -0.16}
   m_LocalScale: {x: 7.5266, y: 1.435, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14907,7 +14908,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1774103857
@@ -14993,7 +14994,7 @@ SpriteRenderer:
   m_Size: {x: 3.4, y: 3.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1784929486
@@ -15102,7 +15103,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1828766067
@@ -16072,7 +16073,7 @@ SpriteRenderer:
   m_Size: {x: 3.4, y: 3.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2063062710
@@ -16361,7 +16362,7 @@ Transform:
   m_GameObject: {fileID: 2081291274}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12630627, y: -0, z: -0, w: 0.99199134}
-  m_LocalPosition: {x: 5.02, y: -0.75, z: -0.16}
+  m_LocalPosition: {x: 5.07, y: -0.67, z: -0.16}
   m_LocalScale: {x: 7.5266, y: 1.435, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
