@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _savepanel;
 
+    bool _isSave = false;
+
+    public bool IsSave { get => _isSave; set => _isSave = value; }  
 
     enum GameState
     {
@@ -124,6 +127,7 @@ public class GameManager : MonoBehaviour
         _states[(int)SystemState.Option] = new OptionState(this);
         _states[(int)SystemState.Select] = new SelectState(this);
         _states[(int)SystemState.GameOver] = new GameOverState(this);
+        _states[(int)SystemState.Save] = new SaveLoadState(this);
         _currentState = _states[(int)_state];
     }
 
@@ -175,6 +179,7 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         FindObjectOfType<SaveLoadManager>().OpenSavePanel();
+        _isSave = true;
     }
 
     public void Load()
