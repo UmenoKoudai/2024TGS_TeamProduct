@@ -6,6 +6,7 @@ public class TalkState : IStateMachine
     private GameManager _gameManager;
 
     private EventManager _eventManager;
+
     public TalkState(GameManager gameManager)
     {
         _gameManager = gameManager;
@@ -20,7 +21,15 @@ public class TalkState : IStateMachine
     public void Exit()
     {
         _gameManager.PanelManager.TalkPanel.SetActive(false);
-        _gameManager.StateChange(GameManager.SystemState.Move);
+        if(_gameManager.IsSave)
+        {
+            _gameManager.StateChange(GameManager.SystemState.Save);
+        }
+        else
+        {
+            _gameManager.StateChange(GameManager.SystemState.Move);
+        }
+
     }
 
     public void FixedUpdate()

@@ -103,12 +103,16 @@ public class SaveLoadManager : MonoBehaviour
 
     public void OpenSavePanel()
     {
+        FindObjectOfType<GameManager>().IsSave = false;
         _savePanel.SetActive(true);
         TimeReflection(_saveButton);
     }
     public void CloseSavePanel()
     {
         _savePanel.SetActive(false);
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager.IsSave = false;
+        gameManager.StateChange(GameManager.SystemState.Move);
     }
     public void OpenLoadPanel()
     {
