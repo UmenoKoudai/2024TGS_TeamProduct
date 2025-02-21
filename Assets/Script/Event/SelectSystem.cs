@@ -25,8 +25,6 @@ public class SelectSystem : MonoBehaviour
 
     Font _normalButtonTextFont;
 
-    RectTransform _normalButtonRectTransform;
-
     bool _isSelecting;
 
     /// <summary> 選択したボタンのID</summary>
@@ -45,7 +43,6 @@ public class SelectSystem : MonoBehaviour
         _normalButtonTextFont = text.font;
         _normalButtonImageColor = _normalButton.GetComponent<Image>().color;
         _normalButtonColor = _normalButton.GetComponent<Button>().colors;
-        _normalButtonRectTransform = _normalButtonRectTransform.GetComponent<RectTransform>();
     }
 
     /// <summary>選択肢ボタンの生成とID設定 </summary>

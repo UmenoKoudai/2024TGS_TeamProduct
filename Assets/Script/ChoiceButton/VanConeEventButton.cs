@@ -2,12 +2,20 @@ using UnityEngine;
 
 public class VanConeEventButton : ChoiceButtonBase
 {
-    [SerializeField]
     private AudioSource _audio;
-    [SerializeField]
     private Animator _windowAnim;
-    [SerializeField]
     private Animator _ghostAnim;
+
+    WindowKnock _windowScript;
+
+    private void Start()
+    {
+        _windowScript = FindObjectOfType<WindowKnock>();
+        _audio = _windowScript.GetComponent<AudioSource>();
+        _windowAnim = _windowScript.GetComponent<Animator>();
+        _ghostAnim = _windowScript._GhostAnim;
+    }
+
     protected override void OnClickAction()
     {
         _audio.Stop();

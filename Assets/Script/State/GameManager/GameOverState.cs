@@ -11,8 +11,8 @@ public class GameOverState : IStateMachine
 
     public void Enter()
     {
-        _gameManager.Player.Rb.velocity = Vector2.zero;
-        _gameManager.Girl.Rb.velocity = Vector2.zero;
+        _gameManager.Player.Speed = 0;
+        _gameManager.Girl.Speed = 0;
     }
 
     public void Exit() { }
