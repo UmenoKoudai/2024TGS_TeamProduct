@@ -22,13 +22,13 @@ MonoBehaviour:
       sentence: "\u4F55\u306E\u97F3\u3060\uFF1F"
     choiceNum: 2
     choiceButtonDatas:
-    - button: {fileID: 0}
+    - button: {fileID: 4408294625267113118, guid: 0964159e88f228c418c42a6615e1d3b7, type: 3}
       buttonText: "\u7A93\u3092\u8997\u304F"
       talk:
       - image: {fileID: -632871782, guid: 348ccb135302c124eaeaa4615db5285f, type: 3}
         name: 
         sentence: "\u4F55\u3060\u3042\u3044\u3064\u306F\uFF01\uFF01\uFF01"
-    - button: {fileID: 0}
+    - button: {fileID: 4456493806854247177, guid: 6bcdcbe9b4d165c4680ff8d651f034b1, type: 3}
       buttonText: "\u7A93\u304B\u3089\u96E2\u308C\u308B"
       talk:
       - image: {fileID: 21300000, guid: 02c34b4d1edfa7e4e8744266323a25bb, type: 3}

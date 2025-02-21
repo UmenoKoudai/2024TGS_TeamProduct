@@ -8,6 +8,8 @@ public class WindowKnock : MonoBehaviour, IEventObject
     private FlagList _flagList;
     [SerializeField]
     private Animator _ghostAnim;
+    public Animator _GhostAnim { get => _ghostAnim; }
+
     [SerializeField]
     private TalkSystem _talkSystem;
     private Animator _windowAnim;

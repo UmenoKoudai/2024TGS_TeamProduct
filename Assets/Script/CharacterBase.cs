@@ -6,15 +6,18 @@ public class CharacterBase : MonoBehaviour
 {
     [SerializeField, Tooltip("キャラのスピード")]
     private float _speed;
-    public float Speed => _speed;
+    public float Speed { get => _speed; set => _speed = value; }
     [SerializeField, Tooltip("キャラの移動可能なタイルマップ")]
     private Tilemap _groundMap;
+
+    private float _defaultSpeed;
+    public float DefaultSpeed => _defaultSpeed;
 
     public Tilemap Map => _groundMap;
 
     public EventManager Event { get; set; }
 
-    public Rigidbody2D Rb { get; set; }
+    //public Rigidbody2D Rb { get; set; }
     public Vector2 Direction { get; set; }
     public Animator Animator { get; set; }
     public enum State
@@ -42,11 +45,12 @@ public class CharacterBase : MonoBehaviour
     public void Init(EventManager eventManager)
     {
         if (!Animator) Animator = GetComponentInChildren<Animator>();
-        Rb = GetComponent<Rigidbody2D>();
+        //Rb = GetComponent<Rigidbody2D>();
         _states[(int)State.NormalMove] = new NormalMove(this);
         Event = eventManager;
         SetDirection(Direction);
         _currentState = _states[(int)_state];
+        _defaultSpeed = _speed;
     }
 
     public void ManualUpdate()
