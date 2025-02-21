@@ -22,9 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("パネルマネージャーをアタッチ")]
     private PanelManager _panelManager;
     public PanelManager PanelManager => _panelManager;
-    [SerializeField, Tooltip("イベントシステムをアタッチ")]
-    private EventSystem _eventSystem;
-    public EventSystem EventSystem => _eventSystem;
+
     [SerializeField]
     private FlagData _girlFlag;
     [SerializeField]

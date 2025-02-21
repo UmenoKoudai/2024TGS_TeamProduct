@@ -6,13 +6,10 @@ public class TalkState : IStateMachine
     private GameManager _gameManager;
 
     private EventManager _eventManager;
-
-    private EventSystem _eventSystem;
     public TalkState(GameManager gameManager)
     {
         _gameManager = gameManager;
         _eventManager = gameManager.EventManager;
-        _eventSystem = gameManager.EventSystem;
     }
 
     public void Enter()
