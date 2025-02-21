@@ -39,6 +39,9 @@ public class TalkSystem : MonoBehaviour
     /// <summary>会話のテキストを表示かどうか</summary>
     bool _isTalkTextDisplaying = false;  
 
+    /// <summary>一時停止</summary>
+    bool _isPause = false;
+
     /// <summary>会話中</summary>
     public bool IsTalking => _isTalking;
 
@@ -107,6 +110,8 @@ public class TalkSystem : MonoBehaviour
             return;
         }
 
+        if(_isPause) return;
+
         AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.NextTalkTextDisplay);
 
         _currentTalkData = _talkData[_talkCount];
@@ -172,5 +177,14 @@ public class TalkSystem : MonoBehaviour
             _isTalkTextDisplaying = false;      
             _nextTalkIcon.enabled = true;   　//Talk終了アイコン表示
         }
+    }
+
+    /// <summary>一時停止と再開</summary>
+    /// <param name="_isPause">Trueだったら一時停止</param>
+    /// <returns>Trueだったら一時停止</returns>
+    bool SetPauseResume(bool isPause)
+    {
+        _isPause = isPause;
+        return _isPause;
     }
 }
