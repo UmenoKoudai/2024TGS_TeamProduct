@@ -28,6 +28,10 @@ public class SaveLoadManager : MonoBehaviour
     Date _date;
     string _filePath;
 
+    Date loadDate = null;
+
+    public Date LoadData => loadDate;
+
     public class Date
     {
 
@@ -60,6 +64,19 @@ public class SaveLoadManager : MonoBehaviour
     {
         if(FindObjectsOfType<SaveLoadManager>().Length > 2)
         {
+            if (loadDate != null)
+            {
+                Date currentData = loadDate;
+                //セーブ地点、キャラクターの位置
+                FindObjectOfType<Player>().transform.position = new Vector3(currentData.X, currentData.Y, currentData.Z);
+
+                //フラグを代入
+                for (int i = 0; i < currentData.Flag.Length; i++)
+                {
+                    GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], currentData.Flag[i]);
+                }
+                loadDate = null;
+            }
             Destroy(gameObject);
         }
         else
@@ -174,25 +191,25 @@ public class SaveLoadManager : MonoBehaviour
     {
         _fadeSystem.Play(FadeSystem.AnimType.FadeOut);
         await UniTask .Delay(TimeSpan.FromSeconds(1));
-        var loadDate = _saveDate[filIndex];
+        loadDate = _saveDate[filIndex];
         if (loadDate == null) return;
         Date currentData = loadDate;
-        try
-        {
-            //セーブ地点、キャラクターの位置
-            FindObjectOfType<Player>().transform.position = new Vector3(currentData.X, currentData.Y, currentData.Z);
-            //san値を代入
-            //
-            //フラグを代入
-            for (int i = 0; i < currentData.Flag.Length; i++)
-            {
-                GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
-            }
-        }
-        catch
-        {
-            Debug.LogError("データが存在しません");
-        }
+        //try
+        //{
+            ////セーブ地点、キャラクターの位置
+            //FindObjectOfType<Player>().transform.position = new Vector3(currentData.X, currentData.Y, currentData.Z);
+            ////san値を代入
+            ////
+            ////フラグを代入
+            //for (int i = 0; i < currentData.Flag.Length; i++)
+            //{
+            //    GameManager.Instance.FlagList.SetFlag(GameManager.Instance.FlagList.Flags[i], _flags[i]);
+            //}
+        //}
+        //catch
+        //{
+        //    Debug.LogError("データが存在しません");
+        //}
         SceneManager.sceneLoaded += LoadedEvent;
         CloseLoadPanel();
         SceneManager.LoadScene(currentData.SceneName);
