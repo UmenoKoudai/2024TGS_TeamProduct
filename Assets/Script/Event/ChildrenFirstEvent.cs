@@ -66,6 +66,7 @@ public class ChildrenFirstEvent : MonoBehaviour, IEventObject
                     }
                     _secondObject.GetComponent<FollowSystem>().FollowStart();
                     _isGirl = true;
+                    Destroy(this);
                 }
             }
             else
