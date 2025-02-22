@@ -16,6 +16,14 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
     [SerializeField]
     FlagData _flagData;
 
+    /// <summary>‚P‚Â‚Ì‰¹º‚É‚Â‚«Å’·10•b‚Ì§ŒÀ‚ğİ‚¯‚é</summary>
+    float _audioStopTime = 10f;
+
+    float _timer = 0;
+
+    /// <summary>‰ß‹ÅV‚Å—¬‚µ‚½‰¹ºID</summary>
+    int _pastIndex = 7;
+
     public bool IsActive => true;
 
     private static VanConeManager _instance;
@@ -76,6 +84,20 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
         //{
         //    PlayScream();
         //}
+
+        if(_audio.isPlaying)
+        {
+            _timer += Time.deltaTime;
+            if (_timer > _audioStopTime)
+            {
+                _audio.Stop();
+                _timer = 0;
+            }
+        }
+        else
+        {
+            _timer = 0;
+        }
     }
 
     void CorpseSpown()
@@ -86,7 +108,25 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
 
     void PlayScream()
     {
+        //‰¹º‚ª—¬‚ê‚Ä‚¢‚½‚ç
+        if (_audio.isPlaying)
+        {
+            return;
+        }
+
+        if (_audio == null)
+        {
+            _audio = GetComponent<AudioSource>();
+        }
+
+        //“ñ‰ñ˜A‘±‚Å“¯‚¶‰¹º‚ª—¬‚ê‚é‚Ì‚ğ–h‚®
         int random = Random.Range(0, (int)SeIndex.Max);
+        while (_pastIndex == random)
+        {
+            random = Random.Range(0, (int)SeIndex.Max);
+        }
+        _pastIndex = random;
+
         _audio.PlayOneShot(_playSe[random]);
     }
 
