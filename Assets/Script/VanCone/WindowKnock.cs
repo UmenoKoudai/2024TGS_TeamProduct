@@ -21,14 +21,14 @@ public class WindowKnock : MonoBehaviour, IEventObject
     {
         if (_event != null)
         {
-            if (_flagList.GetFlagStatus(_event.CheckFlag))
+            if (_event.CheckFlag.IsOn)
             {
-                ResultEventTalkData = _event.FalseTalkData;
+                ResultEventTalkData = _event.TrueTalkData;
             }
             else
             {
-                ResultEventTalkData = _event.TrueTalkData;
-                if (_event.ChangeFlag) _flagList.SetFlag(_event.ChangeFlag);
+
+                ResultEventTalkData = _event.FalseTalkData;
             }
         }
     }
