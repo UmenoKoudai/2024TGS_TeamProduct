@@ -25,13 +25,13 @@ public class ItemInventry : MonoBehaviour
 };
     private void Awake()
     {
-        if(FindObjectsOfType<ItemInventry>().Length > 2)
+        if(FindObjectsOfType<ItemInventry>().Length > 1)
         {
             Destroy(gameObject);
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
     }
     // Start is called before the first frame update
@@ -76,6 +76,20 @@ public class ItemInventry : MonoBehaviour
             }
         }
     }
+
+    public void ItemUse(string itemName)
+    {
+        for(int i = 0; i < _itemDataBases.Count; i++)
+        {
+            if(itemName == _itemDataBases[i]._itemName)
+            {
+                _itemDataBases.RemoveAt(i);
+                _itemPanel.ItemSlot(_itemDataBases.Count);
+                return;
+            }
+        }
+    }
+
     public void IsNumberKeyDown()
     {
         if (Input.anyKeyDown)
