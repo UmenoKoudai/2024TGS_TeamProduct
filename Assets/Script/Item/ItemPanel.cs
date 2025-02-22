@@ -6,6 +6,9 @@ public class ItemPanel : MonoBehaviour
     ItemInventry _itemInventry;
     [SerializeField] Image[] _images;
     [SerializeField]public Text _itemEffectText;
+    [SerializeField]
+    private GameObject _panel;
+    public GameObject Panel => _panel;
 
     [SerializeField, Header("文字数のマジックナンバー")] int _num = 6;
     // Start is called before the first frame update
