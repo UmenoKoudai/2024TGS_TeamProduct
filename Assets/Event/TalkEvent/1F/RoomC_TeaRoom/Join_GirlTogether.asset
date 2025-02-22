@@ -16,6 +16,11 @@ MonoBehaviour:
   _changeFlag: {fileID: 11400000, guid: f1cc4ad4b17161145a1aa229c6671710, type: 2}
   _trueTalkData:
     isSelectTalk: 0
+    eventStartTalk: []
+    choiceNum: 0
+    choiceButtonDatas: []
+  _falseTalkData:
+    isSelectTalk: 0
     eventStartTalk:
     - image: {fileID: 21300000, guid: 99830713700b1a846a383753c4d1dc99, type: 3}
       name: "\u5C11\u5973"
@@ -23,10 +28,5 @@ MonoBehaviour:
     - image: {fileID: 21300000, guid: eeab540e8610dec42969bacd3ef1126c, type: 3}
       name: "\u5C11\u5973"
       sentence: "\u3082\u3050\u3082\u3050"
-    choiceNum: 0
-    choiceButtonDatas: []
-  _falseTalkData:
-    isSelectTalk: 0
-    eventStartTalk: []
     choiceNum: 0
     choiceButtonDatas: []

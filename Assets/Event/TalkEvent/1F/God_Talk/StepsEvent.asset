@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40436b44004b9734cab9b84e1246ea77, type: 3}
   m_Name: StepsEvent
   m_EditorClassIdentifier: 
-  _checkFlag: {fileID: 11400000, guid: cce97171d9fec8c48b611d49e11e3328, type: 2}
+  _checkFlag: {fileID: 11400000, guid: d28fceab3c016874597af9ced8db7239, type: 2}
   _changeFlag: {fileID: 11400000, guid: cce97171d9fec8c48b611d49e11e3328, type: 2}
   _trueTalkData:
     isSelectTalk: 0

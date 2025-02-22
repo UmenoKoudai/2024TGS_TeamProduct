@@ -46,7 +46,7 @@ public class ItemPanel : MonoBehaviour
         {
             for (int i = 0; i < _itemInventry._itemButton.Length; i++)
             {
-                _itemInventry._itemButton[i].image.sprite = null;
+                //_itemInventry._itemButton[i].image.sprite = null;
                 Text text = _itemInventry._itemButton[i].GetComponentInChildren<Text>();
                 text.text = "";
             }
