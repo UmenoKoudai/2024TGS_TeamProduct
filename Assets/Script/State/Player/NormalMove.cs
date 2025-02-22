@@ -54,7 +54,6 @@ public class NormalMove : IStateMachine
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        _rayDirection = new Vector3(h, v, 0);
         //Debug.DrawRay(_character.transform.position, _character.Direction * 5, Color.red);
         Debug.DrawRay(_character.transform.position, _rayDirection * 5, Color.yellow);
         if (h > 0 || h < 0 || v > 0 || v < 0)
@@ -62,6 +61,7 @@ public class NormalMove : IStateMachine
             _character.Direction = _direction;
             _character.Animator.SetFloat("X", h);
             _character.Animator.SetFloat("Y", v);
+            _rayDirection = new Vector3(h, v, 0);
         }
         if (Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && !_isMove)
         {
