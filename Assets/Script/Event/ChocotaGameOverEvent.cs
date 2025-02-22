@@ -17,7 +17,7 @@ public class ChocotaGameOverEvent : MonoBehaviour, IEventObject
 
     private bool _isEventStart = false;
 
-    private EventManager _eventManager;
+    private bool _isGameOverStart = false;
     
     private FadeInOut _fadeInOut;
 
@@ -30,7 +30,6 @@ public class ChocotaGameOverEvent : MonoBehaviour, IEventObject
     // Start is called before the first frame update
     void Start()
     {
-        _eventManager = FindObjectOfType<EventManager>();
         _event.talkEnded += TalkEnd;
     }
 
@@ -42,12 +41,16 @@ public class ChocotaGameOverEvent : MonoBehaviour, IEventObject
             StartCoroutine(GameOverStart());
             FindObjectOfType<EventManager>().EventCheck(this);
             _isEventStart = false;
+            _isGameOverStart = true;
         }
 
-        _changeGameOverSceneTime -= Time.deltaTime;
-        if(_changeGameOverSceneTime < 0)
+        if(_isGameOverStart)
         {
-            FindObjectOfType<SceneChange>().ChangeScene(_gameOverSceneName);
+            _changeGameOverSceneTime -= Time.deltaTime;
+            if (_changeGameOverSceneTime < 0)
+            {
+                FindObjectOfType<SceneChange>().ChangeScene(_gameOverSceneName);
+            }
         }
     }
 
