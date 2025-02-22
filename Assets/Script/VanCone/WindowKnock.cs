@@ -10,8 +10,6 @@ public class WindowKnock : MonoBehaviour, IEventObject
     private Animator _ghostAnim;
     public Animator _GhostAnim { get => _ghostAnim; }
 
-    [SerializeField]
-    private TalkSystem _talkSystem;
     private Animator _windowAnim;
     private AudioSource _audio;
 
@@ -49,12 +47,11 @@ public class WindowKnock : MonoBehaviour, IEventObject
     //    _event.CheckFlag.SetFlagStatus(false);
     //}
 
-    public void TalkEnd(EventData date)
-    {
-        _ghostAnim.gameObject.SetActive(false);
-        _talkSystem.TalkTextAllDisplay();
-        Debug.Log("トーク終了");
-    }
+    //public void TalkEnd(EventData date)
+    //{
+    //    _ghostAnim.gameObject.SetActive(false);
+    //    Debug.Log("トーク終了");
+    //}
 
     private void Start()
     {
@@ -65,7 +62,7 @@ public class WindowKnock : MonoBehaviour, IEventObject
 
     void Update()
     {
-        _windowAnim.SetBool("On", _event.CheckFlag);
+        _windowAnim.SetBool("On", _event.CheckFlag.IsOn);
         if (_event.CheckFlag)
         {
             _audio.Play();
