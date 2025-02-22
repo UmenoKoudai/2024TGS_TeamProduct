@@ -8,7 +8,7 @@ public class PlayingData : MonoBehaviour
     {
         get
         {
-            if(_instance is null)
+            if(_instance == null)
             {
                 _instance = FindObjectOfType<PlayingData>();
                 if(_instance == null)
@@ -22,12 +22,13 @@ public class PlayingData : MonoBehaviour
 
     private void Awake()
     {
-        if(FindObjectsOfType<PlayingData>().Length > 1)
+        if(_instance != null && _instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
+            _instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }

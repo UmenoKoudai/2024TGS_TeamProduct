@@ -60,14 +60,20 @@ public class GameManager : MonoBehaviour
 
     //void Awake()
     //{
-    //    if (!instance)
+    //    if (instance == null)
     //    {
     //        instance = this;
-    //       //SceneManager.sceneLoaded += SceneLoaded;
+    //        //SceneManager.sceneLoaded += SceneLoaded;
     //        DontDestroyOnLoad(gameObject);
     //    }
-    //    else
+    //    else if (instance == this)
     //    {
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //    else if (instance != this)
+    //    {
+    //        instance._nowState = this._nowState;
+    //        instance.Init();
     //        Destroy(gameObject);
     //    }
     //}
@@ -120,7 +126,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (_nowState == GameState.OutGame) return;
+        Debug.Log("Ç©Ç©");
         Init();
+       
         _girl.gameObject.SetActive(_girlFlag.IsOn);
         _states[(int)SystemState.Move] = new MoveState(this);
         _states[(int)SystemState.Talk] = new TalkState(this);
@@ -147,21 +155,25 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        try
-        {
+        //try
+        //{
             if (PlayingData.Instance.PosName != "" && PlayingData.Instance.PosName != null)
             {
-                var pos = GameObject.Find(PlayingData.Instance.PosName).transform.position /*+ (PlayingData.Instance.Direction * 3)*/;
-                _player.Direction = PlayingData.Instance.Direction;
-                _girl.Direction = PlayingData.Instance.Direction;
-                _player.transform.position = pos;
-                _girl.transform.position = pos;
+                GameObject go = GameObject.Find(PlayingData.Instance.PosName);
+                if (go != null)
+                {
+                    var pos = go.transform.position /*+ (PlayingData.Instance.Direction * 3)*/;
+                    _player.Direction = PlayingData.Instance.Direction;
+                    _girl.Direction = PlayingData.Instance.Direction;
+                    _player.transform.position = pos;
+                    _girl.transform.position = pos;
+                }
             }
-        }
-        catch
-        {
-            Debug.LogError($"{PlayingData.Instance.PosName}Ç™ë∂ç›ÇµÇ‹ÇπÇÒ");
-        }
+        //}
+        //catch
+        //{
+        //    Debug.LogError($"{PlayingData.Instance.PosName}Ç™ë∂ç›ÇµÇ‹ÇπÇÒ");
+        //}
         _player.Init(_eventManager);
         _girl.Init(_eventManager);
     }
