@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5066137c2d16a4bb9ded7a0259efd8, type: 3}
   m_Name: FastJoin
   m_EditorClassIdentifier: 
-  _isOn: 0
+  _isOn: 1

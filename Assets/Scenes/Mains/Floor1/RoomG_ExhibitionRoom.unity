@@ -9415,6 +9415,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemObject
       objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.95000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.25883198
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.719379
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.17961802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6190615
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -188.627
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 84.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486725303672719436, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 35.839996
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561235635403674062, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8888003085541705768, guid: f30b11070d8d6e244a70ef2c48fff544, type: 3}
       propertyPath: _itemName
       value: "\u4F7F\u7528\u4EBA\u5BA4\u306E\u30AB\u30AE"
@@ -16751,7 +16787,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6f06e7db248a845408be5404aedd14fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

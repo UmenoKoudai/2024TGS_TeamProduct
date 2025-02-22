@@ -22,7 +22,7 @@ public class TeaRoomFirstEvent : MonoBehaviour, IEventObject
 
     private void Start()
     {
-        if(_event.CheckFlag.IsOn && _girlFlag.IsOn)
+        if(!_event.CheckFlag.IsOn && _girlFlag.IsOn)
         {
             foreach (var obj in _firstObject)
             {
