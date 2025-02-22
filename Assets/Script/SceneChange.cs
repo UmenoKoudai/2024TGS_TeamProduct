@@ -21,9 +21,12 @@ public class SceneChange : MonoBehaviour, IEventObject
     private EventData _event;
     [SerializeField, Tooltip("フラグのリスト")]
     private FlagList _flagList;
+    [SerializeField]
+    private string _useItemName;
 
     private FadeSystem _fadeSystem;
     private EventManager _eventManager;
+    private ItemInventry _itemInventry;
 
     public EventData EventData => _event;
 
@@ -47,6 +50,7 @@ public class SceneChange : MonoBehaviour, IEventObject
     private void Start()
     {
         _fadeSystem = FindObjectOfType<FadeSystem>();
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,6 +59,8 @@ public class SceneChange : MonoBehaviour, IEventObject
         {
             if (_isKeyRoom != true || _event.CheckFlag.IsOn)
             {
+                _itemInventry = FindObjectOfType<ItemInventry>();
+                _itemInventry.ItemUse(_useItemName);
                 PlayingData.Instance.PosName = _posName;
                 PlayingData.Instance.Direction = player.Direction;
                 SceneManager.LoadScene(_nextScene);
@@ -71,6 +77,8 @@ public class SceneChange : MonoBehaviour, IEventObject
         {
             if (_isKeyRoom != true || _event.CheckFlag.IsOn)
             {
+                _itemInventry = FindObjectOfType<ItemInventry>();
+                _itemInventry.ItemUse(_useItemName);
                 PlayingData.Instance.PosName = _posName;
                 PlayingData.Instance.Direction = player.Direction;
                 SceneManager.LoadScene(_nextScene);

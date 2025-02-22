@@ -10,18 +10,25 @@ public class CookingEvent : MonoBehaviour, IEventObject
     private FlagList _flagList;
     [SerializeField]
     private ItemManager _itemManager;
+    [SerializeField]
+    private string _useItemName;
+
+    private ItemInventry _itemInventry;
 
     public EventData EventData => _event;
 
     public EventTalkData ResultEventTalkData { get; set; }
 
+
     public void ResultFlagCheck()
     {
-        if(_event != null)
+        _itemInventry = FindObjectOfType<ItemInventry>();
+        if (_event != null)
         {
             if(_flagList.GetFlagStatus(_event.CheckFlag))
             {
                 ResultEventTalkData = _event.TrueTalkData;
+                _itemInventry.ItemUse(_useItemName);
                 if (_itemManager != null) _itemManager.PickUp();
                 if (_event.ChangeFlag != null) _flagList.SetFlag(_event.ChangeFlag);
             }
