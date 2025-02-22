@@ -67,15 +67,15 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
     // Update is called once per frame
     void Update()
     {
-        //テスト用
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            _flagData.SetFlagStatus(true);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            PlayScream();
-        }
+        ////テスト用
+        //if(Input.GetKeyDown(KeyCode.V))
+        //{
+        //    _flagData.SetFlagStatus(true);
+        //}
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    PlayScream();
+        //}
     }
 
     void CorpseSpown()
@@ -95,9 +95,6 @@ public class VanConeManager : MonoBehaviour, IVantanConnectEventReceiver
 
         switch (data.EventCode)
         {
-            //case EventDefine.DeathStack:
-            //    CorpseSpown();
-            //    break;
             case EventDefine.KnockWindow:
                 _flagData.SetFlagStatus(true);
                 break;
