@@ -7792,7 +7792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107259883682299544, guid: dc5199eb03e1fa34bb2d6e4c96dff61d, type: 3}
       propertyPath: m_SortingOrder
-      value: 500
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5657874888238677352, guid: dc5199eb03e1fa34bb2d6e4c96dff61d, type: 3}
       propertyPath: m_Pivot.x
@@ -16429,6 +16429,14 @@ PrefabInstance:
     - target: {fileID: 4286373185849491393, guid: bbba19fa0bd4a144393013ea4ca19699, type: 3}
       propertyPath: m_Name
       value: SaveSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316516055719455167, guid: bbba19fa0bd4a144393013ea4ca19699, type: 3}
+      propertyPath: m_SortingOrder
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339157822958374067, guid: bbba19fa0bd4a144393013ea4ca19699, type: 3}
+      propertyPath: m_SortingOrder
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
