@@ -71,7 +71,7 @@ public class SceneChange : MonoBehaviour, IEventObject
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private async void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.TryGetComponent(out Player player))
         {
@@ -81,6 +81,8 @@ public class SceneChange : MonoBehaviour, IEventObject
                 _itemInventry.ItemUse(_useItemName);
                 PlayingData.Instance.PosName = _posName;
                 PlayingData.Instance.Direction = player.Direction;
+                AudioManager.Instance.SeClass.Play(AudioManager.SE.SEClip.NewDoorOpen);
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
                 SceneManager.LoadScene(_nextScene);
             }
             else
