@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chocobo
       objectReference: {fileID: 0}
+    - target: {fileID: 5787561357906539657, guid: 172632016f4652b429eda802fdaf9bc1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
